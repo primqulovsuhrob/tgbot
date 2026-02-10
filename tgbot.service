@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram Quiz Bot
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/tgbot
+ExecStart=/home/ubuntu/tgbot/venv/bin/python3 /home/ubuntu/tgbot/main.py
+Restart=always
+RestartSec=3
+EnvironmentFile=/home/ubuntu/tgbot/.env
+
+[Install]
+WantedBy=multi-user.target

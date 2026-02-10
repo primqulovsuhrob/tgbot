@@ -15,6 +15,14 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from openai import AsyncOpenAI
 from config import BOT_TOKEN, DEEPSEEK_API_KEY
+import matplotlib
+import matplotlib.pyplot as plt
+import io
+import platform
+import time
+from datetime import datetime
+
+matplotlib.use('Agg') # Use non-interactive backend
 
 # PDF and DOCX support
 try:
@@ -44,6 +52,114 @@ deepseek_client = AsyncOpenAI(
 
 # User data storage
 user_data = {}
+RESULTS_FILE = "results.json"
+USERS_FILE = "users.json"
+STATS_FILE = "stats.json"
+ADMIN_USERNAME = "Suhrob031"
+BOT_START_TIME = time.time()
+
+def save_user_result(user_id, full_name, username, score):
+    data = {}
+    if os.path.exists(RESULTS_FILE):
+        try:
+            with open(RESULTS_FILE, "r") as f:
+                data = json.load(f)
+        except:
+            data = {}
+    
+    uid = str(user_id)
+    if uid not in data or score > data[uid].get("best_score", 0):
+        data[uid] = {
+            "name": full_name,
+            "username": username,
+            "best_score": score,
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        with open(RESULTS_FILE, "w") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+
+def save_user(user):
+    """Save a user who pressed /start to users.json"""
+    data = {}
+    if os.path.exists(USERS_FILE):
+        try:
+            with open(USERS_FILE, "r") as f:
+                data = json.load(f)
+        except:
+            data = {}
+    
+    uid = str(user.id)
+    if uid not in data:
+        data[uid] = {
+            "id": user.id,
+            "first_name": user.first_name or "",
+            "last_name": user.last_name or "",
+            "full_name": user.full_name or "",
+            "username": user.username or "",
+            "joined_date": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+    else:
+        # Update name/username in case they changed
+        data[uid]["first_name"] = user.first_name or ""
+        data[uid]["last_name"] = user.last_name or ""
+        data[uid]["full_name"] = user.full_name or ""
+        data[uid]["username"] = user.username or ""
+    
+    with open(USERS_FILE, "w") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
+
+def track_deepseek_usage():
+    """Track DeepSeek API call count and times"""
+    stats = {}
+    if os.path.exists(STATS_FILE):
+        try:
+            with open(STATS_FILE, "r") as f:
+                stats = json.load(f)
+        except:
+            stats = {}
+    
+    stats["deepseek_calls"] = stats.get("deepseek_calls", 0) + 1
+    today = datetime.now().strftime("%Y-%m-%d")
+    if "daily_calls" not in stats:
+        stats["daily_calls"] = {}
+    stats["daily_calls"][today] = stats["daily_calls"].get(today, 0) + 1
+    stats["last_call"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    with open(STATS_FILE, "w") as f:
+        json.dump(stats, f, indent=4, ensure_ascii=False)
+
+def get_server_info():
+    """Get server and bot information"""
+    uptime_seconds = int(time.time() - BOT_START_TIME)
+    hours, remainder = divmod(uptime_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    uptime_str = f"{hours}s {minutes}d {seconds}s"
+    
+    return {
+        "os": f"{platform.system()} {platform.release()}",
+        "python": platform.python_version(),
+        "uptime": uptime_str,
+        "machine": platform.machine()
+    }
+
+def get_main_menu(username: str = None) -> ReplyKeyboardMarkup:
+    buttons = [
+        [KeyboardButton(text="📝 Quiz yaratish"), KeyboardButton(text="🚀 Quiz boshlash")],
+        [KeyboardButton(text="🗣️ Murojatlar"), KeyboardButton(text="ℹ️ Yordam")]
+    ]
+    if username == ADMIN_USERNAME:
+        buttons.append([KeyboardButton(text="🔑 Admen")])
+    
+    return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+
+admin_menu = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="📊 Natijalar"), KeyboardButton(text="📈 Reyting")],
+        [KeyboardButton(text="👥 Obunchilar")],
+        [KeyboardButton(text="⬅️ Ortga")]
+    ],
+    resize_keyboard=True
+)
 
 # Quiz States
 class QuizStates(StatesGroup):
@@ -56,19 +172,7 @@ class QuizStates(StatesGroup):
     waiting_file = State()
     file_selecting_time = State()
 
-# Keyboards
-age_menu = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="👶 10-18"), KeyboardButton(text="👨 18-25"), KeyboardButton(text="👴 25-35")]],
-    resize_keyboard=True
-)
-
-main_menu = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="📝 Quiz yaratish"), KeyboardButton(text="🚀 Quiz boshlash")],
-        [KeyboardButton(text="🗣️ Murojatlar"), KeyboardButton(text="ℹ️ Yordam")]
-    ],
-    resize_keyboard=True
-)
+# Keyboards (rest)
 
 subject_menu = ReplyKeyboardMarkup(
     keyboard=[
@@ -350,6 +454,7 @@ Faqat quyidagi JSON array formatida javob ber, boshqa hech qanday matn qo'shma:
                     q["correct"] = min(max(0, int(q["correct"])), len(q["options"]) - 1)
                     valid_questions.append(q)
         
+        track_deepseek_usage()
         return valid_questions[:count] if valid_questions else []
         
     except Exception as e:
@@ -408,6 +513,7 @@ Faqat JSON array qaytar!"""
                     q["correct"] = min(max(0, int(q["correct"])), len(q["options"]) - 1)
                     valid_questions.append(q)
         
+        track_deepseek_usage()
         return valid_questions[:count] if valid_questions else []
         
     except Exception as e:
@@ -591,7 +697,15 @@ async def show_results_callback(callback: CallbackQuery, state: FSMContext):
     await bot.send_message(
         callback.message.chat.id,
         "Bosh menyu:",
-        reply_markup=main_menu
+        reply_markup=get_main_menu(callback.from_user.username)
+    )
+    
+    # Save result
+    save_user_result(
+        user_id=callback.from_user.id,
+        full_name=callback.from_user.full_name,
+        username=callback.from_user.username,
+        score=correct
     )
     
     await state.clear()
@@ -627,6 +741,14 @@ async def show_final_results_callback(callback: CallbackQuery):
         f"<i>Jami {total} ta savol bo'ldi.</i>"
     )
     await callback.answer()
+
+    # Save final result
+    save_user_result(
+        user_id=callback.from_user.id,
+        full_name=callback.from_user.full_name,
+        username=callback.from_user.username,
+        score=correct
+    )
 
 @dp.callback_query(F.data == "next_quiz")
 async def next_quiz_callback(callback: CallbackQuery, state: FSMContext):
@@ -666,7 +788,12 @@ async def next_quiz_callback(callback: CallbackQuery, state: FSMContext):
 @dp.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext) -> None:
     await state.clear()
-    user_data[message.from_user.id] = {"chat_id": message.chat.id}
+    user_id = message.from_user.id
+    user_data[user_id] = {"chat_id": message.chat.id}
+    
+    # Save user to persistent storage
+    save_user(message.from_user)
+    
     await message.answer(
         f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
         f"🤖 <b>AI Quiz Bot</b>\n\n"
@@ -677,11 +804,15 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 @dp.message(F.text.in_({"👶 10-18", "👨 18-25", "👴 25-35"}))
 async def age_selection_handler(message: Message, state: FSMContext) -> None:
     age = message.text.split(" ")[1]
-    if message.from_user.id not in user_data:
-        user_data[message.from_user.id] = {}
-    user_data[message.from_user.id]["age"] = age
-    user_data[message.from_user.id]["chat_id"] = message.chat.id
-    await message.answer(f"✅ {message.text}\n\n📋 Menyudan tanlang:", reply_markup=main_menu)
+    user_id = message.from_user.id
+    if user_id not in user_data:
+        user_data[user_id] = {}
+    user_data[user_id]["age"] = age
+    user_data[user_id]["chat_id"] = message.chat.id
+    await message.answer(
+        f"✅ {message.text}\n\n📋 Menyudan tanlang:", 
+        reply_markup=get_main_menu(message.from_user.username)
+    )
 
 @dp.message(F.text == "🚀 Quiz boshlash")
 async def quiz_start_handler(message: Message, state: FSMContext) -> None:
@@ -724,7 +855,7 @@ async def topic_time_selected_handler(message: Message, state: FSMContext) -> No
     
     if not questions:
         await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
-        await message.answer("Menyu:", reply_markup=main_menu)
+        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
         await state.clear()
         return
     
@@ -894,7 +1025,7 @@ async def time_selection_handler(message: Message, state: FSMContext) -> None:
     
     if not questions:
         await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
-        await message.answer("Menyu:", reply_markup=main_menu)
+        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
         await state.clear()
         return
     
@@ -914,12 +1045,20 @@ async def stop_quiz_handler(message: Message, state: FSMContext) -> None:
         data = user_data[user_id]
         correct = data.get("correct_answers", 0)
         current = data.get("current_question", 0)
+        
+        # Save result if they stop mid-quiz
         if current > 0:
-            await message.answer(f"🛑 Quiz tugatildi!\n✅ {correct}/{current}", reply_markup=main_menu)
+            save_user_result(
+                user_id=message.from_user.id,
+                full_name=message.from_user.full_name,
+                username=message.from_user.username,
+                score=correct
+            )
+            await message.answer(f"🛑 Quiz tugatildi!\n✅ {correct}/{current}", reply_markup=get_main_menu(message.from_user.username))
         else:
-            await message.answer("❌ Bekor qilindi.", reply_markup=main_menu)
+            await message.answer("❌ Bekor qilindi.", reply_markup=get_main_menu(message.from_user.username))
     else:
-        await message.answer("Menyu:", reply_markup=main_menu)
+        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
     await state.clear()
 
 @dp.message(F.text == "🗣️ Murojatlar")
@@ -934,7 +1073,7 @@ async def murojatlar_handler(message: Message) -> None:
 @dp.message(F.text == "⬅️ Ortga")
 async def back_handler(message: Message, state: FSMContext) -> None:
     await state.clear()
-    await message.answer("📋 Menyu:", reply_markup=main_menu)
+    await message.answer("📋 Menyu:", reply_markup=get_main_menu(message.from_user.username))
 
 @dp.message(F.text == "ℹ️ Yordam")
 async def help_handler(message: Message) -> None:
@@ -959,9 +1098,183 @@ async def help_handler(message: Message) -> None:
     
     await message.answer(help_text, reply_markup=admin_keyboard)
 
+# ============ ADMIN HANDLERS ============
+
+@dp.message(F.text == "🔑 Admen")
+async def admin_handler(message: Message):
+    if message.from_user.username != ADMIN_USERNAME:
+        return
+    await message.answer("🔑 <b>Admin paneliga xush kelibsiz!</b>", reply_markup=admin_menu)
+
+@dp.message(F.text == "📊 Natijalar")
+async def admin_results_handler(message: Message):
+    if message.from_user.username != ADMIN_USERNAME:
+        return
+    
+    if not os.path.exists(RESULTS_FILE):
+        await message.answer("❌ Hali hech qanday natija yo'q.")
+        return
+        
+    try:
+        with open(RESULTS_FILE, "r") as f:
+            data = json.load(f)
+    except:
+        data = {}
+        
+    if not data:
+        await message.answer("❌ Hali hech qanday natija yo'q.")
+        return
+        
+    # Sort by best_score descending
+    sorted_results = sorted(data.items(), key=lambda x: x[1]["best_score"], reverse=True)[:20]
+    
+    res_text = "🏆 <b>Eng yaxshi natijalar (Top 20):</b>\n\n"
+    for i, (uid, res) in enumerate(sorted_results, 1):
+        username_link = f'<a href="tg://user?id={uid}">{res["name"]}</a>'
+        username_text = f" (@{res['username']})" if res.get('username') else ""
+        date_text = f" | 📅 {res.get('date', 'N/A')}"
+        res_text += (
+            f"{i}. {username_link}{username_text}\n"
+            f"   🆔 <code>{uid}</code> | 🏅 <b>{res['best_score']}</b> ball{date_text}\n\n"
+        )
+    
+    res_text += f"📋 Jami: <b>{len(data)}</b> ta foydalanuvchi natija topshirgan"
+    await message.answer(res_text, disable_web_page_preview=True)
+
+@dp.message(F.text == "📈 Reyting")
+async def admin_rating_handler(message: Message):
+    if message.from_user.username != ADMIN_USERNAME:
+        return
+    
+    # --- Users stats ---
+    users_data = {}
+    if os.path.exists(USERS_FILE):
+        try:
+            with open(USERS_FILE, "r") as f:
+                users_data = json.load(f)
+        except:
+            users_data = {}
+    
+    total_users = len(users_data)
+    
+    # Today's new users
+    today = datetime.now().strftime("%Y-%m-%d")
+    today_users = sum(1 for u in users_data.values() if u.get("joined_date", "").startswith(today))
+    
+    # Users per day (last 7 days)
+    from datetime import timedelta
+    growth_text = "📊 <b>Haftalik o'sish:</b>\n"
+    for i in range(6, -1, -1):
+        day = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
+        day_count = sum(1 for u in users_data.values() if u.get("joined_date", "").startswith(day))
+        day_label = "Bugun" if i == 0 else f"{day}"
+        bar = "█" * min(day_count, 20) if day_count > 0 else "░"
+        growth_text += f"  {day_label}: {bar} <b>{day_count}</b>\n"
+    
+    # --- DeepSeek stats ---
+    stats = {}
+    if os.path.exists(STATS_FILE):
+        try:
+            with open(STATS_FILE, "r") as f:
+                stats = json.load(f)
+        except:
+            stats = {}
+    
+    deepseek_total = stats.get("deepseek_calls", 0)
+    deepseek_today = stats.get("daily_calls", {}).get(today, 0)
+    last_call = stats.get("last_call", "Hali chaqirilmagan")
+    
+    # --- Results stats ---
+    results_data = {}
+    if os.path.exists(RESULTS_FILE):
+        try:
+            with open(RESULTS_FILE, "r") as f:
+                results_data = json.load(f)
+        except:
+            results_data = {}
+    
+    total_results = len(results_data)
+    
+    # --- Server info ---
+    server = get_server_info()
+    
+    text = (
+        f"📈 <b>Bot Statistikasi</b>\n"
+        f"{'─' * 25}\n\n"
+        f"👥 <b>Foydalanuvchilar:</b>\n"
+        f"  📌 Jami: <b>{total_users}</b> ta\n"
+        f"  🆕 Bugun: <b>{today_users}</b> ta\n"
+        f"  📝 Natija topshirganlar: <b>{total_results}</b> ta\n\n"
+        f"{growth_text}\n"
+        f"🤖 <b>DeepSeek AI:</b>\n"
+        f"  📊 Jami so'rovlar: <b>{deepseek_total}</b> ta\n"
+        f"  📅 Bugun: <b>{deepseek_today}</b> ta\n"
+        f"  🕐 Oxirgi chaqiruv: {last_call}\n\n"
+        f"🖥️ <b>Server:</b>\n"
+        f"  💻 OS: {server['os']}\n"
+        f"  🐍 Python: {server['python']}\n"
+        f"  ⏱️ Bot uptime: {server['uptime']}\n"
+        f"  🔧 Mashina: {server['machine']}\n"
+    )
+    
+    await message.answer(text)
+
+@dp.message(F.text == "👥 Obunchilar")
+async def admin_subscribers_handler(message: Message):
+    if message.from_user.username != ADMIN_USERNAME:
+        return
+    
+    if not os.path.exists(USERS_FILE):
+        await message.answer("❌ Hali hech qanday obunachi yo'q.")
+        return
+    
+    try:
+        with open(USERS_FILE, "r") as f:
+            data = json.load(f)
+    except:
+        data = {}
+    
+    if not data:
+        await message.answer("❌ Hali hech qanday obunachi yo'q.")
+        return
+    
+    total = len(data)
+    
+    # Sort by join date (newest first)
+    sorted_users = sorted(data.items(), key=lambda x: x[1].get("joined_date", ""), reverse=True)
+    
+    # Paginate - send in chunks of 50
+    chunk_size = 50
+    chunks = [sorted_users[i:i + chunk_size] for i in range(0, len(sorted_users), chunk_size)]
+    
+    for page_num, chunk in enumerate(chunks, 1):
+        text = f"👥 <b>Obunchilar</b> (sahifa {page_num}/{len(chunks)})\n"
+        text += f"📊 Jami: <b>{total}</b> ta\n"
+        text += f"{'─' * 25}\n\n"
+        
+        for uid, user_info in chunk:
+            full_name = user_info.get("full_name", "Noma'lum")
+            first_name = user_info.get("first_name", "")
+            last_name = user_info.get("last_name", "")
+            username = user_info.get("username", "")
+            joined = user_info.get("joined_date", "N/A")
+            
+            user_link = f'<a href="tg://user?id={uid}">{full_name}</a>'
+            username_text = f" (@{username})" if username else ""
+            name_parts = f"{first_name} {last_name}".strip()
+            
+            text += (
+                f"👤 {user_link}{username_text}\n"
+                f"   🆔 <code>{uid}</code>\n"
+                f"   📛 {name_parts}\n"
+                f"   📅 Qo'shilgan: {joined}\n\n"
+            )
+        
+        await message.answer(text, disable_web_page_preview=True)
+
 @dp.message()
 async def echo_handler(message: Message) -> None:
-    await message.answer("🤔 Menyudan tanlang.", reply_markup=main_menu)
+    await message.answer("🤔 Menyudan tanlang.", reply_markup=get_main_menu(message.from_user.username))
 
 async def main() -> None:
     await dp.start_polling(bot)

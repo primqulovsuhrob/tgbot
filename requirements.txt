@@ -3,3 +3,4 @@ python-dotenv
 openai
 PyPDF2
 python-docx
+matplotlib
