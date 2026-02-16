@@ -1,0 +1,2093 @@
+{
+    "Matematika": {
+        "10-18": [
+            {
+                "question": "2x + 5 = 15 tenglamaning yechimi qanday?",
+                "options": [
+                    "x = 5",
+                    "x = 10",
+                    "x = 7.5",
+                    "x = 8"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "a² - b² qisqartirilgan koʻrinishi qanday?",
+                "options": [
+                    "(a-b)(a+b)",
+                    "(a+b)²",
+                    "(a-b)²",
+                    "a²+b²"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "30° burchakning radian oʻlchovi qancha?",
+                "options": [
+                    "π/6",
+                    "π/4",
+                    "π/3",
+                    "π/2"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Toʻgʻri toʻrtburchakning perimetri 24 cm, boʻyi 7 cm boʻlsa, eni qancha?",
+                "options": [
+                    "5 cm",
+                    "6 cm",
+                    "4 cm",
+                    "3 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "2, 4, 6, 8, ... ketma-ketlikning umumiy hadi qanday?",
+                "options": [
+                    "2n",
+                    "n+2",
+                    "2n+2",
+                    "n²"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "√144 ning qiymati qancha?",
+                "options": [
+                    "12",
+                    "14",
+                    "16",
+                    "18"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "3⁴ ning qiymati qancha?",
+                "options": [
+                    "81",
+                    "64",
+                    "27",
+                    "12"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "y = 2x + 3 funksiyaning grafigi qanday chiziq?",
+                "options": [
+                    "Toʻgʻri chiziq",
+                    "Parabola",
+                    "Giperbola",
+                    "Eksponensial"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar a:b = 2:3 va b:c = 4:5 boʻlsa, a:c nisbat qancha?",
+                "options": [
+                    "8:15",
+                    "3:4",
+                    "2:5",
+                    "5:8"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Teng yonli uchburchakning asosi 10 cm, yon tomoni 13 cm boʻlsa, perimetri qancha?",
+                "options": [
+                    "36 cm",
+                    "33 cm",
+                    "30 cm",
+                    "39 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "x² - 5x + 6 = 0 tenglamaning ildizlari yigʻindisi qancha?",
+                "options": [
+                    "5",
+                    "6",
+                    "-5",
+                    "-6"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "log₁₀100 ning qiymati qancha?",
+                "options": [
+                    "2",
+                    "10",
+                    "1",
+                    "0"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Aylana radiusi 7 cm boʻlsa, uning yuzi qancha? (π≈22/7)",
+                "options": [
+                    "154 cm²",
+                    "44 cm²",
+                    "88 cm²",
+                    "308 cm²"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "sin30° + cos60° yigʻindisi qancha?",
+                "options": [
+                    "1",
+                    "0.5",
+                    "√3/2",
+                    "1.5"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar 20% = 40 boʻlsa, toʻliq son qancha?",
+                "options": [
+                    "200",
+                    "100",
+                    "80",
+                    "160"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvadratning diagonali 10√2 cm boʻlsa, uning tomoni qancha?",
+                "options": [
+                    "10 cm",
+                    "5 cm",
+                    "10√2 cm",
+                    "20 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Arifmetik progressiyada a₁=3, d=4 boʻlsa, a₅ qancha?",
+                "options": [
+                    "19",
+                    "15",
+                    "23",
+                    "27"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "|x-3| = 5 tenglamaning musbat yechimi qancha?",
+                "options": [
+                    "8",
+                    "2",
+                    "-2",
+                    "5"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar 3x = 81 boʻlsa, x qancha?",
+                "options": [
+                    "4",
+                    "3",
+                    "27",
+                    "9"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Toʻgʻri burchakli uchburchakda katetlar 6 cm va 8 cm boʻlsa, gipotenuzasi qancha?",
+                "options": [
+                    "10 cm",
+                    "12 cm",
+                    "14 cm",
+                    "9 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar a+b=12 va a-b=4 boʻlsa, a ning qiymati qancha?",
+                "options": [
+                    "8",
+                    "6",
+                    "10",
+                    "4"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "0.25 kasr koʻrinishida qanday?",
+                "options": [
+                    "1/4",
+                    "1/2",
+                    "1/3",
+                    "1/5"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kubning hajmi 125 cm³ boʻlsa, uning tomoni qancha?",
+                "options": [
+                    "5 cm",
+                    "10 cm",
+                    "15 cm",
+                    "25 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar 2 kg olma 10000 soʻm boʻlsa, 5 kg olma qancha turadi?",
+                "options": [
+                    "25000 soʻm",
+                    "20000 soʻm",
+                    "30000 soʻm",
+                    "15000 soʻm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "(x+3)(x-3) koʻpaytmasining natijasi qanday?",
+                "options": [
+                    "x²-9",
+                    "x²+9",
+                    "x²-6x+9",
+                    "x²+6x+9"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar 15 sonining 40% i 6 boʻlsa, toʻliq son qancha?",
+                "options": [
+                    "15",
+                    "10",
+                    "20",
+                    "25"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Aylana uzunligi 44 cm boʻlsa, radiusi qancha? (π≈22/7)",
+                "options": [
+                    "7 cm",
+                    "14 cm",
+                    "22 cm",
+                    "11 cm"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "2x - y = 10 va x + y = 5 tenglamalar sistemasidan x ning qiymati qancha?",
+                "options": [
+                    "5",
+                    "3",
+                    "4",
+                    "2"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar uchburchakning ikki burchagi 45° va 75° boʻlsa, uchinchi burchagi qancha?",
+                "options": [
+                    "60°",
+                    "90°",
+                    "45°",
+                    "30°"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "√50 ni soddalashtirilgan koʻrinishi qanday?",
+                "options": [
+                    "5√2",
+                    "10√5",
+                    "25√2",
+                    "2√25"
+                ],
+                "correct": 0
+            }
+        ],
+        "18-25": [
+            {
+                "question": "Agar f(x) = x³ - 3x² + 2x + 5 bo'lsa, f'(2) ning qiymati nimaga teng?",
+                "options": [
+                    "-2",
+                    "0",
+                    "2",
+                    "4"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "∫(0 to π/2) sin²x cos²x dx integralning qiymati nimaga teng?",
+                "options": [
+                    "π/8",
+                    "π/16",
+                    "π/32",
+                    "π/64"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "A = [[2, 1], [1, 2]] matritsaning eng katta xos qiymati nimaga teng?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "z = 1 + i kompleks sonning asosiy argumenti (argument) nimaga teng?",
+                "options": [
+                    "π/6",
+                    "π/4",
+                    "π/3",
+                    "π/2"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "y'' + 4y' + 4y = 0 differensial tenglamaning umumiy yechimi qanday?",
+                "options": [
+                    "C₁e^(-2x) + C₂xe^(-2x)",
+                    "C₁e^(2x) + C₂e^(-2x)",
+                    "C₁cos2x + C₂sin2x",
+                    "C₁e^(-2x)cos2x + C₂e^(-2x)sin2x"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "∑(n=1 to ∞) (n² + 1)/(n³ + 2) qatorning xarakterini aniqlang",
+                "options": [
+                    "Yaqlashadi",
+                    "Uzilish nuqtasiga ega",
+                    "Divergensiyalangan",
+                    "Absolyut yaqlashadi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "f(x,y) = x³ + y³ - 3xy funksiyaning (1,1) nuqtadagi ekstremum turi qanday?",
+                "options": [
+                    "Lokal minimum",
+                    "Lokal maksimum",
+                    "Ega nuqtasi",
+                    "Aniqlab bo'lmaydi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "lim(x→0) (tanx - sinx)/x³ limitning qiymati nimaga teng?",
+                "options": [
+                    "0",
+                    "1/2",
+                    "1",
+                    "2"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Quyidagi qaysi funksiya butun sonlar to'plamida uzluksiz lekin har qanday nuqtada differensiallanmaydi?",
+                "options": [
+                    "|x|",
+                    "x²",
+                    "sin(x)",
+                    "eˣ"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar vektorlar a = (1,2,3) va b = (4,5,6) bo'lsa, ularning vektor ko'paytmasi [a×b] nimaga teng?",
+                "options": [
+                    "(0,0,0)",
+                    "(-3,6,-3)",
+                    "(3,-6,3)",
+                    "(-1,2,-1)"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "z = ln(x² + y²) funksiya uchun ∂²z/∂x² + ∂²z/∂y² nimaga teng?",
+                "options": [
+                    "0",
+                    "1/(x²+y²)",
+                    "2/(x²+y²)",
+                    "4/(x²+y²)"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar P(A) = 0.4, P(B) = 0.3 va P(A∩B) = 0.1 bo'lsa, P(A∪B) nimaga teng?",
+                "options": [
+                    "0.5",
+                    "0.6",
+                    "0.7",
+                    "0.8"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Fibonacci ketma-ketligida F₁₀ ning qiymati nimaga teng? (F₁=1, F₂=1)",
+                "options": [
+                    "34",
+                    "55",
+                    "89",
+                    "144"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Tenglamalar sistemasini Gauss usuli bilan yeching: {2x + 3y = 7, 4x - y = 3}",
+                "options": [
+                    "x=1, y=2",
+                    "x=2, y=1",
+                    "x=1, y=1",
+                    "x=2, y=2"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Agar z = cosθ + isinθ bo'lsa, z¹⁰ nimaga teng? (De Moivre formulasiga ko'ra)",
+                "options": [
+                    "cos10θ + isin10θ",
+                    "cosθ + isinθ",
+                    "10cosθ + 10isinθ",
+                    "cosθ¹⁰ + isinθ¹⁰"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "∫eˣ sinx dx integralni hisoblang",
+                "options": [
+                    "(eˣ/2)(sinx - cosx) + C",
+                    "(eˣ/2)(sinx + cosx) + C",
+                    "eˣ(sinx - cosx) + C",
+                    "eˣ(sinx + cosx) + C"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar matritsa A ning determinanti 3 ga teng bo'lsa, 2A matritsaning determinanti nimaga teng?",
+                "options": [
+                    "3",
+                    "6",
+                    "12",
+                    "24"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "f(x) = √(x²+1) funksiyaning grafigiga x=2 nuqtada urinma tenglamasini toping",
+                "options": [
+                    "y = (2/√5)(x-2) + √5",
+                    "y = (1/√5)(x-2) + √5",
+                    "y = (2/√5)x + √5",
+                    "y = (1/√5)x + 1"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Quyidagi qaysi son ratsional emas?",
+                "options": [
+                    "√4",
+                    "√9",
+                    "√2",
+                    "√16"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Agar X ~ N(0,1) bo'lsa, P(|X| < 1.96) ehtimollik qiymati taxminan nimaga teng?",
+                "options": [
+                    "0.90",
+                    "0.95",
+                    "0.975",
+                    "0.99"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Teng yonli uchburchakning asosi 6, yon tomoni 5 bo'lsa, unga ichki chizilgan aylananing radiusi nimaga teng?",
+                "options": [
+                    "1.5",
+                    "2",
+                    "2.5",
+                    "3"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Agar a ≡ b (mod m) va c ≡ d (mod m) bo'lsa, quyidagi qaysi tasdiq har doim to'g'ri?",
+                "options": [
+                    "a+c ≡ b+d (mod m)",
+                    "a-c ≡ b-d (mod m)",
+                    "ac ≡ bd (mod m)",
+                    "Hammasi to'g'ri"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "lim(n→∞) (1 + 1/n)ⁿ limitning qiymati nimaga teng?",
+                "options": [
+                    "0",
+                    "1",
+                    "e",
+                    "∞"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "f(x) = |x-2| + |x+3| funksiyaning minimum qiymati qayerda va qancha?",
+                "options": [
+                    "x=2, min=5",
+                    "x=-3, min=5",
+                    "x=0, min=5",
+                    "[-3,2] oraliqdagi har qanday nuqtada, min=5"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Agar A va B mustaqil hodisalar bo'lib, P(A)=0.6 va P(B)=0.4 bo'lsa, P(A|B) nimaga teng?",
+                "options": [
+                    "0.24",
+                    "0.4",
+                    "0.6",
+                    "1.0"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "dy/dx = y/x differensial tenglamaning umumiy yechimi qanday?",
+                "options": [
+                    "y = Cx",
+                    "y = C/x",
+                    "y = Ceˣ",
+                    "y = Clnx"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "3x ≡ 4 (mod 7) kongruensiyaning eng kichik musbat yechimi nimaga teng?",
+                "options": [
+                    "1",
+                    "3",
+                    "5",
+                    "6"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Agar vektorlar a, b, c uchun a·(b×c) = 6 bo'lsa, b·(c×a) nimaga teng?",
+                "options": [
+                    "-6",
+                    "0",
+                    "6",
+                    "Aniqlab bo'lmaydi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "∑(k=0 to n) C(n,k) yig'indining qiymati nimaga teng?",
+                "options": [
+                    "n!",
+                    "2ⁿ",
+                    "n²",
+                    "2n"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Agar f(x) = x²eˣ bo'lsa, f⁽¹⁰⁾(0) (0 nuqtadagi 10-chi hosila) nimaga teng?",
+                "options": [
+                    "0",
+                    "10!",
+                    "90",
+                    "45"
+                ],
+                "correct": 2
+            }
+        ],
+        "25-35": [
+            {
+                "question": "Riemann gipotezasi qaysi funksiyaning nollarining haqiqiy qismi 1/2 ga teng ekanligini tasdiqlaydi?",
+                "options": [
+                    "Riemann zeta funksiyasi",
+                    "Eyler gamma funksiyasi",
+                    "Bessel funksiyasi",
+                    "Dirichlet beta funksiyasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Banax-Tarski paradoks qaysi matematik sohada isbotlangan?",
+                "options": [
+                    "Guruhlar nazariyasi",
+                    "O‘lchov nazariyasi",
+                    "Topologiya",
+                    "Kompleks analiz"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Navye-Stokes tenglamalarining global muntazam yechimlari mavjudligi qaysi Millenium mukofot masalasidir?",
+                "options": [
+                    "6-chi",
+                    "5-chi",
+                    "3-chi",
+                    "7-chi"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Kontinuum gipotezasi (CH) ZFC tizimida qanday holatda?",
+                "options": [
+                    "Isbotlangan",
+                    "Rad etilgan",
+                    "Mustaqil",
+                    "Nomuvofiq"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "P=NP masalasi qaysi sohaga tegishli?",
+                "options": [
+                    "Kriptografiya",
+                    "Hisoblash murakkabligi",
+                    "Sun'iy intellekt",
+                    "Ma'lumotlar tuzilmasi"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Gödelning to‘liq emaslik teoremasi qaysi tizimga tegishli?",
+                "options": [
+                    "Birinchi tartibli arifmetika",
+                    "Evklid geometriyasi",
+                    "ZFC to‘plamlar nazariyasi",
+                    "Propozitsional mantiq"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Yang-Mills nazariyasining massali bo‘shlig‘i qaysi Millenium masalasidir?",
+                "options": [
+                    "2-chi",
+                    "4-chi",
+                    "1-chi",
+                    "3-chi"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Kvaternionlar kim tomonidan kashf etilgan?",
+                "options": [
+                    "William Rowan Hamilton",
+                    "Carl Friedrich Gauss",
+                    "Leonhard Euler",
+                    "Arthur Cayley"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvadratik shakllarning tasnifi qaysi matematik tomonidan berilgan?",
+                "options": [
+                    "Carl Gustav Jacob Jacobi",
+                    "Joseph-Louis Lagrange",
+                    "Évariste Galois",
+                    "Srinivasa Ramanujan"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Monstrous Moonshine gipotezasi qaysi ikkita obyekt o‘rtasidagi bog‘liqlikni tushuntiradi?",
+                "options": [
+                    "Monster guruhi va modulyar funksiyalar",
+                    "Elliptik egri chiziqlar va L-funksiyalar",
+                    "Knot nazariyasi va kvant fizikasi",
+                    "Fraktallar va xaos nazariyasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "ABC gipotezasi qaysi sohaga tegishli?",
+                "options": [
+                    "Algebraik sonlar nazariyasi",
+                    "Algebraik geometriya",
+                    "Analitik sonlar nazariyasi",
+                    "Differensial geometriya"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Poincaré gipotezasi kim tomonidan isbotlangan?",
+                "options": [
+                    "Grigori Perelman",
+                    "Andrew Wiles",
+                    "Terence Tao",
+                    "Shing-Tung Yau"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Fermatning oxirgi teoremasi qancha yil davomida isbotlanmagan holda qolgan?",
+                "options": [
+                    "358 yil",
+                    "295 yil",
+                    "412 yil",
+                    "327 yil"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kolmogorov murakkabligi qaysi sohada qo‘llaniladi?",
+                "options": [
+                    "Algoritmik axborot nazariyasi",
+                    "Ma'lumotlar siqish",
+                    "Sun'iy intellekt",
+                    "Kvant hisoblash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Zorn lemmasi qaysi aksiomaga ekvivalent?",
+                "options": [
+                    "Tanlash aksiomasi",
+                    "To‘plamlar aksiomasi",
+                    "Muntazamlik aksiomasi",
+                    "Cheksizlik aksiomasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Hodge gipotezasi qaysi sohaga tegishli?",
+                "options": [
+                    "Algebraik geometriya",
+                    "Differensial topologiya",
+                    "Kompleks analiz",
+                    "Algebraik topologiya"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Birinchilik testi sifatida AKS algoritmi qanday murakkablikka ega?",
+                "options": [
+                    "Polinomial vaqt",
+                    "Eksponentsial vaqt",
+                    "Kvadratik vaqt",
+                    "Subeksponentsial vaqt"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant kompyuterlari uchun Shor algoritmi nima uchun ishlatiladi?",
+                "options": [
+                    "Raqamlarni faktorizatsiya qilish",
+                    "Ma'lumotlarni qidirish",
+                    "Grafikni qayta ishlash",
+                    "Ma'lumotlarni shifrlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Tate gipotezasi qaysi sohada o‘rganiladi?",
+                "options": [
+                    "Algebraik geometriya",
+                    "Algebraik sonlar nazariyasi",
+                    "Analitik sonlar nazariyasi",
+                    "Differensial tenglamalar"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Langlands dasturi qaysi ikki soha o‘rtasidagi bog‘liqlikni o‘rganadi?",
+                "options": [
+                    "Sonlar nazariyasi va guruhlar nazariyasi",
+                    "Geometriya va algebra",
+                    "Topologiya va analiz",
+                    "Statistika va ehtimollar"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant maydon nazariyasida Yang-Mills tenglamalari qanday simmetriyani tasvirlaydi?",
+                "options": [
+                    "Kalibrlovchi simmetriya",
+                    "Lorentz simmetriyasi",
+                    "Parlqlik simmetriyasi",
+                    "Vaqt simmetriyasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Birinchilik sonlar taqsimotini tavsiflovdi asosiy teorema?",
+                "options": [
+                    "Arifmetik progressiyadagi birinchilik sonlar teoremasi",
+                    "Riemann gipotezasi",
+                    "Chebotarev zichlik teoremasi",
+                    "Dirichlet teoremasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant guruhlari nazariyasi qaysi sohada paydo bo‘lgan?",
+                "options": [
+                    "Kvant guruhlari va algebraik topologiya",
+                    "Statistik mexanika",
+                    "Kvant maydon nazariyasi",
+                    "Kvant hisoblash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant xromodinamikada asimptotik erkinlik qaysi holatda kuzatiladi?",
+                "options": [
+                    "Yuqori energiyalar",
+                    "Past energiyalar",
+                    "O‘rtacha energiyalar",
+                    "Har qanday energiyada"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Birinchilik sonlar funksiyasi π(x) uchun asimptotik formulani kim topgan?",
+                "options": [
+                    "Carl Friedrich Gauss",
+                    "Leonhard Euler",
+                    "Bernhard Riemann",
+                    "Adrien-Marie Legendre"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant kompyuterlari uchun Grover algoritmi qanday masalani hal qiladi?",
+                "options": [
+                    "Tartiblanmagan ma'lumotlar bazasidan qidirish",
+                    "Raqamlarni faktorizatsiya qilish",
+                    "Grafikni qayta ishlash",
+                    "Shifrlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant maydon nazariyasida renormalizatsiya nima uchun zarur?",
+                "options": [
+                    "Cheksizliklarni olib tashlash",
+                    "Simmetriyalarni saqlash",
+                    "Energiyani hisoblash",
+                    "Zarracha sonini aniqlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Birinchilik sonlar funksiyasi π(x) uchun asosiy tengsizlik (Chebyshev teoremasi) nima deydi?",
+                "options": [
+                    "Mavjud C1 va C2 uchun C1x/ln x < π(x) < C2x/ln x",
+                    "π(x) ~ x/ln x",
+                    "π(x) = Li(x) + O(√x ln x)",
+                    "π(x) < x/ln x har doim"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant guruhlari nazariyasi qaysi matematik obyektlar bilan ishlaydi?",
+                "options": [
+                    "Hopf algebralari",
+                    "Ley algebralari",
+                    "Guruh halqalari",
+                    "Modullar"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant xromodinamikada kvarklar qanday rang zaryadiga ega?",
+                "options": [
+                    "Qizil, yashil, ko‘k",
+                    "Ijobiy, manfiy",
+                    "Yuqori, past",
+                    "Chap, o‘ng"
+                ],
+                "correct": 0
+            }
+        ]
+    },
+    "Yuklangan Fayllar": {
+        "1-мавзу тест.docx": [
+            {
+                "question": "+A) 2017 yil 30 iyun",
+                "options": [
+                    "2017 yil 10 may",
+                    "2017 yil 15 iyul",
+                    "2017 yil 15 iyun"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Kengash ishidagi kamchiliklarni bartaraf etish, O‘zbekistonning eng yangi tarixini tizimli, xaqqoniy va xolis tarzda o‘rganishni tashkil etish, yangi avlodni tarbiyalash vazifasi",
+                "options": [
+                    "Tarix fanini moddiy manbalar orkali o‘rganish",
+                    "Tarixni o‘tmish bilan bog‘liq o‘rganish",
+                    "Faqatgina mustaqillik davri tarixini o‘rganish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Yangi avlod ilmiy va o‘quv adabiyotlarni yaryatish, mavjud bilimlarni yoshlarga taqdim etish va o‘qitish",
+                "options": [
+                    "Og‘zaki tarixdan ko‘proq foydalanish",
+                    "Asosiy e’tiborni mustaqillik davriga berish",
+                    "Yangi avlodni ilmiy saloxiyatini oshirish"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) 1991 yildan keyin to xozirgi kungacha bosib o‘tgan yuli",
+                "options": [
+                    "Bu davr asosan 2016 yildan boshlanadi",
+                    "Bu davr o‘tish davridan boshlanadi",
+                    "Bu davr 1989 yildan boshlanadi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) Sh. M. Mirziyoevga",
+                "options": [
+                    "Sh. Rashidovga",
+                    "I. Karimovga",
+                    "I. Majidovga"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) Xolislik, tarixiylik, mantiqiylik",
+                "options": [
+                    "Faqat tarixiylikga",
+                    "Tarixiy voqealarni burtirib kursatishga",
+                    "Tarixiy voqealarni faqat xolisona o‘rganishga"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Moddiy va yozma manbalar",
+                "options": [
+                    "Prezident asarlari",
+                    "Vazirlar maxkamasining qarorlari",
+                    "Tarixiy xotiralar"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Tarixiylik tamoyili",
+                "options": [
+                    "Ijtomoiy yondashuv tamoyili.",
+                    "Vorisiylik tamoyili",
+                    "Milliy istiqlol g‘oyasi tamoyili"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) Etnograflar",
+                "options": [
+                    "Antropologlar",
+                    "Numizmatiklar",
+                    "Lingvistlar"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) Bera olmaydi, qushimcha ma’lumotlar kerak bo‘ladi",
+                "options": [
+                    "Bera oladi, agar mexnat qurollari, qabr toshlari, uy-joy, binolar yaxshi o‘rganilgan bo‘lsa",
+                    "Shubxasiz, agar ular yaxshi o‘rganilib, ilmiy xulosalar yasalgan bo‘lsa",
+                    "Bera oladi, agar ular yaxshi saqlanib, bizgacha yetib kelgan bo‘lsa"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) 2",
+                "options": [
+                    "7",
+                    "5",
+                    "3"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) 2016 yil oktyabrdan",
+                "options": [
+                    "2016 yil sentyabrdan",
+                    "2016 yil noyabrdan",
+                    "2016 yil dekabrdan"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) Yangilanayotgan O‘zbekiston tarixi",
+                "options": [
+                    "O‘zbekiston o‘tish davrida",
+                    "O‘zbekiston yangi asr davrida",
+                    "O‘zbekiston taraqqiyot davrida"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Sh. Mirziyoevga",
+                "options": [
+                    "I. Karimovga",
+                    "N. Nazarbaevga",
+                    "Den Syaopenga"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) Amur Temurga",
+                "options": [
+                    "A. Makedonskiyga",
+                    "Yu. Sezarga",
+                    "S. Olimjonga"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Sh. Mirziyoevning",
+                "options": [
+                    "I. Karimovning",
+                    "Den Syaopenning",
+                    "N. Nazarbaevning"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) “Xalq qabulxonalari”ning ochilishi",
+                "options": [
+                    "Prezident partalining ochilishi",
+                    "Tumanlarda xalq qabulxonalarning ochilishi",
+                    "Viloyat xokimlarining qabulxonalari ochilishi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) Xitoy faylasufi Konfutsiyga",
+                "options": [
+                    "Aleksandr Makedonskiyga",
+                    "Tarix otasi Gerodotga",
+                    "Rus tarixchisi Karamzinga"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) Chingiz Aytmatovga",
+                "options": [
+                    "N. Nazarboevga",
+                    "Sh. Rashidovga",
+                    "I. Karimovga"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) tarixshunoslik, manbashunoslik, arxeologiya, arxivshunoslik",
+                "options": [
+                    "etnografiya, dinshunoslik, madaniyatshunoslik, siyosatshunoslik",
+                    "tarixshunoslik, dinshunoslik, falsafa, tilshunoslik",
+                    "etika, estetika, logika, falsafa"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) grek",
+                "options": [
+                    "ingliz",
+                    "arab",
+                    "lotin"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) evolyutsion",
+                "options": [
+                    "revolyutsion",
+                    "progressive",
+                    "reformatsion"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) Avgustin",
+                "options": [
+                    "Konfutsiy",
+                    "A.Temur",
+                    "I.Karimov"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) 5000 dan ortiq",
+                "options": [
+                    "40 000 dan ortiq",
+                    "300 000 atrofida",
+                    "25 000 atrofida"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) Xorazmiy va Ibn Sino",
+                "options": [
+                    "Beruniy va Forobiy",
+                    "Navoiy va Jomiy",
+                    "Farg’oniy va Ulug’bek"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "+A) “Sharif Shahar”",
+                "options": [
+                    "“Allomalar shahri”",
+                    "“Er yuzining sayqali”",
+                    "“Mardlar shahri”"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "+A) 60 gektarga yaqin",
+                "options": [
+                    "70 gektardan ortiq",
+                    "10 gektar",
+                    "40 gektarga yaqin"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) Shohruhiya",
+                "options": [
+                    "Poykand",
+                    "Yerqo’rg’on",
+                    "Namozgoh"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) “Allomalar shahri”",
+                "options": [
+                    "“Er yuzining sayqali”",
+                    "“Mardlar shahri”",
+                    "“Sharif Shahar”"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "+A) “Mardlar shahri”",
+                "options": [
+                    "“Allomalar shahri”",
+                    "“Sharif Shahar”",
+                    "“Er yuzining sayqali”"
+                ],
+                "correct": 0
+            }
+        ],
+        "specail_review.docx": [
+            {
+                "question": "...... yuksak darajada tashkil topgan materiyaning xossasi bo‘lib, bu xossa obektiv borliqni, subektiv aks ettirishdan iborat. Nuqtalar o‘rniga kerakli so‘zni qo‘ying?",
+                "options": [
+                    "Aqliy va jismoniy harakatlar mujassamligi",
+                    "Ko’chishi",
+                    "ixtiyoriy, ixtiyorsiz, ixtiyoriydan keyingi",
+                    "aks ettirishning biologik formasidir",
+                    "sistemalashtirish.",
+                    "Din, Fаn, jаmiyat",
+                    "P.I.Ivanov",
+                    "Aflotun",
+                    "Mаktаbgаchа dаvr",
+                    "klassifikatsiyalash.",
+                    "Mаxsus psixоlоgiya",
+                    "Sаnоаt, sаvdо, rеklаmа",
+                    "Ehtiyoj",
+                    "barchasi",
+                    "Shaxs guruh bilan uning psixologik masalalar bo’yicha saviyasini oshirishga qaratilgan tadbirlar",
+                    "esteziometr",
+                    "barqaror diqqat",
+                    "gavda ijidagi organlar- me’da ichak, jigar, o’pka, qon aylanish organlari, umuman organic sezgilar kirdi",
+                    "Emosiyalar, diqqat, sezgi, idrok, xotira",
+                    "narsa va hodisavlarning bizga ta’siri",
+                    "Mаqsаdni аmаlgа оshirish yo’lidаgi hаrаkаtlаr",
+                    "Galen",
+                    "Xulq motivasiyasi",
+                    "katta yarim sharlardan",
+                    "kompensatorlik hodisasi",
+                    "qobilyat",
+                    "Barqarorligi",
+                    "Xotirani",
+                    "Tashqi, matematik, mantiqiy, ichki",
+                    "ko’rish, eshitish, hid bilish, maza va teri sezgi organlari kiradi",
+                    "tevarak-atrofimizdagi odam haqidagi bilimlarimiz majmuidir",
+                    "rivojlanishning asosiy yо‘liga",
+                    "bizning bilimlarimiz, fikr-mulohazalarimiz, tushunchalarimiz, o’z-o’zimizga baho berishishimizdir.",
+                    "Shtern V",
+                    "Diqqat hajmini o’lchash",
+                    "Shaxsning mustaqil qaror qabul qilishi",
+                    "Xarakter",
+                    "Shaxsning ijtimoiy muhit ta’sirida vujudga kelgan xatti-harakatlari",
+                    "organizmning taassurotlarga javobidir.",
+                    "Umumiy psixologiya",
+                    "Xayvonlarning uzaro reaksiyasi",
+                    "Shaxsni hayvonlardan farqlovchi xususiyat",
+                    "qo`zg`atuvchining emotsional ahamiyatliligi",
+                    "abstraktsiyalash, umumlashtirish, konkretlashtirish",
+                    "xulq-atvor",
+                    "Qobiliyatlar",
+                    "fazoni idrok qilish",
+                    "M. Bexterev",
+                    "Shaxsning taraqqiy etishi",
+                    "Melanxolik",
+                    "Ishtiyoq.",
+                    "O’smirlik yosh davrining psixologik xususiyatlarini",
+                    "umuman aks ettirilmaslik",
+                    "tor diqqat",
+                    "Narsa va hodisalarning mohiyati va mazmuniga aloqador materialning eslab qolinishi",
+                    "Psixologik holatlar, psixologik xususiyatlar, faoliyat",
+                    "Orttirilgan va individual",
+                    "Suhbаt",
+                    "odamning turmish tajribasida bo’lib o’tgan voqiya va hodisalarni esga olishi esda saqlashi yodlashi qaytadan esga tushirashi",
+                    "tashqi qo’zg’atuvchilarning sezgi organlariga tasiri natijasida, tashqi o’zag’atuvchilarning ayrim xossalarining miyada aks ettishiga aytiladi",
+                    "Imajitiv, eksteriorizasiya, o’yin, mehnat",
+                    "- Aqliy salohiyat",
+                    "Leybnis G",
+                    "ruhni о‘rganadi",
+                    "Shartsiz reflekslar",
+                    "hissiyot",
+                    "Esda saqlash, emosional, harakat, unutish",
+                    "Hаyvоnning o’rgаngаn qаtiy hаrаkаtlаri",
+                    "Yo’nalishlar, temperament, diqqat, sezgi, xarakter, qobiliyat",
+                    "Sezgini",
+                    "Shaxsning ma’lum bir vaqtda bajarishi lozim bo’lgan xatti-harakatlari",
+                    "Bu tirik mаvjudоdning tаshqi muhitgа jаvоbi",
+                    "Kunikmalar",
+                    "faorliyat",
+                    "shartli refleks",
+                    "Xulosa, tushuncha, mavhumlashtirish",
+                    "klassifikatsiya, sistemalashtirish",
+                    "Flegmatik",
+                    "Аnglаngаn mоtiv",
+                    "Ijodiy uyg’onish paytida amalga oshiriladigan mavhum fikrlash faoliyati",
+                    "aktiv diqqat",
+                    "Seskanuvchanlik, tropizm, instinkt, ong",
+                    "Psixik jarayonlar, muomala",
+                    "keng diqqat",
+                    "Ijodiy jarayonlarda xayol va fantaziya vositasida bevosita ongda berilmagan narsalarning xususiyatlarini anglash",
+                    "dialog, monolog",
+                    "bosh miya qobig‘",
+                    "Xolerik",
+                    "frantsuzcha “actus - harakat, “activus - faol so’zlaridan kelib chiqqan tushuncha bo’lib, shaxsning hayotdagi barcha xatti-harakatlarini namoyon etishini tushuntiruvchi kategoriyadir",
+                    "Insоnning hаrаkаtlаri",
+                    "sekundomer",
+                    "Bir vaqtning o’zida diqqat tomonidan qamrab olinadigan obyektlar soni",
+                    "intyeraktiv",
+                    "1800 yilda fransuz psixologi Jane P.",
+                    "psixika",
+                    "yozma, og`zaki",
+                    "ixtiyoriydan keyingi diqqat",
+                    "Shaxsning faoliyatida tarkib topadigan va namoyon bo’ladigan barqaror individual xususiyatlari",
+                    "Rеpsеptоrlаrning muhitgа mоslаshishi",
+                    "Individ va shaxs o’rtasidagi tafovut",
+                    "flegmatik,xolerik",
+                    "Esda olib qolish, esda saqlash, qaytaruv, assosiasiyalar",
+                    "Psixоlоgiya fаnining sоhаsi",
+                    "Shartli va orttirilgan",
+                    "destruktiv",
+                    "qo`zg`atuvchining yangiligi",
+                    "O’pka, jigan, yurak, qizilo’ngach",
+                    "audiometr",
+                    "ichki, tashqi.",
+                    "Uzoq muddatli xotira",
+                    "I.P.Pavlov",
+                    "Perseptiv, tashqi, ichki",
+                    "taqqoslash.",
+                    "unutishga",
+                    "favqulotda xotira hisoblanib, bu materiallarni to’liq va uzoq vaqt esda saqlash",
+                    "faoliyat",
+                    "komunikativ",
+                    "Faoliyat va uni tashkil etuvchi predmetli harakat aynan nimalarga yo’naltirilganligi",
+                    "Mоtivning hissiy nаmоyon bo’lishi",
+                    "Kоrpоrаsiya",
+                    "xarakter",
+                    "Tafakkurni",
+                    "Diаgnоstikа, psixоkоrrеksiya, prоfilаktikа",
+                    "ehtiros",
+                    "ma’nosini tushunib esda olib qolishga",
+                    "Orttirilgan va individual",
+                    "sensibilizasya hodisasi",
+                    "O’spirinlik",
+                    "Terining yuza qismida",
+                    "Yuridik psixologiya",
+                    "Ko’lami",
+                    "Tashqi, ichki, laboratoriya",
+                    "barcha sezgi organlari kiradi",
+                    "Temperament",
+                    "Аssоsiаsiya",
+                    "passiv, aktiv",
+                    "ta’sir etayetgan narsani anik idrok kilish",
+                    "Оdаmning o’z ehtiyojini qоndirilishi",
+                    "о‘ylangan fikr idrok qilingan narsalarni о‘zaro bog‘liqligi",
+                    "Flegmatik",
+                    "bu narsani mohiyatiga mano mazmuniga har tomonlama chuqur tushungan xolda esga olish.",
+                    "Esda olib qolish, esda saqlash, esga tushirish, unutish",
+                    "Sangvinik",
+                    "Qisqa muddatli xotira",
+                    "Lestgaft",
+                    "analiz, sintez, taqqoslash.",
+                    "Kichik, kаttа, rеаl, jаmоа",
+                    "Shaxs kamoloti va intelektual taraqqiyoti jarayonida vujudga kelishi mumkin bo’lgan psixologik buzilish nuqsonlarni oldini olish",
+                    "Ko’nikma.",
+                    "Standartlashtirilgan, erkin, guruh ichida, test-so’rov, proyektiv test",
+                    "Shaxsning ma’naviy shakllanishini ta’minlovchi shart-sharoitlar yaratish",
+                    "Perseptiv, refleksiya, identifikasiya",
+                    "Shaxsning o’z fikriga qat’iy turishini tushuntiruvchi hodisa",
+                    "quzg`atuvchining yarqiroqligi",
+                    "Temperament, qobiliyat, xarakter, xotira, sezgi, apatiya",
+                    "Shaxsning o’zini o’rab turgan kishilardan ta’sirlanishi",
+                    "ijodiy faoliyatda undovchi kuch",
+                    "ta’sir etayetgan narsani anik idrok kilish",
+                    "Quzg’оvchi tа`siridа sеzgilаrning o’zgаrishi",
+                    "Diqqаt,qobiliyat, xаyol, sеzgi, idrоk, xоtirа",
+                    "Ehtiyojlаrni qоndirishgа qаrаtilgаn оngli hаrаkаt",
+                    "Оrgаnizаsiya",
+                    "Qilinayotgan har bir harakat predmetga qaratilgani uchun faoliyat predmetli harakatlar majmui sifatida tasavvur qilinadi",
+                    "fasilatsiya, komunikativ, perseptiv",
+                    "umumlashtirish",
+                    "odamning borliqni bilishga yo’naltirilgan faolligidir.",
+                    "Tibbiyot psixologiyasi",
+                    "orqa miya faoliyati bilan bog`liq",
+                    "ispancha “actus - harakat, “activus - faol so’zlaridan kelib chiqqan tushuncha bo’lib, shaxsning hayotdagi barcha xatti-harakatlarini namoyon etishini tushuntiruvchi kategoriyadir",
+                    "Sosiometriya - diqqat xususiyatlarini o’rganish metodi",
+                    "Torndayk E",
+                    "Yetuklik davrining psixologik xususiyatlarini",
+                    "Intellektual (akliy) xarakatlar",
+                    "Yoshlik davrining psixologik xususiyatlarini",
+                    "Sherrington Ch",
+                    "tanaliz",
+                    "Sangvinik",
+                    "Emosiyalar, qiziquvchanlik, diqqat, xotira, idrok, tafakkur",
+                    "Har qanday teng sharoitlarda individning umumiy faolligi, harakatchanligi, emosionalligi",
+                    "klassifikatsiya, sistemalashtirish",
+                    "Instinktlar",
+                    "Pеdаgоgik psixоlоgiya",
+                    "Luriya A.",
+                    "Lestgaft",
+                    "Mnemik, eksteriorizasiya, fikrlash faoliyati, perseptiv, mehnat",
+                    "Kishining jamiatda yashab egallaydigan alohida belgilari",
+                    "Melanxolik",
+                    "inglizcha “actus - harakat, “activus - faol so’zlaridan kelib chiqqan tushuncha bo’lib, shaxsning hayotdagi barcha xatti-harakatlarini namoyon etishini tushuntiruvchi kategoriyadir",
+                    "Idrok fenomenlaridan biri",
+                    "Fаоliyatgа undоvchi turtki",
+                    "ayrim geometrik shakllarni idrok kilish",
+                    "shartli va shartsiz refleks majmuidan iborat",
+                    "Asab tizimi bilan bog’liq individual sifatlar",
+                    "tashqi muhit ta’miriga harakat bilan javob qaytarishiga",
+                    "Tеst",
+                    "Temperament",
+                    "Spоrt, sаn`аt, mаdаniyat",
+                    "analiz,sintez",
+                    "Sosiometrik, proyektiv test, texnik, og’zaki",
+                    "Jinsiy mayllar.",
+                    "1920 yilda shveysariyalik psixolog Piaje J",
+                    "Sеzgi, idrоk, hissiyot, diqqаt, tаfаkkur, xаyol",
+                    "Uotson D",
+                    "Aqliy tafakkurni aniqlash",
+                    "A.V.Petrovskiy",
+                    "Faoliyat, muloqot",
+                    "Jаmоа, shаrtli, shаrtsiz, rеаl",
+                    "Shaxsning emotsional psixologik xususiyati",
+                    "Quzg’оvchilаr tа`siridа sеzgirlikning zаiflаshishi",
+                    "umumlashtirish",
+                    "Shaxsning guruh ta’siriga berilmasligi",
+                    "Eksperimental psixologiya",
+                    "Geraklit",
+                    "Shаxslаrаrо munоsаbаtlаrgа kirishа оlish",
+                    "taqqoslash umumlashtirish",
+                    "Odat.",
+                    "uzoq davom etadigan kuchli hissiy holat",
+                    "Suqrot",
+                    "Psixik fаоliyatning bа`zi shаkllаri",
+                    "ayrim geometrik shakllarni idrok qilish",
+                    "Shartli va orttirilgan",
+                    "kishi ongining bir markaziga yoki muayyan bir no’qtaga ma’lo’m muddat moboynida to’planishidan iborat bo’lgan ro’hiy jarayonga aytiladi",
+                    "M.Sechenov",
+                    "Og’zaki, erkin, standartlashtirilgan, yozma, guruh tashqarisida kuzatish",
+                    "Qobiliyatlar",
+                    "Sоsiоmеtriya, mа`ruzа, tushuntirish",
+                    "Pedagogik psixologiya",
+                    "ichki diqqat",
+                    "Analiliz, tushuncha, hukm",
+                    "Kichik, kаttа, rеаl, shаrtli",
+                    "Analiz, sintez, tushuncha",
+                    "Maqsad.",
+                    "Instinkt, tropizm, intellektual, ong",
+                    "Ekspеrеmеnt, mоdеllаsh, tаjribа, seminar",
+                    "Ko’rish organida",
+                    "Diqqatni bir vaqtning o’zida bir nechta obyektga qaratilishi",
+                    "organizmning oddiy shakllaridagi tartib hozirgi zamon kishisiga qadar biologik",
+                    "Ijtimоiy psixоlоgiya",
+                    "So’z-mantiqiy xotira",
+                    "O’smirlik",
+                    "1905 yilda fransuz psixologi Bine A.",
+                    "Yosh davrlari psixologiyasi",
+                    "qismangina esga tushirish va  eslay olish",
+                    "hodisalar о‘rtasidagi bog‘liqlikni",
+                    "N. Mixaylovskiy",
+                    "Flegmatik",
+                    "psixik jarayonlardan",
+                    "Xolerik",
+                    "Melanxolik",
+                    "Tropizmlar",
+                    "Esda olib qolish, unutish, harakat",
+                    "Xarakter",
+                    "Tabiiy, laboratoriya, standartlashtirilgan",
+                    "individuallik",
+                    "Аnkеtа",
+                    "illyuziya hodisasi",
+                    "qо‘zg‘aluvchanlik,xolerik",
+                    "Individga xos dinamik fazilatlar",
+                    "Sosiometriya - sezgirlikni quyi va yuqori chegarasini aniqlashga qaratilgan metod",
+                    "Galen",
+                    "Aqli salohiyat metodi",
+                    "Apatiya, ijodiy ruhlanish, idrok, qiziquvchanlik, diqqat",
+                    "Sosiometriya - aqliy tafakkurni o’rganish metodi"
+                ],
+                "correct": 94
+            },
+            {
+                "question": "Shaxsning hayotiy faoliyatida shijoatga sabab bo’ladigan, g’ayratni uyg’otadigan ruhiy holat?",
+                "options": [
+                    "astenik holat",
+                    "stress holat",
+                    "affekt holat"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kalta o’simtalar sertarmoq bo’lib ular...deb ataladi?",
+                "options": [
+                    "Pifagor",
+                    "Sintetik",
+                    "Arastu va Ptalon",
+                    "b va c",
+                    "Akson",
+                    "Vaziyatga bog’liqlik",
+                    "O’rta miya uzunchoq miya",
+                    "Faqat bosh miya",
+                    "Ploton",
+                    "Bosh miya uzunchoq miya",
+                    "Neyrit",
+                    "Liberal"
+                ],
+                "correct": 10
+            }
+        ]
+    },
+    "Òqituvchi nutqi madaniyati": {
+        "10-18": [
+            {
+                "question": "Nutq madaniyati nima?",
+                "options": [
+                    "Gapirish qobiliyati",
+                    "Madaniyatli va samarali muloqot qilish san'ati",
+                    "Ovoz balandligi",
+                    "Chet tillarni bilish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda diktsiya nimani anglatadi?",
+                "options": [
+                    "Ovoz tembri",
+                    "So'zlarni aniq va to'g'ri talaffuz qilish",
+                    "Nutq tezligi",
+                    "Mimika va jestlar"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Muloqotning asosiy turlari qaysilar?",
+                "options": [
+                    "Og'zaki va yozma",
+                    "Rasmiy va norasmiy",
+                    "Shaxsiy va jamoa",
+                    "Telefon va internet"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Nutq madaniyatida 'kontakt ko'zi' nima uchun muhim?",
+                "options": [
+                    "Ko'rish qobiliyatini tekshirish",
+                    "Suhratchanlik va ishonch o'rnatish",
+                    "Qarashlarni o'qish",
+                    "Chiroq yorug'ligini tejash"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda pauza qo'llash nima uchun zarur?",
+                "options": [
+                    "Vaqtni tejash",
+                    "Fikrlarni ajratish va diqqatni jalb qilish",
+                    "Charchoqni bildirish",
+                    "Gapni qisqartirish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Quyidagilardan qaysi biri norasmiy muloqotga misol?",
+                "options": [
+                    "Ilmiy ma'ruza",
+                    "Do'stlar o'rtasidagi suhbat",
+                    "Rasmiy shikoyat",
+                    "Konferensiya"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda imo-ishoralar (jestlar) nima vazifani bajaradi?",
+                "options": [
+                    "Fikrlarni kuchaytirish",
+                    "Qo'llarni harakatlantirish",
+                    "Vaqtni o'tkazish",
+                    "Kiyimni tekislash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Og'zaki nutqda qanday ovoz balandligi maqbul hisoblanadi?",
+                "options": [
+                    "Juda past",
+                    "Har doim baland",
+                    "Dinlaydiganlarga qarab moslashtirilgan",
+                    "Doim bir xil"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Muloqotda faol tinglash nima degani?",
+                "options": [
+                    "Gapirmaslik",
+                    "Diqqat bilan tinglash va javob berish",
+                    "Boshqa narsa bilan shug'ullanish",
+                    "Faqat bosh irg'atish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda qaysi gap tuzilishi to'g'ri?",
+                "options": [
+                    "Men boraman maktabga",
+                    "Men maktabga boraman",
+                    "Maktabga boraman men",
+                    "Boraman maktabga men"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Rasmiy muloqotda qanday so'zlardan foydalanish maqbul?",
+                "options": [
+                    "Argo va jargon",
+                    "Adabiy va hurmatli so'zlar",
+                    "Faqat qisqartmalar",
+                    "Harbiy terminlar"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda qanday holatlarda 'iltimos', 'rahmat' kabi so'zlardan foydalanish kerak?",
+                "options": [
+                    "Hech qachon",
+                    "Faqat kattalar bilan",
+                    "Har doim madaniyatli muloqotda",
+                    "Faqat rasmiy holatlarda"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Nutq tezligi qanday bo'lishi kerak?",
+                "options": [
+                    "Iloji boricha tez",
+                    "Har doim sekin",
+                    "Aniqlikni saqlagan holda o'rtacha",
+                    "Hech qanday qoidasi yo'q"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Muloqotda qanday holatlarda savol berish maqsadga muvofiq?",
+                "options": [
+                    "Tushunmovchilikni bartaraf etish uchun",
+                    "Faqat imtihonda",
+                    "Hamma gapdan keyin",
+                    "Hech qachon"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Nutqda dialektizm nima?",
+                "options": [
+                    "Adabiy til",
+                    "Mahalliy shevadagi so'zlar",
+                    "Xorijiy so'zlar",
+                    "Ilmiy terminlar"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Jamoa oldida nutq so'zlashda nimalarga e'tibor berish kerak?",
+                "options": [
+                    "Faqat matnga",
+                    "Diktsiya, ovoz balandligi, kontakt ko'zi",
+                    "Faqat o'z his-tuyg'ulariga",
+                    "Faqat vaqt chegarasiga"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda 'pleonazm' nima?",
+                "options": [
+                    "Yetishmayotgan so'z",
+                    "Ortiqcha takrorlanish",
+                    "Noto'g'ri talaffuz",
+                    "Sheva xususiyati"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Telefon orqali muloqotda qanday qoidalarga rioya qilish kerak?",
+                "options": [
+                    "Juda qichqirish",
+                    "O'zini tanishtirish va maqsadni aniq bayon qilish",
+                    "Faqat matnli xabar yuborish",
+                    "Vaqtni hisoblamaslik"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutq madaniyatida 'replikatsiya' nima?",
+                "options": [
+                    "Ovozni o'zgartirish",
+                    "Takroriy gapirish",
+                    "Suhbatdoshning so'zini qaytarish",
+                    "Shevani o'zgartirish"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Muloqotda qanday holatlarda kechirim so'rash kerak?",
+                "options": [
+                    "Hech qachon",
+                    "Xato qilganda yoki noqulaylik tugdirganda",
+                    "Faqat kattalardan",
+                    "Har safar suhbat boshlanganda"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda intonatsiya nima vazifani bajaradi?",
+                "options": [
+                    "Faqat go'zallik uchun",
+                    "Fikrning mazmuni va ma'nosini yetkazish",
+                    "Vaqtni o'tkazish",
+                    "Faqat she'r aytishda"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qaysi gapda adabiy til qoidalariga rioya qilinmagan?",
+                "options": [
+                    "Men kitob o'qiyapman",
+                    "Uyga boraman",
+                    "Sen qayerdasan?",
+                    "U keladi ertaga"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Nutqda 'tavtologiya' nima?",
+                "options": [
+                    "Bir so'zni ortiqcha takrorlash",
+                    "Yangi so'z yaratish",
+                    "Noto'g'ri urg'u qo'yish",
+                    "Qisqa gapirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Muloqotda qanday paytda suhbatni yakunlash maqsadga muvofiq?",
+                "options": [
+                    "To'satdan, izohsiz",
+                    "Mavzu tugaganda yoki vaqt chegarasida",
+                    "Hohlagan vaqtda",
+                    "Hech qachon"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda 'artikulyatsiya' nimani anglatadi?",
+                "options": [
+                    "Ovoz balandligi",
+                    "Nutq a'zolarining harakati",
+                    "Mimika",
+                    "Qo'llarning harakati"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Internet muloqotida qanday qoidalarga amal qilish kerak?",
+                "options": [
+                    "Har qanday so'z yozish mumkin",
+                    "Adabiy til va hurmatni saqlash",
+                    "Faqat emojilardan foydalanish",
+                    "Barcha gapni katta harflar bilan yozish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutqda 'monolog' nima?",
+                "options": [
+                    "Ikki kishi suhbati",
+                    "Bir kishining uzun nutqi",
+                    "Guruh muhokamasi",
+                    "Savol-javob"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Muloqotda qanday holatlarda maslahat berish mumkin?",
+                "options": [
+                    "Har doim",
+                    "Hech qachon",
+                    "Suhbatdosh so'raganda yoga ruxsat so'raganda",
+                    "Faqat yaqin do'stlarga"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Nutqda 'dialog' nima?",
+                "options": [
+                    "Bir kishining nutqi",
+                    "Ikki yoki undan ortiq kishilar o'rtasidagi suhbat",
+                    "Matnni o'qish",
+                    "Radio eshittirish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Nutq madaniyatini rivojlantirish uchun nima qilish kerak?",
+                "options": [
+                    "Faqat kitob o'qish",
+                    [
+                        "Kitob o'qish",
+                        "Adabiy nutqlarni tinglash",
+                        "Muloqotda faol ishtirok etish",
+                        "Barcha javoblar to'g'ri"
+                    ]
+                ],
+                "correct": 1
+            }
+        ]
+    },
+    "O'zbek tili va adabiyoti": {
+        "10-18": [
+            {
+                "question": "O'zbek adabiy tilining asoschisi kim hisoblanadi?",
+                "options": [
+                    "Alisher Navoiy",
+                    "Abdulla Qodiriy",
+                    "Cho'lpon",
+                    "Erkin Vohidov"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Xamsa' asarining muallifi kim?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Alisher Navoiy",
+                    "Maqsud Shayxzoda",
+                    "Hamid Olimjon"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbek alifbosida nechta harf mavjud?",
+                "options": [
+                    "28",
+                    "30",
+                    "32",
+                    "29"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "'O'tkan kunlar' romanining muallifi kim?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Alisher Navoiy",
+                    "Oybek",
+                    "G'afur G'ulom"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Quyidagi so'zlardan qaysi biri ot turkumiga mansub emas?",
+                "options": [
+                    "kitob",
+                    "yurish",
+                    "daraxt",
+                    "shahar"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "'Mehrobdan chayon' asari qaysi yozuvchiga tegishli?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Cho'lpon",
+                    "Oybek",
+                    "Asqad Muxtor"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbek tilida so'z turkumlari nechta?",
+                "options": [
+                    "8",
+                    "9",
+                    "10",
+                    "7"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Quyidagi she'riy janrlardan qaysi biri keng ko'lamli voqealarni o'z ichiga oladi?",
+                "options": [
+                    "gazal",
+                    "doston",
+                    "qasida",
+                    "ruboiy"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "'Boburnoma' asarining muallifi kim?",
+                "options": [
+                    "Alisher Navoiy",
+                    "Zahiriddin Muhammad Bobur",
+                    "Abu Rayhon Beruniy",
+                    "Abu Ali ibn Sino"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbek tilida fe'lning nechta zamoni mavjud?",
+                "options": [
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Kecha va kunduz' romanining muallifi kim?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Oybek",
+                    "Asqad Muxtor",
+                    "G'afur G'ulom"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Quyidagi belgilardan qaysi biri tinish belgisi emas?",
+                "options": [
+                    "vergul",
+                    "nuqta",
+                    "slesh",
+                    "savol belgisi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "O'zbek xalq og'zaki ijodining eng mashhur namunalaridan biri qaysi?",
+                "options": [
+                    "Alpomish",
+                    "Yodgor",
+                    "Sarvinoz",
+                    "Navbahor"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Dada' hikoyasining muallifi kim?",
+                "options": [
+                    "G'afur G'ulom",
+                    "Abdulla Qodiriy",
+                    "Cho'lpon",
+                    "Erkin Vohidov"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "O'zbek tilida otlar nechta kelishikda bo'lishi mumkin?",
+                "options": [
+                    "5",
+                    "6",
+                    "7",
+                    "8"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Quyidagi yozuvchilardan qaysi biri '20 yillar avlodiga' mansub?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Alisher Navoiy",
+                    "Cho'lpon",
+                    "Erkin Vohidov"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "She'rning eng kichik birligi nima deb ataladi?",
+                "options": [
+                    "misra",
+                    "bob",
+                    "band",
+                    "bayt"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Shum bola' hikoyasining muallifi kim?",
+                "options": [
+                    "G'afur G'ulom",
+                    "Abdulla Qodiriy",
+                    "Oybek",
+                    "Asqad Muxtor"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "O'zbek tilida so'z yasalishining asosiy usuli qaysi?",
+                "options": [
+                    "qo'shimcha qo'shish",
+                    "so'z birlashtirish",
+                    "tortishish",
+                    "qisqartirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Quyidagi asarlardan qaysi biri Abdulla Qodiriyga tegishli emas?",
+                "options": [
+                    "O'tkan kunlar",
+                    "Mehrobdan chayon",
+                    "Obid ketmon",
+                    "Byografiya"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "She'riy tuzilishda qofiyalashgan ikki misra qanday ataladi?",
+                "options": [
+                    "band",
+                    "bayt",
+                    "misra",
+                    "bob"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "'Sariq devni minib' qissasining muallifi kim?",
+                "options": [
+                    "Xudoyberdi To'xtaboyev",
+                    "Oybek",
+                    "G'afur G'ulom",
+                    "Asqad Muxtor"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "O'zbek tilida fe'lning asosiy shakli qaysi?",
+                "options": [
+                    "hazirgi zamon",
+                    "o'tgan zamon",
+                    "kelasi zamon",
+                    "fe'lning negiz shakli"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Quyidagi asarlardan qaysi biri Oybekka tegishli?",
+                "options": [
+                    "Navoiy",
+                    "O'tkan kunlar",
+                    "Kecha va kunduz",
+                    "Byografiya"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Badiiy matnda qahramonning ichki dunyosi, his-tuyg'ularini ifodalovchi hikoya qaysi?",
+                "options": [
+                    "psixologik",
+                    "detektiv",
+                    "fantastik",
+                    "tarixiy"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Ufq' she'ri qaysi shoirga tegishli?",
+                "options": [
+                    "Erkin Vohidov",
+                    "Abdulla Oripov",
+                    "Cho'lpon",
+                    "Maqsud Shayxzoda"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbek tilida otlar soni bo'yicha nechta guruhga bo'linadi?",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Quyidagi yozuvchilardan qaysi biri '60 yillar avlodiga' mansub?",
+                "options": [
+                    "Abdulla Qodiriy",
+                    "Erkin Vohidov",
+                    "Cho'lpon",
+                    "Alisher Navoiy"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Badiiy asarda voqealar ketma-ketligi qanday ataladi?",
+                "options": [
+                    "syujet",
+                    "kompozitsiya",
+                    "mazmun",
+                    "g'oya"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "'Tong oldidan' she'riy to'plami qaysi shoirga tegishli?",
+                "options": [
+                    "Erkin Vohidov",
+                    "Abdulla Oripov",
+                    "Maqsud Shayxzoda",
+                    "Hamid Olimjon"
+                ],
+                "correct": 2
+            }
+        ]
+    }
+}

@@ -10,9 +10,10 @@ from aiogram import Bot, Dispatcher, html, F
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode, PollType
 from aiogram.filters import CommandStart
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, PollAnswer, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, PollAnswer, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, BufferedInputFile
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.storage.base import StorageKey
 from openai import AsyncOpenAI
 from config import BOT_TOKEN, DEEPSEEK_API_KEY
 import matplotlib
@@ -52,88 +53,171 @@ deepseek_client = AsyncOpenAI(
 
 # User data storage
 user_data = {}
-RESULTS_FILE = "results.json"
-USERS_FILE = "users.json"
-STATS_FILE = "stats.json"
+DATA_FILE = "data.json"
+QUIZ_FILE = "quizzes.json"
 ADMIN_USERNAME = "Suhrob031"
+ADMIN_ID = 8170458930 # Based on data.json
 BOT_START_TIME = time.time()
+PHOTOS_DIR = "photos"
+os.makedirs(PHOTOS_DIR, exist_ok=True)
 
-def save_user_result(user_id, full_name, username, score):
-    data = {}
-    if os.path.exists(RESULTS_FILE):
+def load_json(file_path):
+    if os.path.exists(file_path):
         try:
-            with open(RESULTS_FILE, "r") as f:
-                data = json.load(f)
+            with open(file_path, "r") as f:
+                return json.load(f)
         except:
-            data = {}
+            pass
+    return {}
+
+def save_json(file_path, data):
+    with open(file_path, "w") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
+
+def get_data():
+    data = load_json(DATA_FILE)
+    if "users" not in data: data["users"] = {}
+    if "results" not in data: data["results"] = {}
+    if "stats" not in data: data["stats"] = {}
     
+    # Migration: Old stats keys to new ones
+    stats = data["stats"]
+    if "deepseek_durations" in stats and "ai_durations" not in stats:
+        stats["ai_durations"] = stats["deepseek_durations"]
+    return data
+
+def save_user_result(user_id, full_name, username, score, total_questions, time_spent=0, subject=None):
+    data = get_data()
     uid = str(user_id)
-    if uid not in data or score > data[uid].get("best_score", 0):
-        data[uid] = {
+    
+    # Update results
+    results = data["results"]
+    if uid not in results:
+        results[uid] = {
             "name": full_name,
             "username": username,
             "best_score": score,
+            "total_correct": score,
+            "total_questions": total_questions,
+            "quizzes_count": 1,
+            "total_time": time_spent,
+            "subjects": [subject] if subject else [],
             "date": datetime.now().strftime("%Y-%m-%d %H:%M")
         }
-        with open(RESULTS_FILE, "w") as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
+    else:
+        # Update best score
+        if score > results[uid].get("best_score", 0):
+            results[uid]["best_score"] = score
+            results[uid]["date"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        
+        # Incremental updates
+        results[uid]["total_correct"] = results[uid].get("total_correct", 0) + score
+        results[uid]["total_questions"] = results[uid].get("total_questions", 0) + total_questions
+        results[uid]["quizzes_count"] = results[uid].get("quizzes_count", 0) + 1
+        results[uid]["total_time"] = results[uid].get("total_time", 0) + time_spent
+        
+        if subject:
+            subjects = results[uid].get("subjects", [])
+            if subject not in subjects:
+                subjects.append(subject)
+            results[uid]["subjects"] = subjects
 
-def save_user(user):
-    """Save a user who pressed /start to users.json"""
-    data = {}
-    if os.path.exists(USERS_FILE):
-        try:
-            with open(USERS_FILE, "r") as f:
-                data = json.load(f)
-        except:
-            data = {}
+    save_json(DATA_FILE, data)
+
+def track_error(error_msg):
+    """Log bot errors to data.json"""
+    data = get_data()
+    stats = data["stats"]
+    if "errors" not in stats:
+        stats["errors"] = []
     
+    stats["errors"].append({
+        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "msg": str(error_msg)[:200]
+    })
+    # Keep last 50 errors
+    stats["errors"] = stats["errors"][-50:]
+    save_json(DATA_FILE, data)
+
+async def save_user(user):
+    """Save a user who pressed /start and download their profile photo if it doesn't exist"""
+    data = get_data()
     uid = str(user.id)
-    if uid not in data:
-        data[uid] = {
+    users = data["users"]
+    
+    if uid not in users:
+        users[uid] = {
             "id": user.id,
             "first_name": user.first_name or "",
             "last_name": user.last_name or "",
             "full_name": user.full_name or "",
             "username": user.username or "",
-            "joined_date": datetime.now().strftime("%Y-%m-%d %H:%M")
+            "joined_date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "photo": None
         }
     else:
-        # Update name/username in case they changed
-        data[uid]["first_name"] = user.first_name or ""
-        data[uid]["last_name"] = user.last_name or ""
-        data[uid]["full_name"] = user.full_name or ""
-        data[uid]["username"] = user.username or ""
-    
-    with open(USERS_FILE, "w") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+        users[uid]["first_name"] = user.first_name or ""
+        users[uid]["last_name"] = user.last_name or ""
+        users[uid]["full_name"] = user.full_name or ""
+        users[uid]["username"] = user.username or ""
 
-def track_deepseek_usage():
-    """Track DeepSeek API call count and times"""
-    stats = {}
-    if os.path.exists(STATS_FILE):
+    # Download profile photo if not already saved
+    if not users[uid].get("photo"):
         try:
-            with open(STATS_FILE, "r") as f:
-                stats = json.load(f)
-        except:
-            stats = {}
+            photos = await bot.get_user_profile_photos(user.id, limit=1)
+            if photos.total_count > 0:
+                photo = photos.photos[0][-1] # Get high res
+                file_info = await bot.get_file(photo.file_id)
+                photo_ext = file_info.file_path.split('.')[-1]
+                photo_name = f"{uid}.{photo_ext}"
+                photo_path = os.path.join(PHOTOS_DIR, photo_name)
+                
+                await bot.download_file(file_info.file_path, photo_path)
+                users[uid]["photo"] = photo_path
+                logging.info(f"Saved profile photo for user {uid}")
+        except Exception as e:
+            logging.error(f"Error saving profile photo for user {uid}: {e}")
+        
+    save_json(DATA_FILE, data)
+
+def update_user_age(user_id, age):
+    data = get_data()
+    uid = str(user_id)
+    if uid in data["users"]:
+        data["users"][uid]["age"] = age
+        save_json(DATA_FILE, data)
+
+def get_stored_user(user_id):
+    data = get_data()
+    return data["users"].get(str(user_id))
+
+def track_deepseek_usage(duration=0):
+    """Track DeepSeek API call count, times, and duration"""
+    data = get_data()
+    stats = data["stats"]
     
     stats["deepseek_calls"] = stats.get("deepseek_calls", 0) + 1
+    
+    # Track speed
+    if "ai_durations" not in stats:
+        stats["ai_durations"] = []
+    stats["ai_durations"].append(duration)
+    stats["ai_durations"] = stats["ai_durations"][-100:] # Keep last 100
+    
     today = datetime.now().strftime("%Y-%m-%d")
     if "daily_calls" not in stats:
         stats["daily_calls"] = {}
     stats["daily_calls"][today] = stats["daily_calls"].get(today, 0) + 1
     stats["last_call"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    with open(STATS_FILE, "w") as f:
-        json.dump(stats, f, indent=4, ensure_ascii=False)
+    save_json(DATA_FILE, data)
 
 def get_server_info():
     """Get server and bot information"""
     uptime_seconds = int(time.time() - BOT_START_TIME)
     hours, remainder = divmod(uptime_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    uptime_str = f"{hours}s {minutes}d {seconds}s"
+    uptime_str = f"{hours}h {minutes}m {seconds}s"
     
     return {
         "os": f"{platform.system()} {platform.release()}",
@@ -142,12 +226,20 @@ def get_server_info():
         "machine": platform.machine()
     }
 
-def get_main_menu(username: str = None) -> ReplyKeyboardMarkup:
+def get_main_menu(username: str = None, user_id: int = None) -> ReplyKeyboardMarkup:
     buttons = [
         [KeyboardButton(text="📝 Quiz yaratish"), KeyboardButton(text="🚀 Quiz boshlash")],
-        [KeyboardButton(text="🗣️ Murojatlar"), KeyboardButton(text="ℹ️ Yordam")]
+        [KeyboardButton(text="📊 Natijalarim"), KeyboardButton(text="🗣️ Murojatlar")],
+        [KeyboardButton(text="ℹ️ Yordam")]
     ]
-    if username == ADMIN_USERNAME:
+    
+    is_admin = False
+    if user_id == ADMIN_ID:
+        is_admin = True
+    elif username and username.lower() == ADMIN_USERNAME.lower():
+        is_admin = True
+        
+    if is_admin:
         buttons.append([KeyboardButton(text="🔑 Admen")])
     
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
@@ -174,15 +266,50 @@ class QuizStates(StatesGroup):
 
 # Keyboards (rest)
 
-subject_menu = ReplyKeyboardMarkup(
+age_menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="📐 Matematika"), KeyboardButton(text="📖 Ona tili")],
-        [KeyboardButton(text="🏛️ Tarix"), KeyboardButton(text="🇬🇧 Ingliz tili")],
-        [KeyboardButton(text="⚡ Fizika")],
-        [KeyboardButton(text="⬅️ Ortga")]
+        [KeyboardButton(text="👶 10-18"), KeyboardButton(text="👨 18-25")],
+        [KeyboardButton(text="👴 25-35")]
     ],
     resize_keyboard=True
 )
+
+def get_subject_keyboard() -> ReplyKeyboardMarkup:
+    """Dynamically generate subject menu including cached ones"""
+    buttons = [
+        [KeyboardButton(text="📐 Matematika"), KeyboardButton(text="📖 Ona tili")],
+        [KeyboardButton(text="🏛️ Tarix"), KeyboardButton(text="🇬🇧 Ingliz tili")],
+        [KeyboardButton(text="⚡ Fizika")]
+    ]
+    
+    # Load from quizzes.json
+    quizzes = load_json(QUIZ_FILE)
+    existing_texts = {"📐 Matematika", "📖 Ona tili", "🏛️ Tarix", "🇬🇧 Ingliz tili", "⚡ Fizika", "⬅️ Ortga"}
+    
+    extra_buttons = []
+    # Add files from Yuklangan Fayllar
+    if "Yuklangan Fayllar" in quizzes:
+        for file_name in quizzes["Yuklangan Fayllar"]:
+            btn_text = f"📁 {file_name}"
+            if btn_text not in existing_texts:
+                extra_buttons.append(KeyboardButton(text=btn_text))
+                existing_texts.add(btn_text)
+    
+    # Add other subjects
+    for subject in quizzes:
+        if subject != "Yuklangan Fayllar" and subject not in ["Matematika", "O'zbek tili va adabiyoti", "O'zbekiston va jahon tarixi", "Ingliz tili", "Fizika"]:
+            if subject not in existing_texts:
+                extra_buttons.append(KeyboardButton(text=subject))
+                existing_texts.add(subject)
+                
+    # Chunk extra buttons into rows of 2
+    for i in range(0, len(extra_buttons), 2):
+        buttons.append(extra_buttons[i:i+2])
+        
+    buttons.append([KeyboardButton(text="⬅️ Ortga")])
+    return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+
+subject_menu = get_subject_keyboard() # Keep as default but handlers should call function
 
 time_menu = ReplyKeyboardMarkup(
     keyboard=[
@@ -422,6 +549,7 @@ Faqat quyidagi JSON array formatida javob ber, boshqa hech qanday matn qo'shma:
 ]
 (correct - to'g'ri javobning indeksi: 0, 1, 2 yoki 3)"""
 
+    start_time = time.time()
     try:
         response = await deepseek_client.chat.completions.create(
             model="deepseek-chat",
@@ -433,6 +561,7 @@ Faqat quyidagi JSON array formatida javob ber, boshqa hech qanday matn qo'shma:
             max_tokens=8000
         )
         
+        duration = time.time() - start_time
         content = response.choices[0].message.content.strip()
         
         if "```json" in content:
@@ -454,14 +583,30 @@ Faqat quyidagi JSON array formatida javob ber, boshqa hech qanday matn qo'shma:
                     q["correct"] = min(max(0, int(q["correct"])), len(q["options"]) - 1)
                     valid_questions.append(q)
         
-        track_deepseek_usage()
+        track_deepseek_usage(duration)
+        if valid_questions:
+            valid_questions = shuffle_options(valid_questions)
         return valid_questions[:count] if valid_questions else []
         
     except Exception as e:
+        track_error(f"DeepSeek AI parsing error: {e}")
         logging.error(f"DeepSeek AI parsing error: {e}")
         return []
 
 async def generate_questions_with_deepseek(subject: str, age: str, count: int = 30) -> list:
+    # 1. Check Cache (quizzes.json)
+    quizzes = load_json(QUIZ_FILE)
+    cached_questions = []
+    if subject in quizzes and age in quizzes[subject]:
+        cached_questions = list(quizzes[subject][age])
+        if len(cached_questions) >= count:
+            logging.info(f"Using cached questions for {subject} {age}")
+            # Return random selection from cache
+            return random.sample(cached_questions, count)
+    
+    num_to_generate = count - len(cached_questions)
+    logging.info(f"Supplementing {subject} {age} with {num_to_generate} new AI questions.")
+
     age_descriptions = {
         "10-18": "o'rta maktab o'quvchilari (10-18 yosh), oson va o'rtacha qiyinlikdagi",
         "18-25": "universitet talabalari (18-25 yosh), o'rtacha va qiyin darajadagi",
@@ -471,16 +616,17 @@ async def generate_questions_with_deepseek(subject: str, age: str, count: int = 
     
     prompt = f"""Sen quiz savollari yaratuvchi sun'iy intellektsiz. 
 
-{subject} mavzusidan {age_desc} savollar yarat.
+{subject} mavzusidan {age_desc} {num_to_generate} ta yangi savol yarat.
 
 Talablar:
-1. Jami {count} ta savol
+1. Jami {num_to_generate} ta savol
 2. Har bir savol 4 ta javob varianti
 3. Faqat JSON formatda javob ber
 
 JSON: [{{"question": "Savol?", "options": ["A", "B", "C", "D"], "correct": 0}}]
 Faqat JSON array qaytar!"""
 
+    start_time = time.time()
     try:
         response = await deepseek_client.chat.completions.create(
             model="deepseek-chat",
@@ -492,6 +638,7 @@ Faqat JSON array qaytar!"""
             max_tokens=8000
         )
         
+        duration = time.time() - start_time
         content = response.choices[0].message.content.strip()
         
         if "```json" in content:
@@ -513,12 +660,111 @@ Faqat JSON array qaytar!"""
                     q["correct"] = min(max(0, int(q["correct"])), len(q["options"]) - 1)
                     valid_questions.append(q)
         
-        track_deepseek_usage()
-        return valid_questions[:count] if valid_questions else []
+        # Save to Cache
+        if valid_questions:
+            quizzes = load_json(QUIZ_FILE)
+            if subject not in quizzes:
+                quizzes[subject] = {}
+            if age not in quizzes[subject]:
+                quizzes[subject][age] = []
+            
+            # Extend existing questions, avoiding exact duplicates
+            existing_questions = {q["question"] for q in quizzes[subject][age]}
+            for q in valid_questions:
+                if q["question"] not in existing_questions:
+                    quizzes[subject][age].append(q)
+            
+            save_json(QUIZ_FILE, quizzes)
+        
+        track_deepseek_usage(duration)
+        
+        # Combine cached and new questions
+        combined = cached_questions + valid_questions
+        if combined:
+            combined = shuffle_options(combined)
+        return combined[:count] if combined else []
         
     except Exception as e:
+        track_error(f"DeepSeek API error: {e}")
         logging.error(f"DeepSeek API error: {e}")
         return []
+
+
+
+async def handle_poll_timeout(chat_id: int, user_id: int, poll_id: str, timeout: int):
+    """Wait for timeout, then check if answered. If not, mark incorrect and move on."""
+    await asyncio.sleep(timeout + 2)  # Wait slightly longer than poll open_period
+    
+    if user_id not in user_data:
+        return
+        
+    data = user_data[user_id]
+    
+    # Check if this poll is still the current active one
+    if data.get("current_poll_id") != poll_id:
+        return
+        
+    # Check if already answered
+    if data.get("poll_answered", False):
+        return
+        
+    # If not answered, mark as incorrect (don't increment correct_answers)
+    data["consecutive_timeouts"] = data.get("consecutive_timeouts", 0) + 1
+    
+    if data["consecutive_timeouts"] >= 3:
+        try:
+            # Save results before stopping
+            correct = data.get("correct_answers", 0)
+            
+            # Try to get user info from storage if not in current session data
+            user_info = get_stored_user(user_id)
+            full_name = "Foydalanuvchi"
+            username = "None"
+            
+            if user_info:
+                full_name = user_info.get("full_name", "Foydalanuvchi")
+                username = user_info.get("username", "")
+
+            # Save the result
+            time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
+            subject = data.get("subject", "Noma'lum")
+            save_user_result(user_id, full_name, username, correct, data.get("current_question", 0), time_spent, subject)
+            
+            await bot.send_message(
+                chat_id, 
+                f"🛑 <b>Siz ketma-ket 3 marta javob bermadingiz!</b>\n\n"
+                f"🏁 <b>O'yin yakunlandi.</b>\n"
+                f"✅ To'g'ri javoblar: <b>{correct}</b> ta",
+                reply_markup=get_main_menu(username, user_id)
+            )
+            # Clear state and session data
+            state_ctx = FSMContext(
+                storage=dp.storage,
+                key=StorageKey(bot_id=bot.id, chat_id=chat_id, user_id=user_id)
+            )
+            await state_ctx.clear()
+            
+            if user_id in user_data:
+                del user_data[user_id]
+        except Exception as e:
+            logging.error(f"Timeout stop error: {e}")
+        return
+
+    current_idx = data.get("current_question", 0)
+    questions = data.get("questions", [])
+    
+    # Send timeout message
+    if current_idx < len(questions):
+        try:
+            await bot.send_message(chat_id, f"⏰ <b>Vaqt tugadi!</b> ({data['consecutive_timeouts']}/3)")
+        except:
+            pass
+            
+    # Move to next question
+    data["current_question"] = current_idx + 1
+    
+    # Send next question
+    await send_next_quiz_question(chat_id, user_id)
 
 # ============ QUIZ POLL FUNCTIONS ============
 
@@ -558,8 +804,22 @@ async def send_quiz_poll(message: Message, user_id: int):
     
     data["current_poll_id"] = poll_message.poll.id
     
-    # Add results button under poll
+    data["poll_answered"] = False
+    
+    # Start timeout timer
+    asyncio.create_task(handle_poll_timeout(
+        chat_id=message.chat.id,
+        user_id=user_id,
+        poll_id=poll_message.poll.id,
+        timeout=data.get("time", 30)
+    ))
+    
+    # Add difficulty and results buttons under poll
     results_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="🟢 Sodda", callback_data="regen_easy"),
+            InlineKeyboardButton(text="🔴 Murakkab", callback_data="regen_hard")
+        ],
         [InlineKeyboardButton(text="📊 Natijalarim", callback_data="show_results")]
     ])
     await message.answer("👆 Javob bering yoki:", reply_markup=results_keyboard)
@@ -577,6 +837,10 @@ async def poll_answer_handler(poll_answer: PollAnswer):
     # Check if this is the current poll
     if poll_answer.poll_id != data.get("current_poll_id"):
         return
+        
+    # Mark as answered to prevent timeout logic
+    data["poll_answered"] = True
+    data["consecutive_timeouts"] = 0 # Reset counter on answer
         
     # Get current question info
     current_idx = data.get("current_question", 0)
@@ -641,16 +905,68 @@ async def send_next_quiz_question(chat_id: int, user_id: int):
         open_period=data.get("time", 30)
     )
     
-    # CRITICAL: Save new poll ID for tracking
+    # CRITICAL: Save new poll ID for tracking and reset answered flag
     data["current_poll_id"] = poll_message.poll.id
+    data["poll_answered"] = False
     
-    # Add results button under poll
+    # Start timeout timer
+    asyncio.create_task(handle_poll_timeout(
+        chat_id=chat_id,
+        user_id=user_id,
+        poll_id=poll_message.poll.id,
+        timeout=data.get("time", 30)
+    ))
+    
+    # Add difficulty and results buttons under poll
     results_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="🟢 Sodda", callback_data="regen_easy"),
+            InlineKeyboardButton(text="🔴 Murakkab", callback_data="regen_hard")
+        ],
         [InlineKeyboardButton(text="📊 Natijalarim", callback_data="show_results")]
     ])
     await bot.send_message(chat_id, "👆 Javob bering yoki:", reply_markup=results_keyboard)
 
 # ============ RESULTS CALLBACK ============
+
+@dp.callback_query(F.data.in_({"regen_easy", "regen_hard"}))
+async def difficulty_regeneration_handler(callback: CallbackQuery, state: FSMContext):
+    """Restart quiz with different difficulty (easy or hard)"""
+    user_id = callback.from_user.id
+    if user_id not in user_data:
+        await callback.answer("❌ Seans topilmadi.")
+        return
+        
+    data = user_data[user_id]
+    subject = data.get("subject", "Matematika")
+    subject_name = data.get("subject_name", "📐 Matematika")
+    
+    # Set new difficulty
+    new_age = "10-18" if callback.data == "regen_easy" else "25-35"
+    data["age"] = new_age
+    update_user_age(user_id, new_age)
+    
+    # Reset and notify
+    data["questions"] = [] 
+    data["current_question"] = 0
+    data["correct_answers"] = 0
+    data["consecutive_timeouts"] = 0
+    
+    diff_text = "🟢 Sodda" if callback.data == "regen_easy" else "🔴 Murakkab"
+    await callback.message.answer(f"🔄 <b>{subject_name} ({diff_text})</b> bo'yicha yangi savollar tayyorlanmoqda...")
+    await callback.answer()
+    
+    # Generate new questions
+    questions = await generate_questions_with_deepseek(subject, new_age, 30)
+    if not questions:
+        await callback.message.answer("❌ Savol yaratishda xatolik. Keyinroq urinib ko'ring.")
+        return
+        
+    data["questions"] = shuffle_options(questions)
+    data["start_quiz_time"] = time.time()
+    
+    await callback.message.answer(f"🚀 Yangi 30 ta savol tayyor!")
+    await send_quiz_poll(callback.message, user_id)
 
 @dp.callback_query(F.data == "show_results")
 async def show_results_callback(callback: CallbackQuery, state: FSMContext):
@@ -697,15 +1013,19 @@ async def show_results_callback(callback: CallbackQuery, state: FSMContext):
     await bot.send_message(
         callback.message.chat.id,
         "Bosh menyu:",
-        reply_markup=get_main_menu(callback.from_user.username)
+        reply_markup=get_main_menu(callback.from_user.username, callback.from_user.id)
     )
     
     # Save result
+    time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
+    subject = data.get("subject", "Noma'lum")
     save_user_result(
         user_id=callback.from_user.id,
         full_name=callback.from_user.full_name,
         username=callback.from_user.username,
-        score=correct
+        score=correct, total_questions=current,
+        time_spent=time_spent,
+        subject=subject
     )
     
     await state.clear()
@@ -743,11 +1063,15 @@ async def show_final_results_callback(callback: CallbackQuery):
     await callback.answer()
 
     # Save final result
+    time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
+    subject = data.get("subject", "Noma'lum")
     save_user_result(
         user_id=callback.from_user.id,
         full_name=callback.from_user.full_name,
         username=callback.from_user.username,
-        score=correct
+        score=correct, total_questions=total,
+        time_spent=time_spent,
+        subject=subject
     )
 
 @dp.callback_query(F.data == "next_quiz")
@@ -792,14 +1116,25 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
     user_data[user_id] = {"chat_id": message.chat.id}
     
     # Save user to persistent storage
-    save_user(message.from_user)
+    await save_user(message.from_user)
     
-    await message.answer(
-        f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
-        f"🤖 <b>AI Quiz Bot</b>\n\n"
-        f"👇 Yoshingizni tanlang:",
-        reply_markup=age_menu
-    )
+    # Check if user already has age
+    stored_user = get_stored_user(user_id)
+    if stored_user and "age" in stored_user:
+        user_data[user_id]["age"] = stored_user["age"]
+        await message.answer(
+            f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
+            f"🤖 <b>AI Quiz Bot</b>\n\n"
+            f"Siz avval ro'yxatdan o'tgansiz.",
+            reply_markup=get_main_menu(message.from_user.username, message.from_user.id)
+        )
+    else:
+        await message.answer(
+            f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
+            f"🤖 <b>AI Quiz Bot</b>\n\n"
+            f"👇 Yoshingizni tanlang:",
+            reply_markup=age_menu
+        )
 
 @dp.message(F.text.in_({"👶 10-18", "👨 18-25", "👴 25-35"}))
 async def age_selection_handler(message: Message, state: FSMContext) -> None:
@@ -809,15 +1144,20 @@ async def age_selection_handler(message: Message, state: FSMContext) -> None:
         user_data[user_id] = {}
     user_data[user_id]["age"] = age
     user_data[user_id]["chat_id"] = message.chat.id
+    
+    # Save age to file
+    update_user_age(user_id, age)
+    
     await message.answer(
         f"✅ {message.text}\n\n📋 Menyudan tanlang:", 
-        reply_markup=get_main_menu(message.from_user.username)
+        reply_markup=get_main_menu(message.from_user.username, message.from_user.id)
     )
 
 @dp.message(F.text == "🚀 Quiz boshlash")
 async def quiz_start_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(QuizStates.selecting_subject)
-    await message.answer("📚 Fanni tanlang:", reply_markup=subject_menu)
+    await message.answer("📚 <b>Fanni tanlang:</b>\n<i>(O'zingiz yuklagan fayllar ham shu yerda)</i>", 
+                         reply_markup=get_subject_keyboard())
 
 @dp.message(F.text == "📝 Quiz yaratish")
 async def quiz_creation_handler(message: Message, state: FSMContext) -> None:
@@ -849,22 +1189,33 @@ async def topic_time_selected_handler(message: Message, state: FSMContext) -> No
     age = user_data[user_id].get("age", "18-25")
     topic = user_data[user_id].get("custom_topic", "Umumiy bilim")
     
-    loading_msg = await message.answer(f"🤖 DeepSeek AI savollar tayyorlamoqda...\n📚 {topic}", reply_markup=cancel_menu)
-    
-    questions = await generate_questions_with_deepseek(topic, age, 30)
+    # Check Cache (quizzes.json) first to avoid "generating" message if it exists
+    quizzes = load_json(QUIZ_FILE)
+    if topic in quizzes and age in quizzes[topic] and len(quizzes[topic][age]) >= 30:
+        questions = random.sample(quizzes[topic][age], 30)
+        loading_msg = None
+    else:
+        loading_msg = await message.answer(f"🤖 DeepSeek AI savollar tayyorlamoqda...\n📚 {topic}", reply_markup=cancel_menu)
+        questions = await generate_questions_with_deepseek(topic, age, 30)
     
     if not questions:
-        await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
-        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
+        if loading_msg:
+            await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
+        else:
+            await message.answer("❌ Xatolik. Qayta urinib ko'ring.")
+        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
         await state.clear()
         return
     
     user_data[user_id]["questions"] = questions
     user_data[user_id]["current_question"] = 0
     user_data[user_id]["correct_answers"] = 0
+    user_data[user_id]["start_quiz_time"] = time.time()
+    user_data[user_id]["subject"] = topic
     
     await state.set_state(QuizStates.answering)
-    await loading_msg.delete()
+    if loading_msg:
+        await loading_msg.delete()
     await message.answer(f"🚀 Quiz boshlanmoqda!\n📝 {len(questions)} ta savol", reply_markup=quiz_menu)
     await send_quiz_poll(message, user_id)
 
@@ -941,6 +1292,17 @@ async def file_received_handler(message: Message, state: FSMContext) -> None:
         # Shuffle answer options
         questions = shuffle_options(questions)
         
+        # Save to quizzes.json
+        quizzes = load_json(QUIZ_FILE)
+        file_key = "Yuklangan Fayllar"
+        if file_key not in quizzes:
+            quizzes[file_key] = {}
+        
+        # Use filename as sub-key (sanitize if needed, but simple is fine)
+        # Store questions
+        quizzes[file_key][document.file_name] = questions
+        save_json(QUIZ_FILE, quizzes)
+        
         user_id = message.from_user.id
         user_data[user_id]["questions"] = questions
         user_data[user_id]["file_name"] = document.file_name
@@ -976,6 +1338,8 @@ async def file_time_selected_handler(message: Message, state: FSMContext) -> Non
     if "current_question" not in data or data.get("current_question") >= len(questions):
         data["current_question"] = 0
         data["correct_answers"] = 0
+        data["start_quiz_time"] = time.time()
+        data["subject"] = file_name
     
     current_idx = data.get("current_question", 0)
     
@@ -993,8 +1357,11 @@ async def file_time_selected_handler(message: Message, state: FSMContext) -> Non
 
 # ============ STANDARD QUIZ HANDLERS ============
 
-@dp.message(QuizStates.selecting_subject, F.text.in_({"📐 Matematika", "📖 Ona tili", "🏛️ Tarix", "🇬🇧 Ingliz tili", "⚡ Fizika"}))
+@dp.message(QuizStates.selecting_subject)
 async def subject_selection_handler(message: Message, state: FSMContext) -> None:
+    if message.text == "⬅️ Ortga":
+        return await back_handler(message, state)
+        
     subject_map = {
         "📐 Matematika": "Matematika",
         "📖 Ona tili": "O'zbek tili va adabiyoti",
@@ -1002,11 +1369,42 @@ async def subject_selection_handler(message: Message, state: FSMContext) -> None
         "🇬🇧 Ingliz tili": "Ingliz tili",
         "⚡ Fizika": "Fizika"
     }
-    user_data[message.from_user.id]["subject"] = subject_map.get(message.text, "Matematika")
-    user_data[message.from_user.id]["subject_name"] = message.text
+    
+    user_id = message.from_user.id
+    if user_id not in user_data:
+        user_data[user_id] = {"chat_id": message.chat.id}
+    
+    # Clear previous questions for a fresh start
+    if "questions" in user_data[user_id]:
+        del user_data[user_id]["questions"]
+        
+    text = message.text
+    quizzes = load_json(QUIZ_FILE)
+    
+    if text in subject_map:
+        user_data[user_id]["subject"] = subject_map[text]
+        user_data[user_id]["subject_name"] = text
+    elif text.startswith("📁 "):
+        # File from Yuklangan Fayllar
+        file_name = text[2:]
+        if "Yuklangan Fayllar" in quizzes and file_name in quizzes["Yuklangan Fayllar"]:
+            user_data[user_id]["questions"] = quizzes["Yuklangan Fayllar"][file_name]
+            user_data[user_id]["subject"] = "Yuklangan Fayllar"
+            user_data[user_id]["subject_name"] = text
+        else:
+            await message.answer("❌ Fayl topilmadi.")
+            return
+    elif text in quizzes:
+        # Custom subject
+        user_data[user_id]["subject"] = text
+        user_data[user_id]["subject_name"] = text
+    else:
+        # AI will generate for this "new" subject
+        user_data[user_id]["subject"] = text
+        user_data[user_id]["subject_name"] = text
     
     await state.set_state(QuizStates.selecting_time)
-    await message.answer(f"✅ {message.text}\n\n⏱️ Vaqt:", reply_markup=time_menu)
+    await message.answer(f"✅ {message.text}\n\n⏱️ Vaqtni tanlang:", reply_markup=time_menu)
 
 @dp.message(QuizStates.selecting_time, F.text.in_({"⏱️ 30 soniya", "⏱️ 1 daqiqa", "⏱️ 3 daqiqa"}))
 async def time_selection_handler(message: Message, state: FSMContext) -> None:
@@ -1019,24 +1417,35 @@ async def time_selection_handler(message: Message, state: FSMContext) -> None:
     subject = user_data[user_id].get("subject", "Matematika")
     subject_name = user_data[user_id].get("subject_name", "📐 Matematika")
     
-    loading_msg = await message.answer(f"🤖 DeepSeek AI savollar tayyorlamoqda...\n📚 {subject_name}", reply_markup=cancel_menu)
-    
-    questions = await generate_questions_with_deepseek(subject, age, 30)
-    
-    if not questions:
-        await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
-        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
-        await state.clear()
-        return
-    
-    user_data[user_id]["questions"] = questions
+    # Check if questions already exist (e.g. from browsing or file)
+    if "questions" in user_data[user_id] and user_data[user_id]["questions"] and user_data[user_id].get("current_question", 0) == 0:
+        questions = user_data[user_id]["questions"]
+    else:
+        loading_msg = await message.answer(f"🤖 DeepSeek AI savollar tayyorlamoqda...\n📚 {subject_name}", reply_markup=cancel_menu)
+        questions = await generate_questions_with_deepseek(subject, age, 30)
+        if not questions:
+            await loading_msg.edit_text("❌ Xatolik. Qayta urinib ko'ring.")
+            await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
+            await state.clear()
+            return
+            
+        user_data[user_id]["questions"] = questions
+        await loading_msg.delete()
+        
+    user_data[user_id]["questions"] = shuffle_options(user_data[user_id]["questions"])
     user_data[user_id]["current_question"] = 0
     user_data[user_id]["correct_answers"] = 0
+    user_data[user_id]["consecutive_timeouts"] = 0 
+    user_data[user_id]["start_quiz_time"] = time.time()
+    user_data[user_id]["subject"] = subject
     
     await state.set_state(QuizStates.answering)
-    await loading_msg.delete()
     await message.answer(f"🚀 Quiz boshlanmoqda!\n📝 {len(questions)} ta savol", reply_markup=quiz_menu)
     await send_quiz_poll(message, user_id)
+
+
+
+
 
 @dp.message(F.text.in_({"🛑 Quizni tugatish", "❌ Bekor qilish"}))
 async def stop_quiz_handler(message: Message, state: FSMContext) -> None:
@@ -1048,17 +1457,22 @@ async def stop_quiz_handler(message: Message, state: FSMContext) -> None:
         
         # Save result if they stop mid-quiz
         if current > 0:
+            time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
+            subject = data.get("subject", "Noma'lum")
             save_user_result(
-                user_id=message.from_user.id,
-                full_name=message.from_user.full_name,
-                username=message.from_user.username,
-                score=correct
+                user_id, 
+                message.from_user.full_name, 
+                message.from_user.username, 
+                correct,
+                current,
+                time_spent,
+                subject
             )
-            await message.answer(f"🛑 Quiz tugatildi!\n✅ {correct}/{current}", reply_markup=get_main_menu(message.from_user.username))
+            await message.answer(f"🛑 Quiz tugatildi!\n✅ {correct}/{current}", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
         else:
-            await message.answer("❌ Bekor qilindi.", reply_markup=get_main_menu(message.from_user.username))
+            await message.answer("❌ Bekor qilindi.", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
     else:
-        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username))
+        await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
     await state.clear()
 
 @dp.message(F.text == "🗣️ Murojatlar")
@@ -1070,10 +1484,48 @@ async def murojatlar_handler(message: Message) -> None:
         ])
     )
 
+@dp.message(F.text == "📊 Natijalarim")
+async def user_results_handler(message: Message):
+    user_id = str(message.from_user.id)
+    data = get_data()
+    results = data.get("results", {})
+    
+    if user_id not in results:
+        await message.answer("❌ Sizda hali natijalar yo'q. Quiz boshlang!")
+        return
+    
+    r = results[user_id]
+    total_correct = r.get("total_correct", 0)
+    total_questions = r.get("total_questions", 0)
+    total_time = r.get("total_time", 0)
+    quizzes_count = r.get("quizzes_count", 0)
+    
+    # Calculate averages
+    avg_time_per_question = total_time / total_questions if total_questions > 0 else 0
+    total_incorrect = total_questions - total_correct
+    
+    # Format time
+    h = total_time // 3600
+    m = (total_time % 3600) // 60
+    s = total_time % 60
+    time_str = f"{h}s {m}d {s}s" if h > 0 else f"{m}d {s}s"
+    
+    caption = (
+        f"📊 <b>Sizning umumiy natijalaringiz:</b>\n\n"
+        f"📝 Yakunlangan quizlar: <b>{quizzes_count}</b> ta\n"
+        f"✅ To'g'ri javoblar: <b>{total_correct}</b> ta\n"
+        f"❌ Noto'g'ri javoblar: <b>{total_incorrect}</b> ta\n"
+        f"⏱️ Umumiy sarflangan vaqt: <b>{time_str}</b>\n"
+        f"⚡ O'rtacha bir savolga: <b>{avg_time_per_question:.1f}</b> soniya\n\n"
+        f"🏆 Eng yaxshi natija: <b>{r.get('best_score', 0)}</b> ball"
+    )
+    
+    await message.answer(caption)
+
 @dp.message(F.text == "⬅️ Ortga")
 async def back_handler(message: Message, state: FSMContext) -> None:
     await state.clear()
-    await message.answer("📋 Menyu:", reply_markup=get_main_menu(message.from_user.username))
+    await message.answer("📋 Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
 
 @dp.message(F.text == "ℹ️ Yordam")
 async def help_handler(message: Message) -> None:
@@ -1102,7 +1554,10 @@ async def help_handler(message: Message) -> None:
 
 @dp.message(F.text == "🔑 Admen")
 async def admin_handler(message: Message):
-    if message.from_user.username != ADMIN_USERNAME:
+    is_admin = (message.from_user.id == ADMIN_ID) or \
+               (message.from_user.username and message.from_user.username.lower() == ADMIN_USERNAME.lower())
+    
+    if not is_admin:
         return
     await message.answer("🔑 <b>Admin paneliga xush kelibsiz!</b>", reply_markup=admin_menu)
 
@@ -1111,24 +1566,17 @@ async def admin_results_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
     
-    if not os.path.exists(RESULTS_FILE):
-        await message.answer("❌ Hali hech qanday natija yo'q.")
-        return
+    data = get_data()
+    results = data.get("results", {})
         
-    try:
-        with open(RESULTS_FILE, "r") as f:
-            data = json.load(f)
-    except:
-        data = {}
-        
-    if not data:
+    if not results:
         await message.answer("❌ Hali hech qanday natija yo'q.")
         return
         
     # Sort by best_score descending
-    sorted_results = sorted(data.items(), key=lambda x: x[1]["best_score"], reverse=True)[:20]
+    sorted_results = sorted(results.items(), key=lambda x: x[1]["best_score"], reverse=True)
     
-    res_text = "🏆 <b>Eng yaxshi natijalar (Top 20):</b>\n\n"
+    res_text = "🏆 <b>Barcha foydalanuvchilar natijalari:</b>\n\n"
     for i, (uid, res) in enumerate(sorted_results, 1):
         username_link = f'<a href="tg://user?id={uid}">{res["name"]}</a>'
         username_text = f" (@{res['username']})" if res.get('username') else ""
@@ -1138,7 +1586,7 @@ async def admin_results_handler(message: Message):
             f"   🆔 <code>{uid}</code> | 🏅 <b>{res['best_score']}</b> ball{date_text}\n\n"
         )
     
-    res_text += f"📋 Jami: <b>{len(data)}</b> ta foydalanuvchi natija topshirgan"
+    res_text += f"📋 Jami: <b>{len(results)}</b> ta foydalanuvchi natija topshirgan"
     await message.answer(res_text, disable_web_page_preview=True)
 
 @dp.message(F.text == "📈 Reyting")
@@ -1146,111 +1594,176 @@ async def admin_rating_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
     
-    # --- Users stats ---
-    users_data = {}
-    if os.path.exists(USERS_FILE):
-        try:
-            with open(USERS_FILE, "r") as f:
-                users_data = json.load(f)
-        except:
-            users_data = {}
+    loading_msg = await message.answer("📊 Statistika yuklanmoqda...")
     
-    total_users = len(users_data)
+    try:
+        data = get_data()
+        users_data = data.get("users", {})
+        stats = data.get("stats", {})
+        
+        # --- Data Prep ---
+        total_users = len(users_data)
+        deepseek_total = stats.get("deepseek_calls", 0)
+        durations = stats.get("ai_durations", [0])
+        avg_speed = sum(durations) / len(durations) if durations else 0
+        error_count = len(stats.get("errors", []))
+        
+        # Last 7 days growth
+        from datetime import timedelta
+        dates, counts = [], []
+        for i in range(6, -1, -1):
+            day = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
+            day_count = sum(1 for u in users_data.values() if u.get("joined_date", "").startswith(day))
+            dates.append(day[5:])
+            counts.append(day_count)
+            
+        # --- Plotting ---
+        plt.style.use('dark_background')
+        fig = plt.figure(figsize=(12, 14))
+        gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 0.6])
+        
+        # 1. User Growth
+        ax1 = fig.add_subplot(gs[0, :])
+        bars = ax1.bar(dates, counts, color='#00ccff', alpha=0.8)
+        ax1.set_title('So\'nggi 7 kunlik o\'sish', fontsize=16, pad=20)
+        ax1.bar_label(bars, padding=3)
+        
+        # 2. AI Speed & Performance
+        ax2 = fig.add_subplot(gs[1, 0])
+        labels = ['O\'rtacha Tezlik (sek)', 'Jami AI So\'rovlar']
+        values = [avg_speed, deepseek_total / 10 if deepseek_total > 0 else 0] # Scaled for visibility
+        ax2.bar(labels, [avg_speed, deepseek_total], color=['#ff9900', '#ff0055'])
+        ax2.set_title('AI Ko\'rsatkichlari', fontsize=14)
+        
+        # 3. Success vs Errors
+        ax3 = fig.add_subplot(gs[1, 1])
+        success = deepseek_total
+        ax3.pie([success, error_count], labels=['Muvaffaqiyat', 'Xatolik'], 
+                autopct='%1.1f%%', colors=['#00ff88', '#ff3333'], startangle=90)
+        ax3.set_title('Muvaffaqiyatli so\'rovlar', fontsize=14)
+
+        # 4. Detailed Stats Table/Text
+        ax4 = fig.add_subplot(gs[2, :])
+        server_info = get_server_info()
+        stats_text = (
+            f"SYSTEM STATUS\n"
+            f"OS: {server_info['os'][:30]}\n"
+            f"Python: {server_info['python']} | Uptime: {server_info['uptime']}\n"
+            f"AI Avg Speed: {avg_speed:.2f}s | Errors: {error_count}\n"
+            f"Last Activity: {stats.get('last_call', 'N/A')}"
+        )
+        ax4.text(0.5, 0.5, stats_text, ha='center', va='center', fontsize=13,
+                 bbox=dict(boxstyle="round,pad=1.5", fc="#1e1e1e", ec="#00ccff", alpha=1))
+        ax4.axis('off')
+        
+        # Save
+        buf = io.BytesIO()
+        plt.tight_layout()
+        plt.savefig(buf, format='png', dpi=100, facecolor='#121212')
+        buf.seek(0)
+        plt.close(fig)
+        
+        await loading_msg.delete()
+        await message.answer_photo(
+            photo=BufferedInputFile(buf.read(), filename="stats.png"),
+            caption=f"📈 <b>Bot Reytingi va Holati</b>\n\nAI Tezligi: <b>{avg_speed:.2f}s</b>"
+        )
+        
+    except Exception as e:
+        track_error(f"Rating chart error: {e}")
+        await loading_msg.edit_text(f"❌ Xatolik yuz berdi.")
+
+@dp.message(F.text == "📊 Natijalar")
+async def admin_results_handler(message: Message):
+    if message.from_user.username != ADMIN_USERNAME:
+        return
     
-    # Today's new users
-    today = datetime.now().strftime("%Y-%m-%d")
-    today_users = sum(1 for u in users_data.values() if u.get("joined_date", "").startswith(today))
+    data = get_data()
+    results = data.get("results", {})
     
-    # Users per day (last 7 days)
-    from datetime import timedelta
-    growth_text = "📊 <b>Haftalik o'sish:</b>\n"
-    for i in range(6, -1, -1):
-        day = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
-        day_count = sum(1 for u in users_data.values() if u.get("joined_date", "").startswith(day))
-        day_label = "Bugun" if i == 0 else f"{day}"
-        bar = "█" * min(day_count, 20) if day_count > 0 else "░"
-        growth_text += f"  {day_label}: {bar} <b>{day_count}</b>\n"
+    if not results:
+        await message.answer("❌ Natijalar yo'q.")
+        return
+
+    # Sort top 5 by total_correct
+    top_5 = sorted(results.items(), key=lambda x: x[1].get("total_correct", 0), reverse=True)[:5]
     
-    # --- DeepSeek stats ---
-    stats = {}
-    if os.path.exists(STATS_FILE):
-        try:
-            with open(STATS_FILE, "r") as f:
-                stats = json.load(f)
-        except:
-            stats = {}
-    
-    deepseek_total = stats.get("deepseek_calls", 0)
-    deepseek_today = stats.get("daily_calls", {}).get(today, 0)
-    last_call = stats.get("last_call", "Hali chaqirilmagan")
-    
-    # --- Results stats ---
-    results_data = {}
-    if os.path.exists(RESULTS_FILE):
-        try:
-            with open(RESULTS_FILE, "r") as f:
-                results_data = json.load(f)
-        except:
-            results_data = {}
-    
-    total_results = len(results_data)
-    
-    # --- Server info ---
-    server = get_server_info()
-    
-    text = (
-        f"📈 <b>Bot Statistikasi</b>\n"
-        f"{'─' * 25}\n\n"
-        f"👥 <b>Foydalanuvchilar:</b>\n"
-        f"  📌 Jami: <b>{total_users}</b> ta\n"
-        f"  🆕 Bugun: <b>{today_users}</b> ta\n"
-        f"  📝 Natija topshirganlar: <b>{total_results}</b> ta\n\n"
-        f"{growth_text}\n"
-        f"🤖 <b>DeepSeek AI:</b>\n"
-        f"  📊 Jami so'rovlar: <b>{deepseek_total}</b> ta\n"
-        f"  📅 Bugun: <b>{deepseek_today}</b> ta\n"
-        f"  🕐 Oxirgi chaqiruv: {last_call}\n\n"
-        f"🖥️ <b>Server:</b>\n"
-        f"  💻 OS: {server['os']}\n"
-        f"  🐍 Python: {server['python']}\n"
-        f"  ⏱️ Bot uptime: {server['uptime']}\n"
-        f"  🔧 Mashina: {server['machine']}\n"
-    )
-    
-    await message.answer(text)
+    try:
+        plt.figure(figsize=(10, 6), facecolor='#121212')
+        ax = plt.subplot(111)
+        ax.axis('off')
+        
+        columns = ["Nomi", "Fanlar", "To'g'ri", "Vaqt", "Quizlar"]
+        table_data = []
+        
+        for uid, r in top_5:
+            subjects = ", ".join(r.get("subjects", []))[:20]
+            if len(", ".join(r.get("subjects", []))) > 20: subjects += "..."
+            
+            # Format time
+            ts = r.get("total_time", 0)
+            time_str = f"{ts//60}m {ts%60}s"
+            
+            table_data.append([
+                r.get("name", "Noma'lum")[:15],
+                subjects or "N/A",
+                r.get("total_correct", 0),
+                time_str,
+                r.get("quizzes_count", 0)
+            ])
+            
+        the_table = ax.table(cellText=table_data, colLabels=columns, loc='center', cellLoc='center')
+        the_table.auto_set_font_size(False)
+        the_table.set_fontsize(12)
+        the_table.scale(1.2, 2.5)
+        
+        # Styling
+        for (row, col), cell in the_table.get_celld().items():
+            cell.set_text_props(color='white')
+            if row == 0:
+                cell.set_facecolor('#00ccff')
+                cell.set_text_props(weight='bold', color='black')
+            else:
+                cell.set_facecolor('#1e1e1e')
+        
+        plt.title("TOP 5 FOYDALANUVCHILAR", color='#00ccff', fontsize=18, pad=20)
+        
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png', dpi=100, facecolor='#121212')
+        buf.seek(0)
+        plt.close()
+        
+        await message.answer_photo(
+            photo=BufferedInputFile(buf.read(), filename="top5.png"),
+            caption="📊 <b>Eng yaxshi 5 foydalanuvchi natijalari</b>"
+        )
+    except Exception as e:
+        track_error(f"Results table error: {e}")
+        await message.answer(f"❌ Jadval yaratishda xatolik.")
 
 @dp.message(F.text == "👥 Obunchilar")
 async def admin_subscribers_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
     
-    if not os.path.exists(USERS_FILE):
+    data = get_data()
+    users = data.get("users", {})
+    
+    if not users:
         await message.answer("❌ Hali hech qanday obunachi yo'q.")
         return
     
-    try:
-        with open(USERS_FILE, "r") as f:
-            data = json.load(f)
-    except:
-        data = {}
-    
-    if not data:
-        await message.answer("❌ Hali hech qanday obunachi yo'q.")
-        return
-    
-    total = len(data)
+    total = len(users)
     
     # Sort by join date (newest first)
-    sorted_users = sorted(data.items(), key=lambda x: x[1].get("joined_date", ""), reverse=True)
+    sorted_users = sorted(users.items(), key=lambda x: x[1].get("joined_date", ""), reverse=True)
     
-    # Paginate - send in chunks of 50
-    chunk_size = 50
+    # Paginate - send in chunks of 10 to include photos
+    chunk_size = 10
     chunks = [sorted_users[i:i + chunk_size] for i in range(0, len(sorted_users), chunk_size)]
     
     for page_num, chunk in enumerate(chunks, 1):
-        text = f"👥 <b>Obunchilar</b> (sahifa {page_num}/{len(chunks)})\n"
-        text += f"📊 Jami: <b>{total}</b> ta\n"
-        text += f"{'─' * 25}\n\n"
+        await message.answer(f"👥 <b>Obunchilar</b> (sahifa {page_num}/{len(chunks)})\n📊 Jami: <b>{total}</b> ta")
         
         for uid, user_info in chunk:
             full_name = user_info.get("full_name", "Noma'lum")
@@ -1258,25 +1771,38 @@ async def admin_subscribers_handler(message: Message):
             last_name = user_info.get("last_name", "")
             username = user_info.get("username", "")
             joined = user_info.get("joined_date", "N/A")
+            photo_path = user_info.get("photo")
             
             user_link = f'<a href="tg://user?id={uid}">{full_name}</a>'
             username_text = f" (@{username})" if username else ""
             name_parts = f"{first_name} {last_name}".strip()
             
-            text += (
-                f"👤 {user_link}{username_text}\n"
-                f"   🆔 <code>{uid}</code>\n"
-                f"   📛 {name_parts}\n"
-                f"   📅 Qo'shilgan: {joined}\n\n"
+            caption = (
+                f"👤 <b>Akkaunt:</b> {user_link}\n"
+                f"   👤 <b>Username:</b> {username_text}\n"
+                f"   📅 <b>Qo'shilgan:</b> {joined}"
             )
+            
+            try:
+                if photo_path and os.path.exists(photo_path):
+                    from aiogram.types import FSInputFile
+                    photo = FSInputFile(photo_path)
+                    await message.answer_photo(photo, caption=caption)
+                else:
+                    await message.answer(caption)
+            except Exception as e:
+                logging.error(f"Error sending photo for user {uid}: {e}")
+                await message.answer(caption)
         
-        await message.answer(text, disable_web_page_preview=True)
+        await asyncio.sleep(0.5) # Avoid flood limits
 
 @dp.message()
 async def echo_handler(message: Message) -> None:
-    await message.answer("🤔 Menyudan tanlang.", reply_markup=get_main_menu(message.from_user.username))
+    await message.answer("🤔 Menyudan tanlang.", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
 
 async def main() -> None:
+    # Drop pending updates when the bot starts
+    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
 if __name__ == "__main__":

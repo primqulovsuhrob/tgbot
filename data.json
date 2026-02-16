@@ -1,0 +1,87 @@
+{
+    "users": {
+        "8473456462": {
+            "id": 8473456462,
+            "first_name": "Munisa",
+            "last_name": "",
+            "full_name": "Munisa",
+            "username": "",
+            "joined_date": "2026-02-11 17:18",
+            "photo": "photos/8473456462.jpg",
+            "age": "10-18"
+        },
+        "8170458930": {
+            "id": 8170458930,
+            "first_name": "Suhrobjon",
+            "last_name": "",
+            "full_name": "Suhrobjon",
+            "username": "Suhrob031",
+            "joined_date": "2026-02-11 17:18",
+            "age": "10-18",
+            "photo": "photos/8170458930.jpg"
+        },
+        "6782407998": {
+            "id": 6782407998,
+            "first_name": "Шохжахон",
+            "last_name": "",
+            "full_name": "Шохжахон",
+            "username": "",
+            "joined_date": "2026-02-15 03:03",
+            "age": "25-35"
+        },
+        "123456789": {
+            "id": 123456789,
+            "first_name": "Test",
+            "last_name": "User",
+            "full_name": "Test User",
+            "username": "testuser",
+            "joined_date": "2026-02-15 14:14",
+            "photo": "photos/123456789.jpg"
+        },
+        "7537966029": {
+            "id": 7537966029,
+            "first_name": "Sanjar",
+            "last_name": "O'ktamov",
+            "full_name": "Sanjar O'ktamov",
+            "username": "Sanjaroktamov",
+            "joined_date": "2026-02-15 14:58",
+            "photo": "photos/7537966029.jpg",
+            "age": "18-25"
+        }
+    },
+    "results": {
+        "8170458930": {
+            "name": "Suhrobjon",
+            "username": "Suhrob031",
+            "best_score": 0,
+            "total_correct": 0,
+            "total_questions": 62,
+            "quizzes_count": 3,
+            "total_time": 471,
+            "subjects": [
+                "Matematika"
+            ],
+            "date": "2026-02-15 15:15"
+        }
+    },
+    "stats": {
+        "deepseek_calls": 7,
+        "daily_calls": {
+            "2026-02-11": 3,
+            "2026-02-15": 4
+        },
+        "last_call": "2026-02-15 15:34:10",
+        "deepseek_durations": [
+            48.45202016830444
+        ],
+        "quiz_gen_durations": [
+            48.45202016830444
+        ],
+        "ai_durations": [
+            48.45202016830444,
+            37.443684816360474,
+            44.220245599746704,
+            46.046711444854736
+        ]
+    }
+}
