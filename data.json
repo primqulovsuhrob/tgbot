@@ -47,30 +47,90 @@
             "joined_date": "2026-02-15 14:58",
             "photo": "photos/7537966029.jpg",
             "age": "18-25"
+        },
+        "8348627250": {
+            "id": 8348627250,
+            "first_name": "Abdurahmonovna✨",
+            "last_name": "",
+            "full_name": "Abdurahmonovna✨",
+            "username": "abdu_rahmonovna2507",
+            "joined_date": "2026-02-18 13:33",
+            "photo": "photos/8348627250.jpg",
+            "age": "18-25"
+        },
+        "8440323840": {
+            "id": 8440323840,
+            "first_name": "Гулсанам",
+            "last_name": "",
+            "full_name": "Гулсанам",
+            "username": "",
+            "joined_date": "2026-02-20 00:29",
+            "photo": "photos/8440323840.jpg",
+            "age": "10-18"
+        },
+        "8253342858": {
+            "id": 8253342858,
+            "first_name": "🫡",
+            "last_name": "",
+            "full_name": "🫡",
+            "username": "",
+            "joined_date": "2026-02-20 09:39",
+            "photo": "photos/8253342858.jpg",
+            "age": "18-25"
         }
     },
     "results": {
         "8170458930": {
             "name": "Suhrobjon",
             "username": "Suhrob031",
+            "best_score": 10,
+            "total_correct": 10,
+            "total_questions": 98,
+            "quizzes_count": 7,
+            "total_time": 1006,
+            "subjects": [
+                "Matematika",
+                "Ona tili",
+                "Ingliz tili"
+            ],
+            "date": "2026-02-20 09:44"
+        },
+        "8440323840": {
+            "name": "Гулсанам",
+            "username": null,
+            "best_score": 12,
+            "total_correct": 12,
+            "total_questions": 30,
+            "quizzes_count": 2,
+            "total_time": 801,
+            "subjects": [
+                "Rus tili"
+            ],
+            "date": "2026-02-20 00:45"
+        },
+        "7537966029": {
+            "name": "Sanjar O'ktamov",
+            "username": "Sanjaroktamov",
             "best_score": 0,
             "total_correct": 0,
-            "total_questions": 62,
-            "quizzes_count": 3,
-            "total_time": 471,
+            "total_questions": 2,
+            "quizzes_count": 1,
+            "total_time": 186,
             "subjects": [
-                "Matematika"
+                "🗣️ Murojatlar"
             ],
-            "date": "2026-02-15 15:15"
+            "date": "2026-02-20 09:25"
         }
     },
     "stats": {
-        "deepseek_calls": 7,
+        "deepseek_calls": 13,
         "daily_calls": {
             "2026-02-11": 3,
-            "2026-02-15": 4
+            "2026-02-15": 4,
+            "2026-02-17": 1,
+            "2026-02-20": 5
         },
-        "last_call": "2026-02-15 15:34:10",
+        "last_call": "2026-02-20 09:45:20",
         "deepseek_durations": [
             48.45202016830444
         ],
@@ -81,7 +141,13 @@
             48.45202016830444,
             37.443684816360474,
             44.220245599746704,
-            46.046711444854736
+            46.046711444854736,
+            43.111157178878784,
+            37.203659534454346,
+            34.03298091888428,
+            74.06457209587097,
+            35.93238687515259,
+            27.748712301254272
         ]
     }
 }

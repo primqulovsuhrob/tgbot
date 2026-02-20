@@ -2089,5 +2089,1835 @@
                 "correct": 2
             }
         ]
+    },
+    "Ona tili": {
+        "10-18": [
+            {
+                "question": "So'zning ma'nosi jihatidan qarindosh bo'lmagan so'zlar guruhini aniqlang.",
+                "options": [
+                    "Sinonimlar",
+                    "Antonimlar",
+                    "Omonimlar",
+                    "Paronimlar"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qaysi gapda fe'l o'tgan zamonda kelgan?",
+                "options": [
+                    "Men kitob o'qiyman",
+                    "Ular maktabga ketishdi",
+                    "Sen kechroq kelasan",
+                    "Biz ertaga sayr qilamiz"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "\"Olovli\" so'zi qanday so'z turkumiga mansub?",
+                "options": [
+                    "Ot",
+                    "Sifat",
+                    "Ravish",
+                    "Fe'l"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qaysi juftlik sinonim so'zlardan iborat?",
+                "options": [
+                    "Katta - kichik",
+                    "Yorug' - ziyoli",
+                    "Oq - qora",
+                    "Tez - shoshilinch"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Tarkibiga ko'ra qaysi gap oddiy gap hisoblanadi?",
+                "options": [
+                    "Yomg'ir yog'di va havo sovidi",
+                    "U kelgach, biz suhbatlashdik",
+                    "Men kitob o'qidim",
+                    "Sen ham, men ham keldik"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "\"Mehmonxona\" so'zi qanday usulda yasalgan?",
+                "options": [
+                    "Qo'shma",
+                    "Qo'shimcha orqali",
+                    "Qisqartma",
+                    "Takroriy"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi gapda ravish qatnashgan?",
+                "options": [
+                    "U juda chiroyli qo'shiq aytdi",
+                    "Bu mashina yangi",
+                    "Olovli nutq eshitildi",
+                    "Daraxt baland o'sgan"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "So'zning asosiy qismi nima deb ataladi?",
+                "options": [
+                    "Old qo'shimcha",
+                    "O'zak",
+                    "Orqa qo'shimcha",
+                    "Qo'shimcha"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qaysi juftlikda antonim so'zlar berilgan?",
+                "options": [
+                    "Yengil - oson",
+                    "Qalin - yo'g'on",
+                    "Issiq - iliq",
+                    "Yorqin - porloq"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Fe'lning nisbat shakli qaysi javobda to'g'ri ko'rsatilgan?",
+                "options": [
+                    "O'qiydigan",
+                    "O'qigan",
+                    "O'qiydi",
+                    "O'qig'uch"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi gapda son olmoshi qatnashgan?",
+                "options": [
+                    "Ular parkga ketishdi",
+                    "Bunday kitobni men ham o'qidim",
+                    "Har kim o'z vazifasini bilsin",
+                    "Besh bola futbol o'ynadi"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "\"Kitobxon\" so'zi qanday ma'noni ifodalaydi?",
+                "options": [
+                    "Kitob sotuvchi",
+                    "Kitob yozuvchi",
+                    "Kitob o'quvchi",
+                    "Kitob saqlovchi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qaysi gapda undalma qatnashgan?",
+                "options": [
+                    "Voy, bu qanday go'zal manzara!",
+                    "Sen ertaga kelasanmi?",
+                    "U uyda edi",
+                    "Mening kitobim qayerda?"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "So'zning ko'chma ma'noda qo'llanilgan holati qaysi javobda berilgan?",
+                "options": [
+                    "Daryo oqimi",
+                    "Vaqt oqimi",
+                    "Tosh oqimi",
+                    "Havo oqimi"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qaysi gap bog'lovchi orqali bog'langan?",
+                "options": [
+                    "Yomg'ir yog'di, havo sovidi",
+                    "U keladi, ketadi",
+                    "Men o'qidim, u eshitdi",
+                    "Sen ham, men ham"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "\"O'qituvchi\" so'zi qanday so'z turkumiga mansub?",
+                "options": [
+                    "Ot",
+                    "Sifat",
+                    "Fe'l",
+                    "Ravish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi gapda kesim mavjud?",
+                "options": [
+                    "Bu - mening do'stim",
+                    "Uy qurildi",
+                    "Mening kitobim",
+                    "Sen ketding"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Fe'lning shart mayli qaysi javobda to'g'ri ko'rsatilgan?",
+                "options": [
+                    "O'qisa",
+                    "O'qiydi",
+                    "O'qigan",
+                    "O'qig'uch"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi so'z paronim hisoblanadi?",
+                "options": [
+                    "Adabiy - adabiyot",
+                    "Yozuv - yozuvchi",
+                    "Tarix - tarixiy",
+                    "Bino - binokor"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Gapning asosiy a'zolari qaysilar?",
+                "options": [
+                    "Ega va kesim",
+                    "Ega va to'ldiruvchi",
+                    "Ega va kesim",
+                    "Ega va hikoya qismi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qaysi gapda fe'l kelajak zamonda kelgan?",
+                "options": [
+                    "Men maktabga bordim",
+                    "U uyda o'tiradi",
+                    "Biz ertaga sayr qilamiz",
+                    "Sen kecha kelding"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "\"Ona tilim\" iborasida qanday so'z birikmasi mavjud?",
+                "options": [
+                    "Ot birikmasi",
+                    "Sifat birikmasi",
+                    "Son birikmasi",
+                    "Fe'l birikmasi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi gapda olmosh qatnashmagan?",
+                "options": [
+                    "Bu mening kitobim",
+                    "Ular kelishdi",
+                    "Kim keldi?",
+                    "Gul juda go'zal"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "So'zning to'g'ri yozilishini aniqlang.",
+                "options": [
+                    "Kitobxona",
+                    "Kitob hona",
+                    "Kitob-xona",
+                    "Kitob'xona"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qaysi gapda sifat darajasi ko'rsatilgan?",
+                "options": [
+                    "U juda aqlli bola",
+                    "Bu qizil gul",
+                    "Mening yangi kitobim",
+                    "Baland daraxt"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Fe'lning buyruq mayli qaysi javobda to'g'ri ko'rsatilgan?",
+                "options": [
+                    "O'qiydi",
+                    "O'qisin",
+                    "O'qigan",
+                    "O'qig'uch"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qaysi so'z qo'shma so'z hisoblanadi?",
+                "options": [
+                    "Kitobxon",
+                    "O'qituvchi",
+                    "Ona-bola",
+                    "Yozuvchi"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Gapning bo'laklarini ajratish qoidasini aniqlang.",
+                "options": [
+                    "Ega va kesim ajratilmaydi",
+                    "Faqat ega ajratiladi",
+                    "Faqat kesim ajratiladi",
+                    "Ega va kesim ajratiladi"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Qaysi gapda ravish vazifasida so'z qatnashgan?",
+                "options": [
+                    "U tez yugurdi",
+                    "Go'zal gul",
+                    "Katta uy",
+                    "Aqlli bola"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "\"O'qish\" so'zi qanday so'z turkumiga mansub?",
+                "options": [
+                    "Ot",
+                    "Sifat",
+                    "Fe'l",
+                    "Ravish"
+                ],
+                "correct": 0
+            }
+        ]
+    },
+    "Rus tili": {
+        "18-25": [
+            {
+                "question": "Какой из этих глаголов является переходным?",
+                "options": [
+                    "Спать",
+                    "Бежать",
+                    "Читать",
+                    "Улыбаться"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Какое из этих слов является паронимом к слову 'адресат'?",
+                "options": [
+                    "Адресант",
+                    "Адресация",
+                    "Адресный",
+                    "Адресовать"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком предложении есть ошибка в употреблении деепричастного оборота?",
+                "options": [
+                    "Подъезжая к станции, у меня слетела шляпа.",
+                    "Читая книгу, я делал пометки.",
+                    "Уходя, гасите свет.",
+                    "Обдумав предложение, он согласился."
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой падеж требует предлог 'благодаря'?",
+                "options": [
+                    "Родительный",
+                    "Дательный",
+                    "Винительный",
+                    "Творительный"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов имеет значение 'искусство красноречия'?",
+                "options": [
+                    "Риторика",
+                    "Оратория",
+                    "Элоквенция",
+                    "Гомилетика"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком варианте правильно указаны все слова с пропущенной буквой 'и'?",
+                "options": [
+                    "Пр...брежный, пр...ступник, пр...зидент",
+                    "Пр...зыв, пр...ключение, пр...мудрый",
+                    "Пр...вратный, пр...клонный, пр...зирать",
+                    "Пр...бывать, пр...следовать, пр...тензия"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Какое из этих слов является устаревшим синонимом слова 'глаза'?",
+                "options": [
+                    "Очи",
+                    "Зенки",
+                    "Глазищи",
+                    "Вёдры"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой стиль речи характеризуется использованием терминов, клише и отсутствием эмоциональности?",
+                "options": [
+                    "Разговорный",
+                    "Официально-деловой",
+                    "Публицистический",
+                    "Художественный"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком предложении нарушены нормы управления?",
+                "options": [
+                    "Уверенность в победу придавала силы.",
+                    "Отзыв о работе был положительным.",
+                    "Характерно для него это поведение.",
+                    "Обратите внимание на этот факт."
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какое из этих слов не является неологизмом XXI века?",
+                "options": [
+                    "Коворкинг",
+                    "Фейк",
+                    "Хипстер",
+                    "Спутник"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Какой троп используется в выражении 'золотые руки'?",
+                "options": [
+                    "Метонимия",
+                    "Синекдоха",
+                    "Метафора",
+                    "Гипербола"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "В каком слове ударение падает на первый слог?",
+                "options": [
+                    "Жалюзи",
+                    "Торты",
+                    "Каталог",
+                    "Договор"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов является заимствованным из французского языка?",
+                "options": [
+                    "Балет",
+                    "Пирамида",
+                    "Церковь",
+                    "Тетрадь"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Как называется раздел языкознания, изучающий происхождение слов?",
+                "options": [
+                    "Этимология",
+                    "Ономастика",
+                    "Семантика",
+                    "Лексикология"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком предложении нет грамматической ошибки?",
+                "options": [
+                    "Ихний дом находится рядом.",
+                    "Ложьте книгу на стол.",
+                    "Едьте прямо.",
+                    "Положите документы в папку."
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Какое из этих слов является антонимом к слову 'альтруизм'?",
+                "options": [
+                    "Эгоизм",
+                    "Филантропия",
+                    "Гуманизм",
+                    "Благородство"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой союз является присоединительным?",
+                "options": [
+                    "И",
+                    "Но",
+                    "Причём",
+                    "Если"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "В каком слове пишется 'нн'?",
+                "options": [
+                    "Жаре..ая картошка",
+                    "Кова..ый сундук",
+                    "Нежда..ый гость",
+                    "Лома..ая линия"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Как называется стилистическая фигура, основанная на повторении начальных частей строк?",
+                "options": [
+                    "Эпифора",
+                    "Анафора",
+                    "Градация",
+                    "Инверсия"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов является диалектизмом?",
+                "options": [
+                    "Бурак (свекла)",
+                    "Куртка",
+                    "Компьютер",
+                    "Университет"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой падеж используется при отрицании с глаголом 'иметь'?",
+                "options": [
+                    "Именительный",
+                    "Родительный",
+                    "Винительный",
+                    "Дательный"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком предложении есть плеоназм?",
+                "options": [
+                    "Он вернулся обратно в город.",
+                    "Я купил новый автомобиль.",
+                    "Она улыбнулась и засмеялась.",
+                    "Вперёд, к новым победам!"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какое из этих слов является палиндромом?",
+                "options": [
+                    "Казак",
+                    "Молот",
+                    "Потоп",
+                    "Все варианты верны"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Как называется словарный состав языка?",
+                "options": [
+                    "Лексика",
+                    "Фразеология",
+                    "Грамматика",
+                    "Фонетика"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком слове правильно выделена буква, обозначающая ударный гласный?",
+                "options": [
+                    "СредствА",
+                    "ИскрА",
+                    "ДОгмат",
+                    "КрАны"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какой из этих жанров не является эпическим?",
+                "options": [
+                    "Роман",
+                    "Поэма",
+                    "Ода",
+                    "Рассказ"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Какое слово является синонимом к слову 'априори'?",
+                "options": [
+                    "Заранее",
+                    "Извне",
+                    "Эмпирически",
+                    "Постфактум"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком предложении правильно употреблено слово 'экономный'?",
+                "options": [
+                    "Он был экономный в тратах.",
+                    "Это экономный вариант решения.",
+                    "Экономный человек всегда считает деньги.",
+                    "Все варианты верны."
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Как называется замена грубого выражения более мягким?",
+                "options": [
+                    "Эвфемизм",
+                    "Перифраз",
+                    "Ирония",
+                    "Сарказм"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какое из этих слов пишется через дефис?",
+                "options": [
+                    "(По)видимому",
+                    "(По)другому",
+                    "(По)русски",
+                    "(По)новому"
+                ],
+                "correct": 0
+            }
+        ],
+        "10-18": [
+            {
+                "question": "Какой падеж отвечает на вопросы кого? чего?",
+                "options": [
+                    "Именительный",
+                    "Родительный",
+                    "Дательный",
+                    "Винительный"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Сколько букв в русском алфавите?",
+                "options": [
+                    "31",
+                    "32",
+                    "33",
+                    "30"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Как называется часть слова, которая стоит перед корнем?",
+                "options": [
+                    "Суффикс",
+                    "Окончание",
+                    "Приставка",
+                    "Основа"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Какое слово является синонимом к слову \"смелый\"?",
+                "options": [
+                    "Трусливый",
+                    "Отважный",
+                    "Робкий",
+                    "Слабый"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком слове пишется буква \"и\" после \"ц\"?",
+                "options": [
+                    "Ц...рк",
+                    "Ц...ган",
+                    "Ц...плёнок",
+                    "Акац...я"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Как называется предложение, в котором одна грамматическая основа?",
+                "options": [
+                    "Простое",
+                    "Сложное",
+                    "Распространённое",
+                    "Восклицательное"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какое из этих слов является наречием?",
+                "options": [
+                    "Быстрый",
+                    "Бег",
+                    "Быстро",
+                    "Бежать"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "В каком варианте на месте пропуска пишется буква \"е\"?",
+                "options": [
+                    "Увидеть вдалек...",
+                    "Встретиться попозж...",
+                    "Сделать получш...",
+                    "Упасть навзнич..."
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой частью речи является слово \"пять\" в предложении \"Купи пять яблок\"?",
+                "options": [
+                    "Существительным",
+                    "Прилагательным",
+                    "Числительным",
+                    "Наречием"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "В каком слове пишется мягкий знак после шипящей?",
+                "options": [
+                    "Мяч...",
+                    "Доч...",
+                    "Плащ...",
+                    "Ключ..."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Как называется художественное определение?",
+                "options": [
+                    "Сравнение",
+                    "Эпитет",
+                    "Метафора",
+                    "Олицетворение"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов является сложносокращённым?",
+                "options": [
+                    "Пароход",
+                    "Вуз",
+                    "Самолёт",
+                    "Пешеход"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком предложении есть обращение?",
+                "options": [
+                    "Ребята, будьте внимательны.",
+                    "Ребята гуляли во дворе.",
+                    "Как хорошо, что вы пришли, ребята!",
+                    "Ребята — это молодые люди."
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какой суффикс используется для образования существительных со значением \"маленький предмет\"?",
+                "options": [
+                    "-ик",
+                    "-тель",
+                    "-ость",
+                    "-ник"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Какое из этих слов является антонимом к слову \"свет\"?",
+                "options": [
+                    "Яркий",
+                    "Тьма",
+                    "Луч",
+                    "Солнце"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком слове ударение падает на первый слог?",
+                "options": [
+                    "звонит",
+                    "торты",
+                    "щавель",
+                    "свекла"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Как называется разговор двух или более лиц?",
+                "options": [
+                    "Монолог",
+                    "Диалог",
+                    "Полилог",
+                    "Речь"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов пишется через дефис?",
+                "options": [
+                    "(по)новому",
+                    "(по)видимому",
+                    "(по)братски",
+                    "(по)другому"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какой член предложения отвечает на вопросы косвенных падежей?",
+                "options": [
+                    "Подлежащее",
+                    "Сказуемое",
+                    "Дополнение",
+                    "Обстоятельство"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "В каком предложении есть однородные члены?",
+                "options": [
+                    "Светило яркое, тёплое солнце.",
+                    "Мы читали и обсуждали книгу.",
+                    "Лес, окутанный туманом, спал.",
+                    "Птицы улетели в тёплые края."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Как называется главная часть сложноподчинённого предложения?",
+                "options": [
+                    "Придаточная",
+                    "Главная",
+                    "Основа",
+                    "Сказуемое"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов является омонимом к слову \"коса\" (причёска)?",
+                "options": [
+                    "Коса (инструмент)",
+                    "Коса (отмель)",
+                    "Косой (кривой)",
+                    "Косить (траву)"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "В каком слове пишется приставка \"пре-\" со значением \"очень\"?",
+                "options": [
+                    "пр...ступник",
+                    "пр...красный",
+                    "пр...бывать в городе",
+                    "пр...града"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какой знак препинания ставится между частями бессоюзного сложного предложения со значением противопоставления?",
+                "options": [
+                    "Запятая",
+                    "Тире",
+                    "Двоеточие",
+                    "Точка с запятой"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих слов является фразеологизмом?",
+                "options": [
+                    "Бежать быстро",
+                    "Бить баклуши",
+                    "Красная машина",
+                    "Высокое дерево"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "В каком предложении глагол стоит в повелительном наклонении?",
+                "options": [
+                    "Я прочитаю эту книгу.",
+                    "Прочитай эту книгу.",
+                    "Ты прочитаешь эту книгу.",
+                    "Он прочитал бы эту книгу."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Как называется стиль речи, используемый в официальных документах?",
+                "options": [
+                    "Разговорный",
+                    "Художественный",
+                    "Публицистический",
+                    "Официально-деловой"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "В каком слове пишется \"нн\"?",
+                "options": [
+                    "варё...ый картофель",
+                    "кова...ый сундук",
+                    "нежда...ый гость",
+                    "пута...ый ответ"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Какой частью речи является слово \"мой\"?",
+                "options": [
+                    "Прилагательное",
+                    "Местоимение",
+                    "Числительное",
+                    "Существительное"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Какое из этих предложений является сложносочинённым?",
+                "options": [
+                    "Мы вышли, когда стемнело.",
+                    "Солнце светит, и птицы поют.",
+                    "Я знаю, что ты прав.",
+                    "Дорога, которая вела к лесу, была размыта."
+                ],
+                "correct": 1
+            }
+        ]
+    },
+    "🗣️ Murojatlar": {
+        "18-25": [
+            {
+                "question": "Sun'iy intellektning 'kuchli AI' va 'zaif AI' tushunchalari orasidagi asosiy farq nimada?",
+                "options": [
+                    "Kuchli AI inson kabi umumiy aql-idrokka ega, zaif AI esa muayyan vazifalarni bajaradi",
+                    "Kuchli AI faqat ilmiy tadqiqotlarda, zaif AI esa amaliy dasturlarda qo'llaniladi",
+                    "Kuchli AI superkompyuterlar talab qiladi, zaif AI oddiy kompyuterlarda ishlaydi",
+                    "Kuchli AI insonni almashtiradi, zaif AI insonga yordamchi vositadir"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Ma'lumotlar bazasida ACID xossalariga kiruvchi 'Isolation' prinsipi nimani anglatadi?",
+                "options": [
+                    "Har bir transaksiya boshqalaridan izolyatsiyalangan holda amalga oshirilishi",
+                    "Transaksiyaning atomikligi va butunligi",
+                    "Tizimning uzilishidan keyin ma'lumotlarni tiklash qobiliyati",
+                    "Ma'lumotlar uzatilishida xavfsizlikni ta'minlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kvant hisoblashda klassik bitdan farqli ravishda kubitning asosiy xususiyati nimada?",
+                "options": [
+                    "Bir vaqtning o'zida 0 va 1 holatlarida bo'lishi (superpozitsiya)",
+                    "Tezroq hisoblash imkoniyati",
+                    "Kamroq energiya sarflashi",
+                    "Xotira hajmining kattaligi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Blockchain texnologiyasida 'Proof of Stake' konsensus mexanizmi qanday ishlaydi?",
+                "options": [
+                    "Token egalari bloklarni tasdiqlash huquqini olish uchun tokenlarini garovga qo'yadi",
+                    "Murakkab matematik masalalarni yechish orqali bloklar yaratiladi",
+                    "Markaziy organ tomonidan tasdiqlovchilar tayinlanadi",
+                    "Tasodifiy tanlangan foydalanuvchilar bloklarni tasdiqlaydi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Neuronli tarmoqlarda 'overfitting' muammosini kamaytirishning eng samarali usullaridan biri qaysi?",
+                "options": [
+                    "Regularizatsiya (masalan, L1 yoki L2)",
+                    "Neuronlar sonini oshirish",
+                    "O'qitish ma'lumotlarini kamaytirish",
+                    "Faollashtirish funksiyasini o'zgartirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kiberxavfsizlikda 'Zero-day' zaifligi deb nimaga aytiladi?",
+                "options": [
+                    "Ishlab chiqaruvchiga ma'lum bo'lmagan va hali yamalanmagan xavfsizlik zaifligi",
+                    "Parolni nol marta urinishda topish",
+                    "Hech qanday himoyasi yo'q tizim",
+                    "Kun oxirida paydo bo'ladigan xavflar"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Dasturlashda SOLID prinsiplaridan 'Interface Segregation Principle' nimani nazarda tutadi?",
+                "options": [
+                    "Interfeyslar maqsadga muvofiq bo'linishi va ortiqcha metodlarni o'z ichiga olmasligi kerak",
+                    "Barcha interfeyslar bitta asosiy interfeysdan meros olishi kerak",
+                    "Interfeys faqat bir turdagi ma'lumotlar bilan ishlashi kerak",
+                    "Interfeys metodlari faqat bitta vazifani bajarishi kerak"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kompyuter tarmoqlarida 'TCP' va 'UDP' protokollari orasidagi asosiy farq nimada?",
+                "options": [
+                    "TCP ishonchli, UDP esa ishonchsiz ulanishni ta'minlaydi",
+                    "TCP tezroq, UDP sekinroq",
+                    "TCP faqat mahalliy tarmoqlarda, UDP internetda ishlatiladi",
+                    "TCP faqat kichik, UDP esa katta ma'lumotlar uzatish uchun"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Ma'shulot menejmentida 'Agile' va 'Waterfall' metodologiyalari orasidagi asosiy farq nimada?",
+                "options": [
+                    "Agile iterativ va moslashuvchan, Waterfall esa ketma-ket va qat'iy bosqichlarga ega",
+                    "Agile arzonroq, Waterfall qimmatroq",
+                    "Agile faqat kichik loyihalar uchun, Waterfall katta loyihalar uchun",
+                    "Agile texnik jihatdan murakkab, Waterfall oddiy"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'Q-learning' algoritmi qaysi mashina o'rganish turiga kiradi?",
+                "options": [
+                    "Mustahkamlash o'rganish (Reinforcement Learning)",
+                    "Nazoratli o'rganish (Supervised Learning)",
+                    "Nazoratsiz o'rganish (Unsupervised Learning)",
+                    "Yarim nazoratli o'rganish (Semi-supervised Learning)"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kriptografiyada 'asimmertik shifrlash'ning asosiy xususiyati nimada?",
+                "options": [
+                    "Ochiq va yopiq kalitlarning juftligidan foydalanish",
+                    "Shifrlash va shifrdan chiqarish uchun bir xil kalitdan foydalanish",
+                    "Faqat raqamli imzolar uchun ishlatilishi",
+                    "Simmetrik shifrlashdan sekinroq ishlashi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Bulutli hisoblashda 'IaaS', 'PaaS' va 'SaaS' modellari orasidagi farq nimada?",
+                "options": [
+                    "Xizmat darajasi: IaaS infratuzilma, PaaS platforma, SaaS dasturiy ta'minotni taqdim etadi",
+                    "Narxi: IaaS eng qimmat, SaaS eng arzon",
+                    "Murakkabligi: IaaS eng oddiy, SaaS eng murakkab",
+                    "Xavfsizligi: IaaS eng xavfsiz, SaaS eng kam xavfsiz"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Verilganliklar tahlilida 'anomaly detection' (g'ayritabiiylikni aniqlash)ning asosiy maqsadi nima?",
+                "options": [
+                    "Oddiy naqshlardan sezilarli darajada chetga chiqqan ma'lumotlarni aniqlash",
+                    "Ma'lumotlarni tozalash",
+                    "Ma'lumotlar bazasini indekslash",
+                    "Statistik hisob-kitoblarni amalga oshirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "DevOps amaliyotida 'Continuous Integration'ning asosiy maqsadi nima?",
+                "options": [
+                    "Dasturchilarning kod o'zgarishlarini tez-tez birlashtirib, konfliktlarni bartaraf etish",
+                    "Dasturni doimiy ravishda ishlab chiqarish muhitiga joylashtirish",
+                    "Serverlarni avtomatik boshqarish",
+                    "Foydalanuvchilarga yangi funksiyalarni tez yetkazib berish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kompyuter grafikasida 'ray tracing' texnologiyasining asosiy ustunligi nimada?",
+                "options": [
+                    "Yorug'likning realistik tarqalishini aniq modellashtirish",
+                    "Grafikani tezroq ishlashini ta'minlash",
+                    "Kamroq xotira sarflash",
+                    "Oddiy grafik kartalarda ishlash imkoniyati"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'transformer' arxitekturasi qaysi sohada inqilob qildi?",
+                "options": [
+                    "Tabiiy tilni qayta ishlash (NLP)",
+                    "Kompyuter ko'rish",
+                    "Robototexnika",
+                    "Ovozni aniqlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Ma'lumotlar tuzilmasi va algoritmlarda 'Big O notation' nimani ifodalaydi?",
+                "options": [
+                    "Algoritmning eng yomon holatdagi vaqt yoki xotira murakkabligi",
+                    "Algoritmning o'rtacha ishlash tezligi",
+                    "Algoritmning dasturlash tilidagi ifodalanishi",
+                    "Algoritmning matematik asosi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Internet of Things (IoT) tizimlarida 'MQTT' protokoli nima uchun afzallik hisoblanadi?",
+                "options": [
+                    "Kam energiya sarfi va keng tarmoqlarda samarali ishlashi",
+                    "Eng yuqori tezlikni ta'minlashi",
+                    "Eng yaxshi xavfsizlikni ta'minlashi",
+                    "Barcha qurilmalar bilan mos kelishi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Dasturiy ta'minot testlashda 'unit test' va 'integration test' orasidagi farq nimada?",
+                "options": [
+                    "Unit test alohida komponentlarni, integration test esa ularning o'zaro ishlashini tekshiradi",
+                    "Unit test butun tizimni, integration test alohida qismlarni tekshiradi",
+                    "Unit test avtomatik, integration test qo'lda amalga oshiriladi",
+                    "Unit test tezroq, integration test sekinroq"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'ethical AI' (axloqiy AI)ning asosiy tamoyillaridan biri qaysi?",
+                "options": [
+                    "Shaffoflik va tushunarillik",
+                    "Maksimal darajada avtonomlik",
+                    "Minimal inson aralashuvi",
+                    "Iqtisodiy samaradorlik"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Katta ma'lumotlar (Big Data) tahlilida 'MapReduce' modeli qanday ishlaydi?",
+                "options": [
+                    "Ma'lumotlarni parallel ravishda qayta ishlash uchun ikkita bosqichdan foydalanadi: map (xaritalash) va reduce (qisqartirish)",
+                    "Ma'lumotlarni xaritada ko'rsatish",
+                    "Ma'lumotlar hajmini kamaytirish",
+                    "Ma'lumotlarni markaziy serverda jamlash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Operatsion tizimlarda 'virtual memory' (virtual xotira)ning asosiy vazifasi nima?",
+                "options": [
+                    "Jismoniy xotira hajmini kengaytirib ko'rsatish va dasturlarga kattaroq manzili maydon taqdim etish",
+                    "Xotirani tezroq ishlashini ta'minlash",
+                    "Xotirani xavfsizroq qilish",
+                    "Energiya tejash"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'GAN' (Generative Adversarial Network) qanday ishlaydi?",
+                "options": [
+                    "Ikkita neuronli tarmoq (generator va discriminator) o'zaro raqobat orqali yangi ma'lumotlar yaratadi",
+                    "Bir nechta tarmoqlar birgalikda ishlaydi",
+                    "Faqat tasvirlarni qayta ishlaydi",
+                    "Avtomatik ravishda kod yozadi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Dasturlashda 'recursive function'ning asosiy xususiyati nimada?",
+                "options": [
+                    "Funksiya o'zini o'zi chaqiradi",
+                    "Funksiya bir nechta qiymat qaytaradi",
+                    "Funksiya hech qanday parametr olmaydi",
+                    "Funksiya faqat raqamlar bilan ishlaydi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kompyuter tarmoqlarida 'load balancing'ning asosiy maqsadi nima?",
+                "options": [
+                    "Trafikni bir nechta serverlar o'rtasida taqsimlab, yukni muvozanatlash",
+                    "Internet tezligini oshirish",
+                    "Tarmoq xavfsizligini ta'minlash",
+                    "Ma'lumotlar uzatish hajmini kamaytirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Ma'lumotlar bazasida 'NoSQL' va an'anaviy 'SQL' bazalari orasidagi asosiy farq nimada?",
+                "options": [
+                    "NoSQL ma'lumotlarni jadval o'rniga boshqa modellar (hujjat, kalit-qiymat, graf) bilan saqlaydi",
+                    "NoSQL faqat katta ma'lumotlar uchun",
+                    "NoSQL sekinroq ishlaydi",
+                    "NoSQL faqat ochiq manbali"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'attention mechanism'ning asosiy vazifasi nima?",
+                "options": [
+                    "Ma'lumotlarning muhim qismlariga ko'proq e'tibor qaratish",
+                    "Modelning xotirasini oshirish",
+                    "Hisoblash tezligini kamaytirish",
+                    "Model hajmini kichraytirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kriptovalyutalarda 'smart contract' (aqlli shartnoma) nimani anglatadi?",
+                "options": [
+                    "O'z-o'zidan bajariladigan, shartlar kodga yozilgan shartnoma",
+                    "Qonuniy jihatdan majburiy shartnoma",
+                    "Faqat advokatlar tomonidan tuzilgan shartnoma",
+                    "Oddiy elektron shartnoma"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Dasturiy ta'minot arxitekturasi patternslaridan 'Microservices'ning asosiy afzalligi qaysi?",
+                "options": [
+                    "Mustaqil rivojlanish va miqyoslanish imkoniyati",
+                    "Monolit arxitekturadan oddiyroq",
+                    "Kamroq server resurslari talab qiladi",
+                    "Barcha dasturlash tillarida ishlaydi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Sun'iy intellektda 'transfer learning'ning asosiy maqsadi nima?",
+                "options": [
+                    "Oldin o'rgatilgan modelni yangi vazifa uchun asos qilib olish va vaqtni tejash",
+                    "Modelni noldan o'qitish",
+                    "Modelni barcha vazifalar uchun universal qilish",
+                    "Model hajmini kamaytirish"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kiberxavfsizlikda 'penetration testing'ning asosiy maqsadi nima?",
+                "options": [
+                    "Tizimning xavfsizlik zaifliklarini haqiqiy hujum simulyatsiyasi orqali aniqlash",
+                    "Tizimning ishlash tezligini o'lchash",
+                    "Foydalanuvchilarni o'qitish",
+                    "Dasturiy ta'minotni yangilash"
+                ],
+                "correct": 0
+            }
+        ]
+    },
+    "Ingliz tili": {
+        "18-25": [
+            {
+                "question": "Which of the following sentences contains a subjunctive mood?",
+                "options": [
+                    "If I was you, I would study harder.",
+                    "I wish I were more confident.",
+                    "She talks as if she knows everything.",
+                    "If it rains, we will cancel."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the term for a word that is spelled the same forwards and backwards?",
+                "options": [
+                    "Onomatopoeia",
+                    "Palindrome",
+                    "Anagram",
+                    "Homophone"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "In the sentence 'The meticulous editor scrutinized the manuscript,' what does 'scrutinized' most closely mean?",
+                "options": [
+                    "Glanced at",
+                    "Praised",
+                    "Examined carefully",
+                    "Rewrote"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which literary device is primarily used in the phrase 'The wind whispered through the trees'?",
+                "options": [
+                    "Simile",
+                    "Metonymy",
+                    "Personification",
+                    "Hyperbole"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the grammatical function of 'running' in the sentence: 'Running late, she skipped breakfast.'?",
+                "options": [
+                    "Present participle",
+                    "Gerund",
+                    "Infinitive",
+                    "Past participle"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Which of the following is an example of a portmanteau?",
+                "options": [
+                    "Brunch",
+                    "Nevertheless",
+                    "Bookkeeper",
+                    "Indescribable"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Identify the sentence with correct subject-verb agreement:",
+                "options": [
+                    "Neither the students nor the teacher are responsible.",
+                    "The collection of poems are published.",
+                    "Each of the candidates has passed.",
+                    "The jury are in their seats."
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What does the prefix 'mis-' typically indicate in words like 'misinterpret' or 'mislead'?",
+                "options": [
+                    "Again",
+                    "Before",
+                    "Wrongly",
+                    "Between"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which of these is a complex sentence?",
+                "options": [
+                    "She laughed and he smiled.",
+                    "After she finished her work, she went home.",
+                    "The sun was shining brightly.",
+                    "They arrived early but left late."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "In phonetics, what is the term for the smallest unit of sound that can distinguish meaning?",
+                "options": [
+                    "Syllable",
+                    "Morpheme",
+                    "Phoneme",
+                    "Grapheme"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which rhetorical appeal is primarily concerned with credibility and trustworthiness?",
+                "options": [
+                    "Pathos",
+                    "Logos",
+                    "Ethos",
+                    "Kairos"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the term for a word that has the opposite meaning of another word?",
+                "options": [
+                    "Synonym",
+                    "Homonym",
+                    "Antonym",
+                    "Heteronym"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which sentence demonstrates the correct use of the semicolon?",
+                "options": [
+                    "I need to buy: eggs, milk, and bread.",
+                    "She loves reading; especially mystery novels.",
+                    "The concert was canceled; however, refunds were issued.",
+                    "He traveled to Paris, France; Rome, Italy; and Madrid, Spain."
+                ],
+                "correct": 3
+            },
+            {
+                "question": "What is the name for a figure of speech that uses understatement by negating the opposite?",
+                "options": [
+                    "Irony",
+                    "Litotes",
+                    "Euphemism",
+                    "Meiosis"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "In the context of English syntax, what is an 'adjunct'?",
+                "options": [
+                    "The main verb of a sentence",
+                    "An optional element that adds information",
+                    "The subject of a clause",
+                    "A necessary complement"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which of the following words is an example of a 'contronym' (a word with two opposite meanings)?",
+                "options": [
+                    "Fast",
+                    "Sanction",
+                    "Clear",
+                    "Bright"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the primary stress pattern in the word 'photographic'?",
+                "options": [
+                    "PHO-to-gra-phic",
+                    "pho-TO-gra-phic",
+                    "pho-to-GRA-phic",
+                    "pho-to-gra-PHIC"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which grammatical case is typically used for the subject of a finite verb?",
+                "options": [
+                    "Nominative",
+                    "Accusative",
+                    "Genitive",
+                    "Dative"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Identify the sentence that uses the passive voice:",
+                "options": [
+                    "The committee approved the proposal.",
+                    "The proposal was approved by the committee.",
+                    "They are considering the proposal.",
+                    "We will review the proposal tomorrow."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the term for the omission of a sound or syllable in speech (e.g., 'cam'ra' for 'camera')?",
+                "options": [
+                    "Elision",
+                    "Epenthesis",
+                    "Metathesis",
+                    "Assimilation"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Which of these is an example of a non-finite verb form?",
+                "options": [
+                    "She writes.",
+                    "They have written.",
+                    "To write",
+                    "He wrote."
+                ],
+                "correct": 2
+            },
+            {
+                "question": "In pragmatics, what does the term 'implicature' refer to?",
+                "options": [
+                    "The literal meaning of an utterance",
+                    "What is suggested but not explicitly stated",
+                    "The grammatical structure of a sentence",
+                    "The phonetic realization of words"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which literary period is most associated with writers like Samuel Johnson and Alexander Pope?",
+                "options": [
+                    "Romanticism",
+                    "Victorian",
+                    "Augustan",
+                    "Modernism"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the term for a verb that requires a direct object to complete its meaning?",
+                "options": [
+                    "Intransitive verb",
+                    "Transitive verb",
+                    "Linking verb",
+                    "Auxiliary verb"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which of the following sentences contains a dangling modifier?",
+                "options": [
+                    "Running quickly, the bus was caught.",
+                    "While eating dinner, the phone rang.",
+                    "Having finished the assignment, the TV was turned on.",
+                    "All of the above"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "In morphology, what is a 'cranberry morpheme'?",
+                "options": [
+                    "A morpheme that changes grammatical category",
+                    "A bound morpheme with no independent meaning",
+                    "A morpheme that appears only in one word",
+                    "A derivational affix"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which vowel sound is represented by the International Phonetic Alphabet symbol /ʌ/ as in 'cup'?",
+                "options": [
+                    "Short 'a' as in 'cat'",
+                    "Short 'u' as in 'put'",
+                    "Open-mid back unrounded vowel",
+                    "Schwa"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the term for the process of word formation by combining two or more words (e.g., 'website')?",
+                "options": [
+                    "Derivation",
+                    "Compounding",
+                    "Conversion",
+                    "Back-formation"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which of these is an example of a 'garden path sentence'?",
+                "options": [
+                    "The old man the boat.",
+                    "Colorless green ideas sleep furiously.",
+                    "The horse raced past the barn fell.",
+                    "Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo."
+                ],
+                "correct": 2
+            },
+            {
+                "question": "In discourse analysis, what does 'cohesion' primarily refer to?",
+                "options": [
+                    "The logical flow of ideas",
+                    "The grammatical and lexical linking within a text",
+                    "The social context of communication",
+                    "The speaker's intention"
+                ],
+                "correct": 1
+            }
+        ],
+        "10-18": [
+            {
+                "question": "What is the past tense of the verb 'go'?",
+                "options": [
+                    "goed",
+                    "went",
+                    "gone",
+                    "goes"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which word is a synonym for 'happy'?",
+                "options": [
+                    "Sad",
+                    "Joyful",
+                    "Angry",
+                    "Tired"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the plural form of 'child'?",
+                "options": [
+                    "Childs",
+                    "Children",
+                    "Childes",
+                    "Child"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which sentence is in the present continuous tense?",
+                "options": [
+                    "I eat breakfast.",
+                    "I ate breakfast.",
+                    "I am eating breakfast.",
+                    "I will eat breakfast."
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the comparative form of 'good'?",
+                "options": [
+                    "Gooder",
+                    "Better",
+                    "Best",
+                    "More good"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which of these is a preposition?",
+                "options": [
+                    "Run",
+                    "Beautiful",
+                    "Under",
+                    "Quickly"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What is the opposite of 'begin'?",
+                "options": [
+                    "Start",
+                    "Finish",
+                    "Continue",
+                    "Pause"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Identify the noun in this sentence: 'The cat sleeps on the sofa.'",
+                "options": [
+                    "The",
+                    "Cat",
+                    "Sleeps",
+                    "On"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which word is spelled correctly?",
+                "options": [
+                    "Recieve",
+                    "Receive",
+                    "Receeve",
+                    "Resieve"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the past participle of 'write'?",
+                "options": [
+                    "Writed",
+                    "Wrote",
+                    "Written",
+                    "Writing"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which is a compound sentence?",
+                "options": [
+                    "I like tea and coffee.",
+                    "I like tea, but I prefer coffee.",
+                    "Drinking hot tea.",
+                    "Tea is my favorite drink."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the superlative form of 'far'?",
+                "options": [
+                    "Farrer",
+                    "Farest",
+                    "Farther",
+                    "Farthest"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Which of these is an example of a first conditional?",
+                "options": [
+                    "If it rains, we will cancel the trip.",
+                    "If it rained, we canceled the trip.",
+                    "If it had rained, we would have canceled.",
+                    "If it rains, we cancel the trip."
+                ],
+                "correct": 0
+            },
+            {
+                "question": "What is the correct question tag for: 'She can swim, _____?'",
+                "options": [
+                    "can she?",
+                    "can't she?",
+                    "does she?",
+                    "isn't it?"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which word is an adverb?",
+                "options": [
+                    "Happiness",
+                    "Run",
+                    "Quickly",
+                    "Blue"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Choose the correct possessive form: 'This is _____ book.' (referring to a girl)",
+                "options": [
+                    "she",
+                    "her",
+                    "hers",
+                    "she's"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the meaning of the prefix 'un-' as in 'unhappy'?",
+                "options": [
+                    "Again",
+                    "Not",
+                    "Before",
+                    "Too much"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which sentence is in the passive voice?",
+                "options": [
+                    "The dog chased the cat.",
+                    "The cat was chased by the dog.",
+                    "The cat chased the dog.",
+                    "The dog is chasing the cat."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the correct order: 'I _____ to the store yesterday.'",
+                "options": [
+                    "go",
+                    "went",
+                    "gone",
+                    "going"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Which is an example of a metaphor?",
+                "options": [
+                    "Her smile is like sunshine.",
+                    "He is a lion in battle.",
+                    "The wind howled loudly.",
+                    "I'm as hungry as a wolf."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the main verb in: 'She has been reading a novel.'?",
+                "options": [
+                    "has",
+                    "been",
+                    "reading",
+                    "novel"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which word is a conjunction?",
+                "options": [
+                    "House",
+                    "And",
+                    "Green",
+                    "Slowly"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the correct plural of 'mouse' (the animal)?",
+                "options": [
+                    "Mouses",
+                    "Mice",
+                    "Mouse",
+                    "Mices"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Identify the direct object in: 'She gave him a gift.'",
+                "options": [
+                    "She",
+                    "gave",
+                    "him",
+                    "gift"
+                ],
+                "correct": 3
+            },
+            {
+                "question": "Which tense is used for a scheduled future event?",
+                "options": [
+                    "Present Simple",
+                    "Present Continuous",
+                    "Future Simple",
+                    "Past Simple"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "What is the correct contraction for 'they are'?",
+                "options": [
+                    "they're",
+                    "their",
+                    "there",
+                    "the're"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Which sentence is grammatically correct?",
+                "options": [
+                    "There is many books.",
+                    "There are many books.",
+                    "There am many books.",
+                    "There be many books."
+                ],
+                "correct": 1
+            },
+            {
+                "question": "What is the opposite of 'ancient'?",
+                "options": [
+                    "Old",
+                    "Historic",
+                    "Modern",
+                    "Classical"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Which punctuation mark is used to show possession?",
+                "options": [
+                    "Comma (,)",
+                    "Period (.)",
+                    "Apostrophe (')",
+                    "Question mark (?)"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "What type of word is 'amazing' in 'an amazing view'?",
+                "options": [
+                    "Noun",
+                    "Verb",
+                    "Adverb",
+                    "Adjective"
+                ],
+                "correct": 3
+            }
+        ]
     }
 }

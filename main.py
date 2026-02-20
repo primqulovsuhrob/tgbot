@@ -820,7 +820,7 @@ async def send_quiz_poll(message: Message, user_id: int):
             InlineKeyboardButton(text="🟢 Sodda", callback_data="regen_easy"),
             InlineKeyboardButton(text="🔴 Murakkab", callback_data="regen_hard")
         ],
-        [InlineKeyboardButton(text="📊 Natijalarim", callback_data="show_results")]
+        [InlineKeyboardButton(text="🛑 To'gatish", callback_data="stop_quiz")]
     ])
     await message.answer("👆 Javob bering yoki:", reply_markup=results_keyboard)
 
@@ -923,7 +923,7 @@ async def send_next_quiz_question(chat_id: int, user_id: int):
             InlineKeyboardButton(text="🟢 Sodda", callback_data="regen_easy"),
             InlineKeyboardButton(text="🔴 Murakkab", callback_data="regen_hard")
         ],
-        [InlineKeyboardButton(text="📊 Natijalarim", callback_data="show_results")]
+        [InlineKeyboardButton(text="🛑 To'gatish", callback_data="stop_quiz")]
     ])
     await bot.send_message(chat_id, "👆 Javob bering yoki:", reply_markup=results_keyboard)
 
@@ -968,9 +968,9 @@ async def difficulty_regeneration_handler(callback: CallbackQuery, state: FSMCon
     await callback.message.answer(f"🚀 Yangi 30 ta savol tayyor!")
     await send_quiz_poll(callback.message, user_id)
 
-@dp.callback_query(F.data == "show_results")
-async def show_results_callback(callback: CallbackQuery, state: FSMContext):
-    """Handle Natijalarim button press - end quiz and show results"""
+@dp.callback_query(F.data == "stop_quiz")
+async def stop_quiz_callback(callback: CallbackQuery, state: FSMContext):
+    """Handle To'gatish button press - cancel quiz and return to main menu"""
     user_id = callback.from_user.id
     
     if user_id not in user_data:
