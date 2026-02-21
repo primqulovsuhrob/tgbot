@@ -77,6 +77,16 @@
             "joined_date": "2026-02-20 09:39",
             "photo": "photos/8253342858.jpg",
             "age": "18-25"
+        },
+        "921168105": {
+            "id": 921168105,
+            "first_name": "Gulchexra",
+            "last_name": "Duvlanova",
+            "full_name": "Gulchexra Duvlanova",
+            "username": "gulchexra_duvlanova",
+            "joined_date": "2026-02-20 13:53",
+            "photo": "photos/921168105.jpg",
+            "age": "10-18"
         }
     },
     "results": {
@@ -85,9 +95,9 @@
             "username": "Suhrob031",
             "best_score": 10,
             "total_correct": 10,
-            "total_questions": 98,
-            "quizzes_count": 7,
-            "total_time": 1006,
+            "total_questions": 102,
+            "quizzes_count": 9,
+            "total_time": 1137,
             "subjects": [
                 "Matematika",
                 "Ona tili",
@@ -120,17 +130,31 @@
                 "🗣️ Murojatlar"
             ],
             "date": "2026-02-20 09:25"
+        },
+        "921168105": {
+            "name": "Gulchexra Duvlanova",
+            "username": "gulchexra_duvlanova",
+            "best_score": 1,
+            "total_correct": 1,
+            "total_questions": 7,
+            "quizzes_count": 2,
+            "total_time": 238,
+            "subjects": [
+                "Matematika",
+                "Ingliz tili"
+            ],
+            "date": "2026-02-20 13:59"
         }
     },
     "stats": {
-        "deepseek_calls": 13,
+        "deepseek_calls": 16,
         "daily_calls": {
             "2026-02-11": 3,
             "2026-02-15": 4,
             "2026-02-17": 1,
-            "2026-02-20": 5
+            "2026-02-20": 8
         },
-        "last_call": "2026-02-20 09:45:20",
+        "last_call": "2026-02-20 10:12:26",
         "deepseek_durations": [
             48.45202016830444
         ],
@@ -147,7 +171,20 @@
             34.03298091888428,
             74.06457209587097,
             35.93238687515259,
-            27.748712301254272
+            27.748712301254272,
+            2.381080389022827,
+            7.056013822555542,
+            7.511716604232788
+        ],
+        "errors": [
+            {
+                "time": "2026-02-20 10:15:44",
+                "msg": "AI chat error: Error code: 400 - {'error': {'message': 'Failed to deserialize the JSON body into the target type: messages[1]: unknown variant `image_url`, expected `text` at line 1 column 44500', 'ty"
+            },
+            {
+                "time": "2026-02-20 10:16:17",
+                "msg": "AI chat error: Error code: 400 - {'error': {'message': 'Failed to deserialize the JSON body into the target type: messages[1]: unknown variant `image_url`, expected `text` at line 1 column 44500', 'ty"
+            }
         ]
     }
 }
