@@ -228,9 +228,9 @@ def get_server_info():
 
 def get_main_menu(username: str = None, user_id: int = None) -> ReplyKeyboardMarkup:
     buttons = [
-        [KeyboardButton(text="📝 Quiz yaratish"), KeyboardButton(text="🚀 Quiz boshlash")],
-        [KeyboardButton(text="📊 Natijalarim"), KeyboardButton(text="🗣️ Murojatlar")],
-        [KeyboardButton(text="ℹ️ Yordam")]
+        [KeyboardButton(text="🎯 Quiz boshlash"), KeyboardButton(text="🛠️ Quiz yaratish")],
+        [KeyboardButton(text="🏆 Natijalarim"), KeyboardButton(text="💬 Murojatlar")],
+        [KeyboardButton(text="💡 Yordam")]
     ]
     
     is_admin = False
@@ -240,15 +240,15 @@ def get_main_menu(username: str = None, user_id: int = None) -> ReplyKeyboardMar
         is_admin = True
         
     if is_admin:
-        buttons.append([KeyboardButton(text="🔑 Admen")])
+        buttons.append([KeyboardButton(text="🔐 Admin Panel")])
     
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
 admin_menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="📊 Natijalar"), KeyboardButton(text="📈 Reyting")],
-        [KeyboardButton(text="👥 Obunchilar")],
-        [KeyboardButton(text="⬅️ Ortga")]
+        [KeyboardButton(text="📊 Umumiy Natijalar"), KeyboardButton(text="📈 Tizim Reytingi")],
+        [KeyboardButton(text="👥 Foydalanuvchilar")],
+        [KeyboardButton(text="🔙 Ortga")]
     ],
     resize_keyboard=True
 )
@@ -268,8 +268,8 @@ class QuizStates(StatesGroup):
 
 age_menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="👶 10-18"), KeyboardButton(text="👨 18-25")],
-        [KeyboardButton(text="👴 25-35")]
+        [KeyboardButton(text="🐣 10-18 yosh"), KeyboardButton(text="🎓 18-25 yosh")],
+        [KeyboardButton(text="👔 25-35 yosh")]
     ],
     resize_keyboard=True
 )
@@ -284,7 +284,7 @@ def get_subject_keyboard() -> ReplyKeyboardMarkup:
     
     # Load from quizzes.json
     quizzes = load_json(QUIZ_FILE)
-    existing_texts = {"📐 Matematika", "📖 Ona tili", "🏛️ Tarix", "🇬🇧 Ingliz tili", "⚡ Fizika", "⬅️ Ortga"}
+    existing_texts = {"📐 Matematika", "📖 Ona tili", "🏛️ Tarix", "🇬🇧 Ingliz tili", "⚡ Fizika", "🔙 Ortga"}
     
     extra_buttons = []
     # Add files from Yuklangan Fayllar
@@ -306,23 +306,23 @@ def get_subject_keyboard() -> ReplyKeyboardMarkup:
     for i in range(0, len(extra_buttons), 2):
         buttons.append(extra_buttons[i:i+2])
         
-    buttons.append([KeyboardButton(text="⬅️ Ortga")])
+    buttons.append([KeyboardButton(text="🔙 Ortga")])
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
 subject_menu = get_subject_keyboard() # Keep as default but handlers should call function
 
 time_menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="⏱️ 30 soniya"), KeyboardButton(text="⏱️ 1 daqiqa"), KeyboardButton(text="⏱️ 3 daqiqa")],
-        [KeyboardButton(text="⬅️ Ortga")]
+        [KeyboardButton(text="⚡ 30 soniya"), KeyboardButton(text="⏱️ 1 daqiqa"), KeyboardButton(text="⏳ 3 daqiqa")],
+        [KeyboardButton(text="🔙 Ortga")]
     ],
     resize_keyboard=True
 )
 
 quiz_creation_menu = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="📚 Mavzu tanlash"), KeyboardButton(text="📁 Fayl tanlash")],
-        [KeyboardButton(text="⬅️ Ortga")]
+        [KeyboardButton(text="📖 Mavzu tanlash"), KeyboardButton(text="📂 Fayl yuklash")],
+        [KeyboardButton(text="🔙 Ortga")]
     ],
     resize_keyboard=True
 )
@@ -732,7 +732,7 @@ async def handle_poll_timeout(chat_id: int, user_id: int, poll_id: str, timeout:
             
             await bot.send_message(
                 chat_id, 
-                f"🛑 <b>Siz ketma-ket 3 marta javob bermadingiz!</b>\n\n"
+                f"🚫 <b>Siz ketma-ket 3 marta javob bermadingiz!</b>\n\n"
                 f"🏁 <b>O'yin yakunlandi.</b>\n"
                 f"✅ To'g'ri javoblar: <b>{correct}</b> ta",
                 reply_markup=get_main_menu(username, user_id)
@@ -756,7 +756,7 @@ async def handle_poll_timeout(chat_id: int, user_id: int, poll_id: str, timeout:
     # Send timeout message
     if current_idx < len(questions):
         try:
-            await bot.send_message(chat_id, f"⏰ <b>Vaqt tugadi!</b> ({data['consecutive_timeouts']}/3)")
+            await bot.send_message(chat_id, f"🔴 <b>Vaqt tugadi!</b> ⚠️ ({data['consecutive_timeouts']}/3)")
         except:
             pass
             
@@ -794,7 +794,7 @@ async def send_quiz_poll(message: Message, user_id: int):
     question = questions[current]
     
     poll_message = await message.answer_poll(
-        question=f"❓ Savol {current + 1}/{len(questions)}\n\n{question['question'][:255]}",
+        question=f"🧩 Savol {current + 1}/{len(questions)}\n\n{question['question'][:255]}",
         options=question["options"][:10],
         type=PollType.QUIZ,
         correct_option_id=question["correct"],
@@ -897,7 +897,7 @@ async def send_next_quiz_question(chat_id: int, user_id: int):
     
     poll_message = await bot.send_poll(
         chat_id=chat_id,
-        question=f"❓ Savol {current + 1}/{len(questions)}\n\n{question['question'][:255]}",
+        question=f"⚡ Savol {current + 1}/{len(questions)}\n\n{question['question'][:255]}",
         options=question["options"][:10],
         type=PollType.QUIZ,
         correct_option_id=question["correct"],
@@ -980,52 +980,46 @@ async def stop_quiz_callback(callback: CallbackQuery, state: FSMContext):
     data = user_data[user_id]
     correct = data.get("correct_answers", 0)
     current = data.get("current_question", 0)
-    questions = data.get("questions", [])
-    total = len(questions)
+    total = len(data.get("questions", []))
     
-    if current == 0:
-        await callback.answer("Hali savollarga javob bermadingiz!")
-        return
+    # Stop active poll timer by marking as answered
+    data["poll_answered"] = True
+    data["current_poll_id"] = None
     
-    percentage = (correct / current) * 100 if current > 0 else 0
+    # Save result if any questions were answered
+    time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
+    subject = data.get("subject", "Noma'lum")
+    if current > 0:
+        save_user_result(
+            user_id=user_id,
+            full_name=callback.from_user.full_name,
+            username=callback.from_user.username,
+            score=correct, total_questions=current,
+            time_spent=time_spent,
+            subject=subject
+        )
     
-    if percentage >= 85:
-        grade = "🏆 A'lo! (Siz mastersiz!)"
-    elif percentage >= 70:
-        grade = "👍 Yaxshi! (Yana ozgina harakat)"
-    elif percentage >= 50:
-        grade = "📚 O'rtacha (Ko'proq o'qing)"
-    else:
-        grade = "💪 Ko'proq mashq qiling (Davom eting!)"
+    # Clear quiz session data to stop all timers
+    del user_data[user_id]
+    
+    progress = int((correct / total) * 10) if total > 0 else 0
+    bar = "🟩" * progress + "⬜" * (10 - progress)
     
     await callback.message.edit_text(
-        f"🏁 <b>Quiz to'xtatildi!</b>\n\n"
+        f"🛑 <b>Quiz to'xtatildi!</b>\n\n"
         f"📊 <b>Natijangiz:</b>\n"
-        f"✅ To'g'ri: {correct} ta\n"
-        f"❌ Noto'g'ri: {current - correct} ta\n"
-        f"📈 Foiz: {percentage:.1f}%\n"
-        f"🎯 Baho: {grade}\n\n"
+        f"|{bar}| {correct}/{current}\n\n"
+        f"✅ To'g'ri: <b>{correct}</b> ta\n"
+        f"❌ Noto'g'ri: <b>{current - correct}</b> ta\n"
         f"<i>Jami {total} tadan {current} tasiga javob berdingiz.</i>"
     )
     
-    await callback.answer("Quiz tugatildi!")
+    await callback.answer("Quiz to'gatildi!")
     
     await bot.send_message(
         callback.message.chat.id,
         "Bosh menyu:",
         reply_markup=get_main_menu(callback.from_user.username, callback.from_user.id)
-    )
-    
-    # Save result
-    time_spent = int(time.time() - data.get("start_quiz_time", time.time()))
-    subject = data.get("subject", "Noma'lum")
-    save_user_result(
-        user_id=callback.from_user.id,
-        full_name=callback.from_user.full_name,
-        username=callback.from_user.username,
-        score=correct, total_questions=current,
-        time_spent=time_spent,
-        subject=subject
     )
     
     await state.clear()
@@ -1052,13 +1046,17 @@ async def show_final_results_callback(callback: CallbackQuery):
     else:
         grade = "💪 Ko'proq mashq qiling (Davom eting!)"
         
+    progress = int((correct / total) * 10) if total > 0 else 0
+    bar = "🟩" * progress + "⬜" * (10 - progress)
+    
     await callback.message.edit_text(
-        f"📊 <b>Quiz Yakuniy Natijasi:</b>\n\n"
-        f"✅ To'g'ri: {correct} ta\n"
-        f"❌ Noto'g'ri: {total - correct} ta\n"
-        f"📈 Foiz: {percentage:.1f}%\n"
-        f"🎯 Baho: {grade}\n\n"
-        f"<i>Jami {total} ta savol bo'ldi.</i>"
+        f"🏁 <b>Quiz Yakuniy Natijasi:</b>\n\n"
+        f"📊 <b>Ko'rsatkich:</b>\n"
+        f"|{bar}| {percentage:.1f}%\n\n"
+        f"✅ To'g'ri: <b>{correct}</b> ta\n"
+        f"❌ Noto'g'ri: <b>{total - correct}</b> ta\n"
+        f"🎯 Baho: <b>{grade}</b>\n\n"
+        f"<i>Jami {total} ta savol yakunlandi.</i>"
     )
     await callback.answer()
 
@@ -1123,20 +1121,20 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
     if stored_user and "age" in stored_user:
         user_data[user_id]["age"] = stored_user["age"]
         await message.answer(
-            f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
-            f"🤖 <b>AI Quiz Bot</b>\n\n"
-            f"Siz avval ro'yxatdan o'tgansiz.",
+            f"👋 Salom, {html.bold(message.from_user.full_name)}!\n\n"
+            f"🚀 <b>AI Quiz Bot</b>ga qaytganingizdan xursandmiz!\n"
+            f"Bilimingizni sinashga tayyormisiz?",
             reply_markup=get_main_menu(message.from_user.username, message.from_user.id)
         )
     else:
         await message.answer(
-            f"🎉 Salom, {html.bold(message.from_user.full_name)}!\n\n"
-            f"🤖 <b>AI Quiz Bot</b>\n\n"
-            f"👇 Yoshingizni tanlang:",
+            f"👋 Salom, {html.bold(message.from_user.full_name)}!\n\n"
+            f"🚀 <b>AI Quiz Bot</b>ga xush kelibsiz!\n"
+            f"Boshlashdan oldin yoshingizni tanlang:",
             reply_markup=age_menu
         )
 
-@dp.message(F.text.in_({"👶 10-18", "👨 18-25", "👴 25-35"}))
+@dp.message(F.text.in_({"🐣 10-18 yosh", "🎓 18-25 yosh", "👔 25-35 yosh"}))
 async def age_selection_handler(message: Message, state: FSMContext) -> None:
     age = message.text.split(" ")[1]
     user_id = message.from_user.id
@@ -1149,26 +1147,26 @@ async def age_selection_handler(message: Message, state: FSMContext) -> None:
     update_user_age(user_id, age)
     
     await message.answer(
-        f"✅ {message.text}\n\n📋 Menyudan tanlang:", 
+        f"✅ <b>{message.text}</b> tanlandi!\n\n📋 <b>Bosh menyu:</b>", 
         reply_markup=get_main_menu(message.from_user.username, message.from_user.id)
     )
 
-@dp.message(F.text == "🚀 Quiz boshlash")
+@dp.message(F.text == "🎯 Quiz boshlash")
 async def quiz_start_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(QuizStates.selecting_subject)
-    await message.answer("📚 <b>Fanni tanlang:</b>\n<i>(O'zingiz yuklagan fayllar ham shu yerda)</i>", 
+    await message.answer("📚 <b>Fanni tanlang:</b>", 
                          reply_markup=get_subject_keyboard())
 
-@dp.message(F.text == "📝 Quiz yaratish")
+@dp.message(F.text == "🛠️ Quiz yaratish")
 async def quiz_creation_handler(message: Message, state: FSMContext) -> None:
     await message.answer(
-        "📝 <b>Quiz yaratish</b>\n\n"
-        "📚 <b>Mavzu tanlash</b> - AI savol yaratadi\n"
-        "📁 <b>Fayl tanlash</b> - Fayldagi savollar",
+        "🛠️ <b>Quiz yaratish yo'li:</b>\n\n"
+        "📖 <b>Mavzu tanlash</b> - AI ixtiyoriy mavzuda savol tuzadi\n"
+        "📂 <b>Fayl yuklash</b> - PDF/DOCX/TXT fayldan test olish",
         reply_markup=quiz_creation_menu
     )
 
-@dp.message(F.text == "📚 Mavzu tanlash")
+@dp.message(F.text == "📖 Mavzu tanlash")
 async def topic_selection_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(QuizStates.entering_topic)
     await message.answer("📚 <b>Mavzu kiriting:</b>", reply_markup=cancel_menu)
@@ -1179,9 +1177,9 @@ async def topic_entered_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(QuizStates.topic_selecting_time)
     await message.answer(f"✅ Mavzu: <b>{message.text}</b>\n\n⏱️ Vaqt:", reply_markup=time_menu)
 
-@dp.message(QuizStates.topic_selecting_time, F.text.in_({"⏱️ 30 soniya", "⏱️ 1 daqiqa", "⏱️ 3 daqiqa"}))
+@dp.message(QuizStates.topic_selecting_time, F.text.in_({"⚡ 30 soniya", "⏱️ 1 daqiqa", "⏳ 3 daqiqa"}))
 async def topic_time_selected_handler(message: Message, state: FSMContext) -> None:
-    time_map = {"⏱️ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏱️ 3 daqiqa": 180}
+    time_map = {"⚡ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏳ 3 daqiqa": 180}
     user_id = message.from_user.id
     user_data[user_id]["time"] = time_map.get(message.text, 30)
     user_data[user_id]["chat_id"] = message.chat.id
@@ -1221,7 +1219,7 @@ async def topic_time_selected_handler(message: Message, state: FSMContext) -> No
 
 # ============ FILE UPLOAD - PARSE EXISTING QUESTIONS ============
 
-@dp.message(F.text.contains("📁 Fayl tanlash"))
+@dp.message(F.text.contains("📂 Fayl yuklash"))
 async def file_selection_handler(message: Message, state: FSMContext) -> None:
     logging.info(f"User {message.from_user.id} clicked Fayl tanlash")
     await state.set_state(QuizStates.waiting_file)
@@ -1323,9 +1321,9 @@ async def file_received_handler(message: Message, state: FSMContext) -> None:
         logging.error(f"File error: {e}\n{traceback.format_exc()}")
         await loading_msg.edit_text("❌ Xatolik yuz berdi. Qayta urinib ko'ring.")
 
-@dp.message(QuizStates.file_selecting_time, F.text.in_({"⏱️ 30 soniya", "⏱️ 1 daqiqa", "⏱️ 3 daqiqa"}))
+@dp.message(QuizStates.file_selecting_time, F.text.in_({"⚡ 30 soniya", "⏱️ 1 daqiqa", "⏳ 3 daqiqa"}))
 async def file_time_selected_handler(message: Message, state: FSMContext) -> None:
-    time_map = {"⏱️ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏱️ 3 daqiqa": 180}
+    time_map = {"⚡ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏳ 3 daqiqa": 180}
     user_id = message.from_user.id
     data = user_data[user_id]
     data["time"] = time_map.get(message.text, 30)
@@ -1359,7 +1357,7 @@ async def file_time_selected_handler(message: Message, state: FSMContext) -> Non
 
 @dp.message(QuizStates.selecting_subject)
 async def subject_selection_handler(message: Message, state: FSMContext) -> None:
-    if message.text == "⬅️ Ortga":
+    if message.text == "🔙 Ortga":
         return await back_handler(message, state)
         
     subject_map = {
@@ -1406,9 +1404,9 @@ async def subject_selection_handler(message: Message, state: FSMContext) -> None
     await state.set_state(QuizStates.selecting_time)
     await message.answer(f"✅ {message.text}\n\n⏱️ Vaqtni tanlang:", reply_markup=time_menu)
 
-@dp.message(QuizStates.selecting_time, F.text.in_({"⏱️ 30 soniya", "⏱️ 1 daqiqa", "⏱️ 3 daqiqa"}))
+@dp.message(QuizStates.selecting_time, F.text.in_({"⚡ 30 soniya", "⏱️ 1 daqiqa", "⏳ 3 daqiqa"}))
 async def time_selection_handler(message: Message, state: FSMContext) -> None:
-    time_map = {"⏱️ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏱️ 3 daqiqa": 180}
+    time_map = {"⚡ 30 soniya": 30, "⏱️ 1 daqiqa": 60, "⏳ 3 daqiqa": 180}
     user_id = message.from_user.id
     user_data[user_id]["time"] = time_map.get(message.text, 30)
     user_data[user_id]["chat_id"] = message.chat.id
@@ -1475,7 +1473,7 @@ async def stop_quiz_handler(message: Message, state: FSMContext) -> None:
         await message.answer("Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
     await state.clear()
 
-@dp.message(F.text == "🗣️ Murojatlar")
+@dp.message(F.text == "💬 Murojatlar")
 async def murojatlar_handler(message: Message) -> None:
     await message.answer(
         "🗣️ <b>Murojatlar va takliflar uchun guruhimizga qo'shiling:</b>",
@@ -1484,7 +1482,7 @@ async def murojatlar_handler(message: Message) -> None:
         ])
     )
 
-@dp.message(F.text == "📊 Natijalarim")
+@dp.message(F.text == "🏆 Natijalarim")
 async def user_results_handler(message: Message):
     user_id = str(message.from_user.id)
     data = get_data()
@@ -1510,38 +1508,39 @@ async def user_results_handler(message: Message):
     s = total_time % 60
     time_str = f"{h}s {m}d {s}s" if h > 0 else f"{m}d {s}s"
     
+    # Personal best and general stats
     caption = (
-        f"📊 <b>Sizning umumiy natijalaringiz:</b>\n\n"
+        f"🏆 <b>Sizning umumiy natijalaringiz:</b>\n\n"
         f"📝 Yakunlangan quizlar: <b>{quizzes_count}</b> ta\n"
         f"✅ To'g'ri javoblar: <b>{total_correct}</b> ta\n"
         f"❌ Noto'g'ri javoblar: <b>{total_incorrect}</b> ta\n"
-        f"⏱️ Umumiy sarflangan vaqt: <b>{time_str}</b>\n"
-        f"⚡ O'rtacha bir savolga: <b>{avg_time_per_question:.1f}</b> soniya\n\n"
-        f"🏆 Eng yaxshi natija: <b>{r.get('best_score', 0)}</b> ball"
+        f"⏱️ Sarflangan vaqt: <b>{time_str}</b>\n"
+        f"⚡ Bir savolga o'rtacha: <b>{avg_time_per_question:.1f}</b> s\n\n"
+        f"🏅 Eng yaxshi natija: <b>{r.get('best_score', 0)}</b> ball"
     )
     
     await message.answer(caption)
 
-@dp.message(F.text == "⬅️ Ortga")
+@dp.message(F.text == "🔙 Ortga")
 async def back_handler(message: Message, state: FSMContext) -> None:
     await state.clear()
     await message.answer("📋 Menyu:", reply_markup=get_main_menu(message.from_user.username, message.from_user.id))
 
-@dp.message(F.text == "ℹ️ Yordam")
+@dp.message(F.text == "💡 Yordam")
 async def help_handler(message: Message) -> None:
     help_text = (
-        "🤖 <b>Bot Vazifasi:</b>\n"
-        "Ushbu bot sizga turli fanlar va mavzularda bilimlaringizni sinash uchun quizlar (testlar) yaratishga yordam beradi. "
-        "DeepSeek AI orqali savollar dinamik ravishda yaratiladi.\n\n"
-        "🕹️ <b>Tugmalar vazifasi:</b>\n"
-        "🚀 <b>Quiz boshlash</b> - Tayyor fanlardan birini tanlaysiz va AI sizga 30 ta savol yaratib beradi.\n"
-        "📝 <b>Quiz yaratish:</b>\n"
-        "  └ 📚 <b>Mavzu tanlash</b> - O'zingiz xohlagan ixtiyoriy mavzuni yozing, AI shunga mos test tuzadi.\n"
-        "  └ 📁 <b>Fayl tanlash</b> - PDF, DOCX yoki TXT fayl yuklang. Bot matnni o'qib savollarni aniqlaydi.\n"
-        "🗣️ <b>Murojatlar</b> - Bot guruhi va takliflar uchun havola.\n\n"
+        "🌟 <b>Bot imkoniyatlari:</b>\n\n"
+        "Ushbu bot sizga turli fanlar bo'yicha bilimlaringizni sinash uchun dinamik testlar (quizlar) yaratishga yordam beradi. "
+        "Bunda kuchli DeepSeek AI yordam beradi.\n\n"
+        "🕹️ <b>Tugmalar vazifasi:</b>\n\n"
+        "🎯 <b>Quiz boshlash</b> - Tayyor fanlardan birini tanlang va AI sizga 30 ta savol yaratadi.\n"
+        "🛠️ <b>Quiz yaratish:</b>\n"
+        "  └ 📖 <b>Mavzu tanlash</b> - Ixtiyoriy mavzuni yozing.\n"
+        "  └ 📂 <b>Fayl yuklash</b> - PDF/DOCX/TXT fayl yuklang.\n"
+        "💬 <b>Murojatlar</b> - Bot guruhi va takliflar.\n\n"
         "🔄 <b>30 talik tizim:</b>\n"
-        "Quiz har 30 ta savoldan keyin to'xtaydi. Natijani ko'rishingiz yoki 'Keyingisi' tugmasi orqali yana 30 ta yangi savol bilan davom etishingiz mumkin.\n\n"
-        "🆘 <b>Savol va takliflar:</b>"
+        "Quiz har 30 ta savoldan keyin to'xtaydi. Natijani ko'rib, yana 'Keyingisi' orqali davom etishingiz mumkin.\n\n"
+        "🆘 <b>Yordam kerakmi?</b>"
     )
     
     admin_keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -1552,7 +1551,7 @@ async def help_handler(message: Message) -> None:
 
 # ============ ADMIN HANDLERS ============
 
-@dp.message(F.text == "🔑 Admen")
+@dp.message(F.text == "🔐 Admin Panel")
 async def admin_handler(message: Message):
     is_admin = (message.from_user.id == ADMIN_ID) or \
                (message.from_user.username and message.from_user.username.lower() == ADMIN_USERNAME.lower())
@@ -1561,7 +1560,7 @@ async def admin_handler(message: Message):
         return
     await message.answer("🔑 <b>Admin paneliga xush kelibsiz!</b>", reply_markup=admin_menu)
 
-@dp.message(F.text == "📊 Natijalar")
+@dp.message(F.text == "📊 Umumiy Natijalar")
 async def admin_results_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
@@ -1589,7 +1588,7 @@ async def admin_results_handler(message: Message):
     res_text += f"📋 Jami: <b>{len(results)}</b> ta foydalanuvchi natija topshirgan"
     await message.answer(res_text, disable_web_page_preview=True)
 
-@dp.message(F.text == "📈 Reyting")
+@dp.message(F.text == "📈 Tizim Reytingi")
 async def admin_rating_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
@@ -1673,8 +1672,8 @@ async def admin_rating_handler(message: Message):
         track_error(f"Rating chart error: {e}")
         await loading_msg.edit_text(f"❌ Xatolik yuz berdi.")
 
-@dp.message(F.text == "📊 Natijalar")
-async def admin_results_handler(message: Message):
+@dp.message(F.text == "📊 Umumiy Natijalar")
+async def admin_results_handler_top5(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
     
@@ -1741,7 +1740,7 @@ async def admin_results_handler(message: Message):
         track_error(f"Results table error: {e}")
         await message.answer(f"❌ Jadval yaratishda xatolik.")
 
-@dp.message(F.text == "👥 Obunchilar")
+@dp.message(F.text == "👥 Foydalanuvchilar")
 async def admin_subscribers_handler(message: Message):
     if message.from_user.username != ADMIN_USERNAME:
         return
