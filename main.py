@@ -529,14 +529,14 @@ async def generate_questions_from_text(text: str, age: str, count: int = 100) ->
     """Ask DeepSeek to parse or create questions from provided text"""
     difficulty = {"10-18": "oson", "18-25": "o'rtacha", "25-35": "qiyin"}.get(age, "o'rtacha")
     
-    prompt = f"""Sen professionat quiz generatorisan. Quyidagi matnni tahlil qil va imkon qadar ko'p (maksimal {count} ta) savoldan iborat quiz yarat.
+    prompt = f"""Sen professional quiz generatorisan. Quyidagi matnni tahlil qil va imkon qadar ko'p (maksimal {count} ta) savoldan iborat quiz yarat.
 
-MUHIM TALAblar: 
+MUHIM TALABLAR: 
 1. Matn lotin yoki kirill alifbosida bo'lishi mumkin (O'zbekcha yoki ruscha).
-2. Agar matnda faqat savollar bo'lsa, ularga to'g'ri javoblarni o'zing top va 4 ta variantli (A, B, C, D) quiz ko'rinishiga keltir.
-3. Agar matnda savol-javoblar bo'lsa, ularni tahlil qil va JSON formatiga o'gir. Agar biror savolda javob variantlari kam bo'lsa, ularni to'ldir.
-4. Agar matn umumiy ma'lumot (maqola, darslik) bo'lsa, shu matndan kelib chiqib qiziqarli savollar yarat.
-5. Har bir savol uchun HAR DOIM 4 ta variant bo'lishi shart.
+2. Savollar DTM (Davlat Test Markazi) va xalqaro sertifikat imtixonlari (CEFR, IELTS, SAT kabi) andozasida, jiddiy va akademik tilda bo'lishi shart.
+3. Agar matn Matematika yoki Fizika fanlariga oid bo'lsa, nazariy savollar sonini kamaytirib (faqat eng muhimlarini qoldirib), ko'proq misol va masalalar (hisob-kitobga oid) yarat.
+4. Agar matnda faqat savollar bo'lsa, ularga to'g'ri javoblarni o'zing top va 4 ta variantli (A, B, C, D) quiz ko'rinishiga keltir.
+5. Har bir savol uchun HAR DOIM EXACTLY 4 ta variant bo'lishi shart.
 6. Qiyinlik darajasi: {difficulty}
 7. Faqat JSON formatda javob ber.
 
@@ -614,16 +614,23 @@ async def generate_questions_with_deepseek(subject: str, age: str, count: int = 
     }
     age_desc = age_descriptions.get(age, "o'rtacha qiyinlikdagi")
     
-    prompt = f"""Sen quiz savollari yaratuvchi sun'iy intellektsiz. 
+    subject_instruction = ""
+    if "matematika" in subject.lower() or "fizika" in subject.lower() or "fiz" in subject.lower():
+        subject_instruction = "Nazariy savollardan ko'ra ko'proq misol va masalalar, hisob-kitobga oid savollar yarat. Savollar DTM va sertifikat imtihonlari darajasida bo'lsin."
+    else:
+        subject_instruction = "Savollar DTM (Davlat Test Markazi) va xalqaro sertifikat imtixonlari (CEFR, IELTS kabi) andozasida, jiddiy va akademik tilda bo'lishi shart."
 
+    prompt = f"""Sen professional quiz savollari yaratuvchi sun'iy intellektsan. 
+    
 {subject} mavzusidan {age_desc} {num_to_generate} ta yangi savol yarat.
 
 Talablar:
-1. Jami {num_to_generate} ta savol
-2. Har bir savol 4 ta javob varianti
-3. Faqat JSON formatda javob ber
+1. Jami {num_to_generate} ta savol.
+2. {subject_instruction}
+3. Har bir savol 4 ta javob varianti (A, B, C, D) bo'lishi shart.
+4. Faqat JSON formatda javob ber.
 
-JSON: [{{"question": "Savol?", "options": ["A", "B", "C", "D"], "correct": 0}}]
+JSON array formati: [{{"question": "Savol matni?", "options": ["Variant A", "Variant B", "Variant C", "Variant D"], "correct": 0}}]
 Faqat JSON array qaytar!"""
 
     start_time = time.time()
@@ -711,6 +718,19 @@ async def handle_poll_timeout(chat_id: int, user_id: int, poll_id: str, timeout:
     # If not answered, mark as incorrect (don't increment correct_answers)
     data["consecutive_timeouts"] = data.get("consecutive_timeouts", 0) + 1
     
+    # Track as wrong answer (timeout)
+    current_idx = data.get("current_question", 0)
+    questions = data.get("questions", [])
+    if current_idx < len(questions):
+        if "wrong_answers" not in data:
+            data["wrong_answers"] = []
+        data["wrong_answers"].append({
+            "question": questions[current_idx],
+            "user_answer": None, # Timeout
+            "type": "timeout",
+            "index": current_idx + 1
+        })
+    
     if data["consecutive_timeouts"] >= 3:
         try:
             # Save results before stopping
@@ -730,11 +750,25 @@ async def handle_poll_timeout(chat_id: int, user_id: int, poll_id: str, timeout:
             subject = data.get("subject", "Noma'lum")
             save_user_result(user_id, full_name, username, correct, data.get("current_question", 0), time_spent, subject)
             
-            await bot.send_message(
-                chat_id, 
+            msg_text = (
                 f"🚫 <b>Siz ketma-ket 3 marta javob bermadingiz!</b>\n\n"
                 f"🏁 <b>O'yin yakunlandi.</b>\n"
-                f"✅ To'g'ri javoblar: <b>{correct}</b> ta",
+                f"✅ To'g'ri javoblar: <b>{correct}</b> ta"
+            )
+            
+            kb_list = [[InlineKeyboardButton(text="📊 Natija", callback_data="show_final_results")]]
+            if data.get("wrong_answers"):
+                kb_list.append([InlineKeyboardButton(text="🔍 Tahrirlash", callback_data="analyze_wrong")])
+            
+            await bot.send_message(
+                chat_id, 
+                msg_text,
+                reply_markup=InlineKeyboardMarkup(inline_keyboard=kb_list)
+            )
+            
+            await bot.send_message(
+                chat_id,
+                "Bosh menyu:",
                 reply_markup=get_main_menu(username, user_id)
             )
             # Clear state and session data
@@ -779,10 +813,14 @@ async def send_quiz_poll(message: Message, user_id: int):
     
     if current >= len(questions):
         # Quiz finished - show Result and Next buttons
-        end_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        kb_list = [
             [InlineKeyboardButton(text="📊 Natija", callback_data="show_final_results")],
             [InlineKeyboardButton(text="➡️ Keyingisi", callback_data="next_quiz")]
-        ])
+        ]
+        if data.get("wrong_answers"):
+            kb_list.insert(1, [InlineKeyboardButton(text="🔍 Tahrirlash", callback_data="analyze_wrong")])
+            
+        end_keyboard = InlineKeyboardMarkup(inline_keyboard=kb_list)
         
         await message.answer(
             f"🏁 <b>Barcha savollar tugadi!</b>\n\n"
@@ -851,9 +889,20 @@ async def poll_answer_handler(poll_answer: PollAnswer):
         correct_idx = question["correct"]
         
         # Check if user's answer is correct
-        if poll_answer.option_ids and poll_answer.option_ids[0] == correct_idx:
+        user_answer_idx = poll_answer.option_ids[0] if poll_answer.option_ids else None
+        if user_answer_idx == correct_idx:
             data["correct_answers"] = data.get("correct_answers", 0) + 1
             logging.info(f"User {user_id} answered correctly!")
+        else:
+            # Track wrong answer
+            if "wrong_answers" not in data:
+                data["wrong_answers"] = []
+            data["wrong_answers"].append({
+                "question": question,
+                "user_answer": user_answer_idx,
+                "type": "incorrect",
+                "index": current_idx + 1
+            })
             
     # Move to next question index
     data["current_question"] = current_idx + 1
@@ -878,10 +927,14 @@ async def send_next_quiz_question(chat_id: int, user_id: int):
     # 2. 30 questions in this "round" are finished
     round_size = 30
     if current >= len(questions) or (current > 0 and current % round_size == 0):
-        end_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        kb_list = [
             [InlineKeyboardButton(text="📊 Natija", callback_data="show_final_results")],
             [InlineKeyboardButton(text="➡️ Keyingisi", callback_data="next_quiz")]
-        ])
+        ]
+        if data.get("wrong_answers"):
+            kb_list.insert(1, [InlineKeyboardButton(text="🔍 Tahrirlash", callback_data="analyze_wrong")])
+            
+        end_keyboard = InlineKeyboardMarkup(inline_keyboard=kb_list)
         
         msg = "🏁 <b>Barcha savollar tugadi!</b>" if current >= len(questions) else f"✅ <b>{current} ta savol tugadi!</b>"
         
@@ -999,10 +1052,11 @@ async def stop_quiz_callback(callback: CallbackQuery, state: FSMContext):
             subject=subject
         )
     
-    # Clear quiz session data to stop all timers
-    del user_data[user_id]
+    kb_items = []
+    if data.get("wrong_answers"):
+        kb_items.append([InlineKeyboardButton(text="🔍 Tahrirlash", callback_data="analyze_wrong")])
     
-    progress = int((correct / total) * 10) if total > 0 else 0
+    progress = int((correct / current) * 10) if current > 0 else 0
     bar = "🟩" * progress + "⬜" * (10 - progress)
     
     await callback.message.edit_text(
@@ -1011,18 +1065,26 @@ async def stop_quiz_callback(callback: CallbackQuery, state: FSMContext):
         f"|{bar}| {correct}/{current}\n\n"
         f"✅ To'g'ri: <b>{correct}</b> ta\n"
         f"❌ Noto'g'ri: <b>{current - correct}</b> ta\n"
-        f"<i>Jami {total} tadan {current} tasiga javob berdingiz.</i>"
+        f"<i>Jami {total} tadan {current} tasiga javob berdingiz.</i>",
+        reply_markup=InlineKeyboardMarkup(inline_keyboard=kb_items) if kb_items else None
     )
     
     await callback.answer("Quiz to'gatildi!")
     
-    await bot.send_message(
-        callback.message.chat.id,
-        "Bosh menyu:",
-        reply_markup=get_main_menu(callback.from_user.username, callback.from_user.id)
-    )
+    if not kb_items:
+        await bot.send_message(
+            callback.message.chat.id,
+            "Bosh menyu:",
+            reply_markup=get_main_menu(callback.from_user.username, callback.from_user.id)
+        )
+        await state.clear()
+        # del user_data[user_id] is handled below
     
-    await state.clear()
+    # We delay deleting user_data if analysis is possible
+    if not data.get("wrong_answers"):
+        if user_id in user_data:
+            del user_data[user_id]
+        await state.clear()
 
 @dp.callback_query(F.data == "show_final_results")
 async def show_final_results_callback(callback: CallbackQuery):
@@ -1058,6 +1120,23 @@ async def show_final_results_callback(callback: CallbackQuery):
         f"🎯 Baho: <b>{grade}</b>\n\n"
         f"<i>Jami {total} ta savol yakunlandi.</i>"
     )
+    
+    # Add Tahrirlash button if needed
+    kb_list = []
+    if data.get("wrong_answers"):
+        kb_list.append([InlineKeyboardButton(text="🔍 Tahrirlash", callback_data="analyze_wrong")])
+    
+    if kb_list:
+        await callback.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(inline_keyboard=kb_list))
+    else:
+        await bot.send_message(
+            callback.message.chat.id,
+            "Bosh menyu:",
+            reply_markup=get_main_menu(callback.from_user.username, callback.from_user.id)
+        )
+        if user_id in user_data:
+            del user_data[user_id]
+
     await callback.answer()
 
     # Save final result
@@ -1071,6 +1150,107 @@ async def show_final_results_callback(callback: CallbackQuery):
         time_spent=time_spent,
         subject=subject
     )
+
+@dp.callback_query(F.data == "analyze_wrong")
+async def analyze_wrong_callback(callback: CallbackQuery, state: FSMContext):
+    """Analyze wrong answers using DeepSeek AI and provide explanations/proofs"""
+    user_id = callback.from_user.id
+    if user_id not in user_data:
+        await callback.answer("❌ Seans ma'lumotlari topilmadi.")
+        return
+        
+    data = user_data[user_id]
+    wrong_list = data.get("wrong_answers", [])
+    
+    if not wrong_list:
+        await callback.answer("✅ Sizda xato javoblar yo'q!")
+        return
+        
+    await callback.answer("⏳ Tahlil qilinmoqda...")
+    processing_msg = await callback.message.answer("🔍 <b>Xato javoblaringiz tahlil qilinmoqda...</b>\n\nIltimos, kuting, bu biroz vaqt olishi mumkin.")
+    
+    # Prepare list of wrong questions for the prompt
+    wrong_questions_text = ""
+    for item in wrong_list:
+        q = item["question"]
+        user_ans = q["options"][item["user_answer"]] if item["user_answer"] is not None else "Vaqt tugagan (javob berilmagan)"
+        correct_ans = q["options"][q["correct"]]
+        orig_index = item.get("index", "?")
+        
+        wrong_questions_text += f"{orig_index}-savol: {q['question']}\n"
+        wrong_questions_text += f"Sizning javobingiz: {user_ans}\n"
+        wrong_questions_text += f"To'g'ri javob: {correct_ans}\n\n"
+
+    subject = data.get("subject", "Noma'lum")
+    prompt = f"""Sen yordamchi o'qituvchisan. Quyidagi {subject} fanidan xato belgilangan savollarni tushunib olishga yordam ber.
+    
+MUHIM VAZIFA:
+1. Har bir savol uchun to'g'ri javobni JUDA SODDA tilda tushuntirib ber.
+2. Murakkab ilmiy gaplar ishlatma, xuddi yosh bolaga tushuntirgandek sodda bo'lsin.
+3. Agar savol Matematika yoki Fizikaga oid bo'lsa, eng sodda usulda, qisqa qadamlar bilan yechimini ko'rsat.
+4. Foydalanuvchi nima uchun xato qilganini tushunib yetsin.
+5. Tahlilda har bir savolni o'zining asl tartib raqami bilan (masalan, "5-savol tahlili") ko'rsat.
+
+SAVOLLAR:
+{wrong_questions_text}
+
+Tahlilni quyidagi formatda ber:
+✅ <b>[SavolRaqami]-savol tahlili:</b>
+To'g'ri javob: [javob matni]
+Tushuntirish: [sodda tilda qisqa tushuntirish]
+Yechim: [agar misol bo'lsa, qisqa yechimi]
+"""
+
+    start_time = time.time()
+    try:
+        response = await deepseek_client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role": "system", "content": "Sen talabalarga xatolarini tushuntirib beradigan aqlli va yordam beruvchi ekspert o'qituvchisan."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.5,
+            max_tokens=4000
+        )
+        
+        duration = time.time() - start_time
+        track_deepseek_usage(duration)
+        
+        analysis = response.choices[0].message.content.strip()
+        
+        # Remove processing message and send analysis
+        await processing_msg.delete()
+        
+        # Split analysis if it's too long for Telegram (max 4096 chars)
+        if len(analysis) > 4000:
+            parts = [analysis[i:i+4000] for i in range(0, len(analysis), 4000)]
+            for part in parts:
+                await callback.message.answer(part, parse_mode=ParseMode.HTML)
+        else:
+            await callback.message.answer(analysis, parse_mode=ParseMode.HTML)
+            
+        await callback.message.answer(
+            "📚 Tahlil tugadi. O'z xatolaringizni o'rganib chiqqan bo'lsangiz, asosiy menyuga qaytamiz.",
+            reply_markup=get_main_menu(callback.from_user.username, user_id)
+        )
+        
+        # Cleanup
+        if user_id in user_data:
+            del user_data[user_id]
+        await state.clear()
+        
+    except Exception as e:
+        logging.error(f"Analysis error: {e}")
+        track_error(f"AI Analysis error: {e}")
+        await processing_msg.edit_text("❌ Tahlil jarayonida xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.")
+        
+        await callback.message.answer(
+            "Bosh menyu:",
+            reply_markup=get_main_menu(callback.from_user.username, user_id)
+        )
+        if user_id in user_data:
+            del user_data[user_id]
+        await state.clear()
 
 @dp.callback_query(F.data == "next_quiz")
 async def next_quiz_callback(callback: CallbackQuery, state: FSMContext):

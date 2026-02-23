@@ -17,7 +17,7 @@
             "full_name": "Suhrobjon",
             "username": "Suhrob031",
             "joined_date": "2026-02-11 17:18",
-            "age": "10-18",
+            "age": "25-35",
             "photo": "photos/8170458930.jpg"
         },
         "6782407998": {
@@ -83,9 +83,29 @@
             "first_name": "Gulchexra",
             "last_name": "Duvlanova",
             "full_name": "Gulchexra Duvlanova",
-            "username": "gulchexra_duvlanova",
+            "username": "",
             "joined_date": "2026-02-20 13:53",
             "photo": "photos/921168105.jpg",
+            "age": "10-18"
+        },
+        "8292395339": {
+            "id": 8292395339,
+            "first_name": "Nurgul",
+            "last_name": "",
+            "full_name": "Nurgul",
+            "username": "nurgul_1210",
+            "joined_date": "2026-02-22 07:53",
+            "photo": "photos/8292395339.jpg",
+            "age": "18-25"
+        },
+        "8189071762": {
+            "id": 8189071762,
+            "first_name": "Байитов🦅",
+            "last_name": "",
+            "full_name": "Байитов🦅",
+            "username": "ozodbek_bayitovv",
+            "joined_date": "2026-02-23 06:22",
+            "photo": "photos/8189071762.jpg",
             "age": "10-18"
         }
     },
@@ -94,10 +114,10 @@
             "name": "Suhrobjon",
             "username": "Suhrob031",
             "best_score": 10,
-            "total_correct": 10,
-            "total_questions": 102,
-            "quizzes_count": 9,
-            "total_time": 1137,
+            "total_correct": 38,
+            "total_questions": 195,
+            "quizzes_count": 19,
+            "total_time": 1566,
             "subjects": [
                 "Matematika",
                 "Ona tili",
@@ -134,27 +154,42 @@
         "921168105": {
             "name": "Gulchexra Duvlanova",
             "username": "gulchexra_duvlanova",
-            "best_score": 1,
-            "total_correct": 1,
-            "total_questions": 7,
-            "quizzes_count": 2,
-            "total_time": 238,
+            "best_score": 9,
+            "total_correct": 19,
+            "total_questions": 46,
+            "quizzes_count": 4,
+            "total_time": 787,
             "subjects": [
                 "Matematika",
-                "Ingliz tili"
+                "Ingliz tili",
+                "Reported speech"
             ],
-            "date": "2026-02-20 13:59"
+            "date": "2026-02-23 00:44"
+        },
+        "8189071762": {
+            "name": "Байитов🦅",
+            "username": "ozodbek_bayitovv",
+            "best_score": 24,
+            "total_correct": 38,
+            "total_questions": 49,
+            "quizzes_count": 3,
+            "total_time": 629,
+            "subjects": [
+                "Matematika"
+            ],
+            "date": "2026-02-23 06:30"
         }
     },
     "stats": {
-        "deepseek_calls": 16,
+        "deepseek_calls": 21,
         "daily_calls": {
             "2026-02-11": 3,
             "2026-02-15": 4,
             "2026-02-17": 1,
-            "2026-02-20": 8
+            "2026-02-20": 8,
+            "2026-02-23": 5
         },
-        "last_call": "2026-02-20 10:12:26",
+        "last_call": "2026-02-23 08:43:37",
         "deepseek_durations": [
             48.45202016830444
         ],
@@ -174,7 +209,12 @@
             27.748712301254272,
             2.381080389022827,
             7.056013822555542,
-            7.511716604232788
+            7.511716604232788,
+            33.02987098693848,
+            35.53314161300659,
+            15.227711915969849,
+            7.598862648010254,
+            24.79544425010681
         ],
         "errors": [
             {

@@ -3919,5 +3919,613 @@
                 "correct": 3
             }
         ]
+    },
+    "Reported speech": {
+        "10-18": [
+            {
+                "question": "Tom: \"I like football.\" Tom said that...",
+                "options": [
+                    "he likes football",
+                    "he liked football",
+                    "he is liking football",
+                    "he will like football"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Mary: \"I am reading a book.\" Mary said that...",
+                "options": [
+                    "she is reading a book",
+                    "she was reading a book",
+                    "she reads a book",
+                    "she read a book"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "John: \"My sister works in a hospital.\" John said that...",
+                "options": [
+                    "his sister worked in a hospital",
+                    "his sister works in a hospital",
+                    "his sister is working in a hospital",
+                    "his sister will work in a hospital"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Teacher: \"The lesson starts at 9 o'clock.\" The teacher said that...",
+                "options": [
+                    "the lesson started at 9 o'clock",
+                    "the lesson starts at 9 o'clock",
+                    "the lesson is starting at 9 o'clock",
+                    "the lesson will start at 9 o'clock"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Lisa: \"I will visit my grandmother tomorrow.\" Lisa said that...",
+                "options": [
+                    "she will visit her grandmother tomorrow",
+                    "she would visit her grandmother tomorrow",
+                    "she visits her grandmother tomorrow",
+                    "she visited her grandmother tomorrow"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "David: \"I have finished my homework.\" David said that...",
+                "options": [
+                    "he has finished his homework",
+                    "he had finished his homework",
+                    "he finished his homework",
+                    "he finishes his homework"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Anna: \"I can speak French.\" Anna said that...",
+                "options": [
+                    "she can speak French",
+                    "she could speak French",
+                    "she speaks French",
+                    "she is speaking French"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Peter: \"I must go now.\" Peter said that...",
+                "options": [
+                    "he must go then",
+                    "he had to go then",
+                    "he must go now",
+                    "he has to go now"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Sara: \"I bought a new dress yesterday.\" Sara said that...",
+                "options": [
+                    "she bought a new dress yesterday",
+                    "she had bought a new dress yesterday",
+                    "she buys a new dress yesterday",
+                    "she has bought a new dress yesterday"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Mike: \"We are playing tennis now.\" Mike said that...",
+                "options": [
+                    "they were playing tennis then",
+                    "they are playing tennis now",
+                    "they played tennis then",
+                    "they play tennis now"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Kate: \"My parents are traveling to Spain.\" Kate said that...",
+                "options": [
+                    "her parents were traveling to Spain",
+                    "her parents are traveling to Spain",
+                    "her parents traveled to Spain",
+                    "her parents travel to Spain"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Bob: \"I don't like coffee.\" Bob said that...",
+                "options": [
+                    "he doesn't like coffee",
+                    "he didn't like coffee",
+                    "he hadn't liked coffee",
+                    "he won't like coffee"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Emma: \"I have never been to London.\" Emma said that...",
+                "options": [
+                    "she has never been to London",
+                    "she had never been to London",
+                    "she never was to London",
+                    "she never been to London"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Jack: \"I may come late.\" Jack said that...",
+                "options": [
+                    "he may come late",
+                    "he might come late",
+                    "he can come late",
+                    "he could come late"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Lucy: \"I saw a beautiful bird in the garden.\" Lucy said that...",
+                "options": [
+                    "she saw a beautiful bird in the garden",
+                    "she had seen a beautiful bird in the garden",
+                    "she sees a beautiful bird in the garden",
+                    "she has seen a beautiful bird in the garden"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Teacher: \"The Earth revolves around the Sun.\" The teacher said that...",
+                "options": [
+                    "the Earth revolved around the Sun",
+                    "the Earth revolves around the Sun",
+                    "the Earth is revolving around the Sun",
+                    "the Earth revolved around the Sun"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Tom: \"I will help you with your project.\" Tom said that...",
+                "options": [
+                    "he will help me with my project",
+                    "he would help me with my project",
+                    "he helps me with my project",
+                    "he helped me with my project"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Mother: \"Clean your room!\" Mother told me...",
+                "options": [
+                    "clean your room",
+                    "to clean my room",
+                    "cleaned my room",
+                    "cleaning my room"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "David: \"Where do you live?\" David asked me...",
+                "options": [
+                    "where do I live",
+                    "where I lived",
+                    "where did I live",
+                    "where I live"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Sara: \"What time does the movie start?\" Sara asked...",
+                "options": [
+                    "what time does the movie start",
+                    "what time the movie started",
+                    "what time the movie starts",
+                    "what time did the movie start"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "John: \"Don't touch that button!\" John told me...",
+                "options": [
+                    "don't touch that button",
+                    "not to touch that button",
+                    "to not touch that button",
+                    "didn't touch that button"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Lisa: \"Can you open the window?\" Lisa asked me...",
+                "options": [
+                    "can I open the window",
+                    "if I could open the window",
+                    "could I open the window",
+                    "to open the window"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Mike: \"I have been waiting for an hour.\" Mike said that...",
+                "options": [
+                    "he has been waiting for an hour",
+                    "he had been waiting for an hour",
+                    "he was waiting for an hour",
+                    "he waited for an hour"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Anna: \"I might go to the party.\" Anna said that...",
+                "options": [
+                    "she might go to the party",
+                    "she may go to the party",
+                    "she could go to the party",
+                    "she can go to the party"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Peter: \"I was watching TV when you called.\" Peter said that...",
+                "options": [
+                    "he was watching TV when I called",
+                    "he had been watching TV when I called",
+                    "he watched TV when I called",
+                    "he is watching TV when I called"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Emma: \"I should study more.\" Emma said that...",
+                "options": [
+                    "she should study more",
+                    "she should studied more",
+                    "she had to study more",
+                    "she must study more"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Jack: \"We have already eaten lunch.\" Jack said that...",
+                "options": [
+                    "they have already eaten lunch",
+                    "they had already eaten lunch",
+                    "they already ate lunch",
+                    "they ate lunch already"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Lucy: \"My brother is going to university next year.\" Lucy said that...",
+                "options": [
+                    "her brother was going to university next year",
+                    "her brother is going to university next year",
+                    "her brother went to university next year",
+                    "her brother goes to university next year"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Teacher: \"Please, sit down.\" The teacher asked us...",
+                "options": [
+                    "please, sit down",
+                    "to sit down",
+                    "sitting down",
+                    "sat down"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Tom: \"I don't understand this question.\" Tom said that...",
+                "options": [
+                    "he doesn't understand this question",
+                    "he didn't understand that question",
+                    "he hadn't understood that question",
+                    "he won't understand that question"
+                ],
+                "correct": 1
+            }
+        ]
+    },
+    "O'zbekiston va jahon tarixi": {
+        "10-18": [
+            {
+                "question": "O'zbekiston mustaqillikka qachon erishdi?",
+                "options": [
+                    "1990 yil",
+                    "1991 yil",
+                    "1992 yil",
+                    "1989 yil"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Amir Temur qaysi asrda yashagan?",
+                "options": [
+                    "XIV asr",
+                    "XV asr",
+                    "XIII asr",
+                    "XVI asr"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Birinchi jahon urushi qachon boshlangan?",
+                "options": [
+                    "1912 yil",
+                    "1914 yil",
+                    "1916 yil",
+                    "1918 yil"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning poytaxti qaysi shahar?",
+                "options": [
+                    "Samarqand",
+                    "Buxoro",
+                    "Toshkent",
+                    "Andijon"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qadimgi Misr piramidalari qaysi daryo bo'yida qurilgan?",
+                "options": [
+                    "Tigr",
+                    "Nil",
+                    "Evfrat",
+                    "Ind"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Alisher Navoiy qaysi asrda yashagan?",
+                "options": [
+                    "XIII asr",
+                    "XIV asr",
+                    "XV asr",
+                    "XVI asr"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Ikkinchi jahon urushi qachon tugagan?",
+                "options": [
+                    "1943 yil",
+                    "1944 yil",
+                    "1945 yil",
+                    "1946 yil"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "O'zbekistonning eng qadimgi shahri qaysi?",
+                "options": [
+                    "Xiva",
+                    "Buxoro",
+                    "Samarqand",
+                    "Termiz"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qadimgi Rimda gladiator janglari qaysi inshootda o'tkazilgan?",
+                "options": [
+                    "Forum",
+                    "Kolizey",
+                    "Panteon",
+                    "Akveduk"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Mirzo Ulug'bek qaysi sohada mashhur olim bo'lgan?",
+                "options": [
+                    "Tibbiyot",
+                    "Astronomiya",
+                    "Matematika",
+                    "Kimyo"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Fransuz inqilobi qachon sodir bo'lgan?",
+                "options": [
+                    "1776 yil",
+                    "1789 yil",
+                    "1799 yil",
+                    "1804 yil"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning milliy bayrog'i qachon qabul qilingan?",
+                "options": [
+                    "1990 yil",
+                    "1991 yil",
+                    "1992 yil",
+                    "1993 yil"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qadimgi Yunonistanda Olimpiya o'yinlari qaysi xudoga bag'ishlangan?",
+                "options": [
+                    "Apollon",
+                    "Zevs",
+                    "Afina",
+                    "Gera"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Bobur qaysi davlat asoschisi hisoblanadi?",
+                "options": [
+                    "Hindiston",
+                    "Eron",
+                    "Turkiya",
+                    "O'zbekiston"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qadimgi Xitoy devori qaysi maqsadda qurilgan?",
+                "options": [
+                    "Savdo yo'llarini himoya qilish",
+                    "Dushman hujumlaridan himoya qilish",
+                    "Suv toshqinlaridan himoya qilish",
+                    "Chegara belgisi sifatida"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonda 'Alpomish' qanday janrga mansub asar?",
+                "options": [
+                    "Tarixiy qissa",
+                    "Doston",
+                    "Roman",
+                    "Hikoya"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Amerika Qo'shma Shtatlari mustaqilligi qachon e'lon qilingan?",
+                "options": [
+                    "1775 yil",
+                    "1776 yil",
+                    "1781 yil",
+                    "1783 yil"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning eng baland tog' cho'qqisi qaysi?",
+                "options": [
+                    "Xazrat Sulton",
+                    "Chimyon",
+                    "Beshqor",
+                    "Adrasmon"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qadimgi Misrda yozuv qanday nomlangan?",
+                "options": [
+                    "Klinopis",
+                    "Iyeroglif",
+                    "Alifbo",
+                    "Run"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Jaloliddin Manguberdi qaysi davlat hukmdori bo'lgan?",
+                "options": [
+                    "Xorazmshohlar",
+                    "Temuriylar",
+                    "Qoraxoniylar",
+                    "Somoniy"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Renessans davri qaysi mamlakatda boshlangan?",
+                "options": [
+                    "Fransiya",
+                    "Italiya",
+                    "Ispaniya",
+                    "Germaniya"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning milliy valyutasi qaysi?",
+                "options": [
+                    "Tenge",
+                    "So'm",
+                    "Rubl",
+                    "Manat"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Qadimgi Yunonistanda 'demokratiya' so'zi nimani anglatadi?",
+                "options": [
+                    "Hukmdor hokimiyati",
+                    "Xalq hokimiyati",
+                    "Oligarxiya",
+                    "Aristokratiya"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Muhammad al-Xorazmiy qaysi sohada mashhur olim bo'lgan?",
+                "options": [
+                    "Tibbiyot",
+                    "Astronomiya",
+                    "Matematika",
+                    "Geografiya"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Birinchisi Oyda qadam qo'ygan odam kim?",
+                "options": [
+                    "Yuriy Gagarin",
+                    "Nil Armstrong",
+                    "Maykl Kollinz",
+                    "Alan Shepard"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning eng katta cho'li qaysi?",
+                "options": [
+                    "Qizilqum",
+                    "Qoraqum",
+                    "Sahroi Kabir",
+                    "Gobi"
+                ],
+                "correct": 0
+            },
+            {
+                "question": "Qadimgi Rimning birinchi imperatori kim bo'lgan?",
+                "options": [
+                    "Yuliy Tsezar",
+                    "Avgust",
+                    "Neron",
+                    "Trayan"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "Abu Rayhon Beruniy qaysi asrda yashagan?",
+                "options": [
+                    "IX asr",
+                    "X asr",
+                    "XI asr",
+                    "XII asr"
+                ],
+                "correct": 2
+            },
+            {
+                "question": "Qadimgi Yunonistanda 'falsafa' so'zi nimani anglatadi?",
+                "options": [
+                    "Tabiatni o'rganish",
+                    "Hikmat sevgisi",
+                    "Ilm o'rganish",
+                    "Din o'rganish"
+                ],
+                "correct": 1
+            },
+            {
+                "question": "O'zbekistonning eng uzun daryosi qaysi?",
+                "options": [
+                    "Sirdaryo",
+                    "Amudaryo",
+                    "Zarafshon",
+                    "Qashqadaryo"
+                ],
+                "correct": 1
+            }
+        ]
     }
 }
